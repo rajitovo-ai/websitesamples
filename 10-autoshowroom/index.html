@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoGallery — Premium Auto Dealer</title>
+    <meta name="description" content="AutoGallery — Uw specialist in premium occasions. Kwaliteit, service en garantie sinds 2005. KVK 68123450">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-ring"></div>
+            <div class="loader-text">AutoGallery</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="36" height="36">
+                    <path d="M5 25 Q5 18 12 16 L28 16 Q35 18 35 25 L35 28 L5 28 Z" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <circle cx="13" cy="28" r="4" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <circle cx="27" cy="28" r="4" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                </svg>
+                <span>Auto<span class="accent">Gallery</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#showroom">Showroom</a>
+                <a href="#modellen">Modellen</a>
+                <a href="#diensten">Diensten</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Plan een Proefrit</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="three-canvas"></canvas>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <div class="hero-badge">Premium Occasions Sinds 2005</div>
+                <h1>Rijder<br>wordt <span>Eigenaar</span></h1>
+                <p>Ontdek onze collectie zorgvuldig geselecteerde premium occasions. Elke auto gecontroleerd, gereviseerd en gegarandeerd.</p>
+                <div class="hero-actions">
+                    <a href="#showroom" class="btn-primary">Bekijk Showroom</a>
+                    <a href="#modellen" class="btn-ghost">Configureer uw Auto</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="1850">0</span><span class="stat-label">Auto's Verkocht</span></div>
+                <div class="stat"><span class="stat-num" data-target="20">0</span><span class="stat-label">Jaar Ervaring</span></div>
+                <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-label">Maanden Garantie</span></div>
+                <div class="stat"><span class="stat-num" data-target="4.8">0</span><span class="stat-label">Klant Score</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>Scroll om te ontdekken</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section id="showroom">
+        <div class="section-header">
+            <div class="section-tag">Onze Showroom</div>
+            <h2>De Collectie</h2>
+            <p>Een selectie uit onze huidige voorraad. Elke auto voldoet aan onze strenge kwaliteitsnormen.</p>
+        </div>
+        <div class="showroom-grid">
+            <div class="car-card" data-anim="fade-up">
+                <div class="car-img" style="background: linear-gradient(135deg, #1a1a1e, #2a2a30);">
+                    <div class="car-silhouette">
+                        <svg viewBox="0 0 300 120" width="100%">
+                            <path d="M30 80 Q30 55 60 50 L100 35 Q120 30 150 30 L200 35 Q240 40 260 55 L270 65 Q275 70 275 80 L275 90 L30 90 Z" fill="#00d4ff" opacity="0.15"/>
+                            <path d="M30 80 Q30 55 60 50 L100 35 Q120 30 150 30 L200 35 Q240 40 260 55 L270 65 Q275 70 275 80 L275 90 L30 90 Z" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="75" cy="90" r="14" fill="#1a1a1e" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="230" cy="90" r="14" fill="#1a1a1e" stroke="#00d4ff" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="car-info">
+                    <div class="car-top">
+                        <h3>BMW 5 Serie</h3>
+                        <span class="car-price">€ 42.500</span>
+                    </div>
+                    <p class="car-sub">530i M Sport — 2022</p>
+                    <div class="car-specs">
+                        <span>⚡ 249 pk</span>
+                        <span>⛽ 6.2L/100km</span>
+                        <span>📅 2022</span>
+                        <span>🛣️ 45.000 km</span>
+                    </div>
+                    <div class="car-badge">Bovag Garantie</div>
+                </div>
+            </div>
+            <div class="car-card" data-anim="fade-up">
+                <div class="car-img" style="background: linear-gradient(135deg, #0d0d12, #1a1a24);">
+                    <div class="car-silhouette">
+                        <svg viewBox="0 0 300 120" width="100%">
+                            <path d="M20 85 Q20 60 50 55 L90 40 Q110 35 140 35 L190 40 Q230 45 255 60 L275 70 Q280 75 280 85 L280 92 L20 92 Z" fill="#00d4ff" opacity="0.12"/>
+                            <path d="M20 85 Q20 60 50 55 L90 40 Q110 35 140 35 L190 40 Q230 45 255 60 L275 70 Q280 75 280 85 L280 92 L20 92 Z" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="65" cy="92" r="15" fill="#0d0d12" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="235" cy="92" r="15" fill="#0d0d12" stroke="#00d4ff" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="car-info">
+                    <div class="car-top">
+                        <h3>Audi A6 Avant</h3>
+                        <span class="car-price">€ 38.900</span>
+                    </div>
+                    <p class="car-sub">45 TFSI Quattro — 2021</p>
+                    <div class="car-specs">
+                        <span>⚡ 245 pk</span>
+                        <span>⛽ 7.1L/100km</span>
+                        <span>📅 2021</span>
+                        <span>🛣️ 62.000 km</span>
+                    </div>
+                    <div class="car-badge">Bovag Garantie</div>
+                </div>
+            </div>
+            <div class="car-card" data-anim="fade-up">
+                <div class="car-img" style="background: linear-gradient(135deg, #14140e, #24241a);">
+                    <div class="car-silhouette">
+                        <svg viewBox="0 0 300 120" width="100%">
+                            <path d="M25 82 Q25 58 55 53 L95 38 Q115 33 145 33 L195 38 Q235 43 260 58 L272 68 Q277 73 277 82 L277 90 L25 90 Z" fill="#00d4ff" opacity="0.13"/>
+                            <path d="M25 82 Q25 58 55 53 L95 38 Q115 33 145 33 L195 38 Q235 43 260 58 L272 68 Q277 73 277 82 L277 90 L25 90 Z" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="70" cy="90" r="14" fill="#14140e" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="232" cy="90" r="14" fill="#14140e" stroke="#00d4ff" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="car-info">
+                    <div class="car-top">
+                        <h3>Mercedes E-Klasse</h3>
+                        <span class="car-price">€ 51.200</span>
+                    </div>
+                    <p class="car-sub">E 350d AMG Line — 2023</p>
+                    <div class="car-specs">
+                        <span>⚡ 295 pk</span>
+                        <span>⛽ 5.8L/100km</span>
+                        <span>📅 2023</span>
+                        <span>🛣️ 28.000 km</span>
+                    </div>
+                    <div class="car-badge">Bovag Garantie</div>
+                </div>
+            </div>
+            <div class="car-card" data-anim="fade-up">
+                <div class="car-img" style="background: linear-gradient(135deg, #0e1414, #1a2424);">
+                    <div class="car-silhouette">
+                        <svg viewBox="0 0 300 120" width="100%">
+                            <path d="M15 88 Q15 65 45 60 L85 45 Q105 40 135 40 L185 45 Q225 50 255 65 L278 75 Q283 80 283 88 L283 93 L15 93 Z" fill="#00d4ff" opacity="0.12"/>
+                            <path d="M15 88 Q15 65 45 60 L85 45 Q105 40 135 40 L185 45 Q225 50 255 65 L278 75 Q283 80 283 88 L283 93 L15 93 Z" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="60" cy="93" r="16" fill="#0e1414" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="238" cy="93" r="16" fill="#0e1414" stroke="#00d4ff" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="car-info">
+                    <div class="car-top">
+                        <h3>Volvo XC90</h3>
+                        <span class="car-price">€ 55.800</span>
+                    </div>
+                    <p class="car-sub">T8 Recharge Inscription — 2023</p>
+                    <div class="car-specs">
+                        <span>⚡ 455 pk</span>
+                        <span>⛽ 2.1L/100km</span>
+                        <span>📅 2023</span>
+                        <span>🛣️ 18.000 km</span>
+                    </div>
+                    <div class="car-badge">Hybrid</div>
+                </div>
+            </div>
+            <div class="car-card" data-anim="fade-up">
+                <div class="car-img" style="background: linear-gradient(135deg, #14100e, #241a14);">
+                    <div class="car-silhouette">
+                        <svg viewBox="0 0 300 120" width="100%">
+                            <path d="M22 85 Q22 60 52 55 L92 40 Q112 35 142 35 L192 40 Q232 45 257 60 L272 70 Q277 75 277 85 L277 92 L22 92 Z" fill="#00d4ff" opacity="0.13"/>
+                            <path d="M22 85 Q22 60 52 55 L92 40 Q112 35 142 35 L192 40 Q232 45 257 60 L272 70 Q277 75 277 85 L277 92 L22 92 Z" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="67" cy="92" r="14" fill="#14100e" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="232" cy="92" r="14" fill="#14100e" stroke="#00d4ff" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="car-info">
+                    <div class="car-top">
+                        <h3>Tesla Model 3</h3>
+                        <span class="car-price">€ 36.500</span>
+                    </div>
+                    <p class="car-sub">Long Range Performance — 2022</p>
+                    <div class="car-specs">
+                        <span>⚡ 513 pk</span>
+                        <span>🔋 580 km</span>
+                        <span>📅 2022</span>
+                        <span>🛣️ 41.000 km</span>
+                    </div>
+                    <div class="car-badge">Elektrisch</div>
+                </div>
+            </div>
+            <div class="car-card" data-anim="fade-up">
+                <div class="car-img" style="background: linear-gradient(135deg, #100e14, #1a1824);">
+                    <div class="car-silhouette">
+                        <svg viewBox="0 0 300 120" width="100%">
+                            <path d="M28 80 Q28 56 58 51 L98 36 Q118 31 148 31 L198 36 Q238 41 263 56 L273 66 Q278 71 278 80 L278 90 L28 90 Z" fill="#00d4ff" opacity="0.13"/>
+                            <path d="M28 80 Q28 56 58 51 L98 36 Q118 31 148 31 L198 36 Q238 41 263 56 L273 66 Q278 71 278 80 L278 90 L28 90 Z" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="73" cy="90" r="14" fill="#100e14" stroke="#00d4ff" stroke-width="1.5"/>
+                            <circle cx="233" cy="90" r="14" fill="#100e14" stroke="#00d4ff" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="car-info">
+                    <div class="car-top">
+                        <h3>Porsche Macan</h3>
+                        <span class="car-price">€ 68.900</span>
+                    </div>
+                    <p class="car-sub">2.0 Turbo — 2023</p>
+                    <div class="car-specs">
+                        <span>⚡ 265 pk</span>
+                        <span>⛽ 9.2L/100km</span>
+                        <span>📅 2023</span>
+                        <span>🛣️ 12.000 km</span>
+                    </div>
+                    <div class="car-badge">Premium</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modellen">
+        <div class="section-header">
+            <div class="section-tag">3D Configurator</div>
+            <h2>Stel uw Auto Samen</h2>
+            <p>Draai het model, kies uw kleur en bekijk de details van elke hoek.</p>
+        </div>
+        <div class="configurator">
+            <div class="config-canvas-wrap">
+                <canvas id="car-canvas"></canvas>
+                <div class="config-hint">↻ Sleep om te draaien</div>
+            </div>
+            <div class="config-panel">
+                <div class="config-section">
+                    <h4>Lakkleur</h4>
+                    <div class="color-picker">
+                        <button class="color-swatch active" data-color="#0a0a0a" data-name="Obsidian Black" style="background:#0a0a0a"></button>
+                        <button class="color-swatch" data-color="#e8e8e8" data-name="Glacier White" style="background:#e8e8e8"></button>
+                        <button class="color-swatch" data-color="#1a3a5a" data-name="Deep Blue" style="background:#1a3a5a"></button>
+                        <button class="color-swatch" data-color="#8a2020" data-name="Crimson Red" style="background:#8a2020"></button>
+                        <button class="color-swatch" data-color="#2a5a3a" data-name="Forest Green" style="background:#2a5a3a"></button>
+                        <button class="color-swatch" data-color="#5a5a62" data-name="Graphite Grey" style="background:#5a5a62"></button>
+                        <button class="color-swatch" data-color="#c4a838" data-name="Champagne Gold" style="background:#c4a838"></button>
+                    </div>
+                    <div class="color-name" id="color-name">Obsidian Black</div>
+                </div>
+                <div class="config-section">
+                    <h4>Wiel Design</h4>
+                    <div class="wheel-picker">
+                        <button class="wheel-option active" data-wheel="0">Sport 19"</button>
+                        <button class="wheel-option" data-wheel="1">Premium 20"</button>
+                        <button class="wheel-option" data-wheel="2">Performance 21"</button>
+                    </div>
+                </div>
+                <div class="config-section">
+                    <h4>Specificaties</h4>
+                    <div class="config-specs">
+                        <div class="config-spec"><span>Motor</span><strong>2.0 TFSI</strong></div>
+                        <div class="config-spec"><span>Vermogen</span><strong>249 pk</strong></div>
+                        <div class="config-spec"><span>0-100 km/h</span><strong>5.8 sec</strong></div>
+                        <div class="config-spec"><span>Topsnelheid</span><strong>250 km/h</strong></div>
+                        <div class="config-spec"><span>Verbruik</span><strong>6.2 L/100km</strong></div>
+                    </div>
+                </div>
+                <div class="config-price">
+                    <span>Vanaf</span>
+                    <strong>€ 42.500</strong>
+                </div>
+                <a href="#contact" class="btn-primary config-btn">Plan Proefrit</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="diensten">
+        <div class="section-header">
+            <div class="section-tag">Onze Diensten</div>
+            <h2>Meer dan alleen verkopen</h2>
+        </div>
+        <div class="diensten-grid">
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-num">01</div>
+                <h3>Inruil & Taxatie</h3>
+                <p>Gratis taxatie van uw huidige auto. Eerlijk en transparant inruilvoorstel.</p>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-num">02</div>
+                <h3>Financiering</h3>
+                <p>Flexibele financieringsmogelijkheden vanaf 3.9% APR. Op maat berekend.</p>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-num">03</div>
+                <h3>Garantie & Service</h3>
+                <p>12 maanden Bovag garantie op elke auto. Inclusief APK en onderhoudsbeurt.</p>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-num">04</div>
+                <h3>Bezorging aan Huis</h3>
+                <p>Uw nieuwe auto gratis bezorgd door heel Nederland. Thuis in 48 uur.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over AutoGallery</div>
+                <h2>20 jaar passie voor auto's</h2>
+                <p>AutoGallery begon in 2005 als een kleine garage met een groot ideaal: eerlijke auto's verkopen met eerlijke service. Vandaag zijn we uitgegroeid tot een van de meest vertrouwde premium occasionbedrijven van Nederland.</p>
+                <p>Onze 15-koppige team bestaat uit auto-enthousiastelingen die elke auto persoonlijk selecteren, testen en keuren. Geen auto verlaat onze showroom zonder onze volledige goedkeuring.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✓</span><span>Elke auto comes met 100-punten check</span></div>
+                    <div class="over-feature"><span class="check">✓</span><span>Bovag erkend & RDW gekeurd</span></div>
+                    <div class="over-feature"><span class="check">✓</span><span>12 maanden garantie standaard</span></div>
+                    <div class="over-feature"><span class="check">✓</span><span>Financiering & lease mogelijkheden</span></div>
+                </div>
+            </div>
+            <div class="over-visual">
+                <div class="over-stat-card"><span class="num">1.850+</span><span>Auto's verkocht</span></div>
+                <div class="over-stat-card"><span class="num">4.8★</span><span>Klantbeoordeling</span></div>
+                <div class="over-stat-card"><span class="num">98%</span><span>Aanbeveling</span></div>
+                <div class="over-stat-card"><span class="num">15</span><span>Specialisten</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="section-header">
+            <div class="section-tag">Klantervaringen</div>
+            <h2>Wat onze klanten zeggen</h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Super ervaring bij AutoGallery. Eerlijk advies, geen druk. Mijn Audi A6 is precies zoals beloofd. Aanrader!"</p>
+                <div class="review-author"><div class="avatar" style="background:#00d4ff">MV</div><div><strong>Martijn Visser</strong><span>Amersfoort</span></div></div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Mijn Tesla Model 3 binnen 2 dagen thuisbezorgd. Alles netjes geregeld, financieel ook soepel. Top service."</p>
+                <div class="review-author"><div class="avatar" style="background:#1a3a5a">LJ</div><div><strong>Lisa Janssen</strong><span>Rotterdam</span></div></div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Mijn oude BMW ingeruild voor een jongere occasion. Eerlijke taxatie, geen verrassingen. Ga zo door!"</p>
+                <div class="review-author"><div class="avatar" style="background:#2a5a3a">RB</div><div><strong>Robert Bakker</strong><span>Apeldoorn</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Plan uw proefrit</h2>
+                <p>Ervaar het zelf. Plan een vrijblijvende proefrit in uw droomauto.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31301234567">030 123 45 67</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@autogallery.nl">info@autogallery.nl</a></div>
+                    <div class="contact-item"><span class="label">Showroom</span><span>Stationsweg 100, 3511 EH Utrecht</span></div>
+                    <div class="contact-item"><span class="label">Openingstijden</span><span>Ma-Vr 9:00-18:00, Za 10:00-16:00</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>68123450</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="proefrit-form">
+                <h3>Proefrit Aanvragen</h3>
+                <div class="form-row">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                </div>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Welke auto interesseert u?</option>
+                    <option>BMW 5 Serie</option>
+                    <option>Audi A6 Avant</option>
+                    <option>Mercedes E-Klasse</option>
+                    <option>Volvo XC90</option>
+                    <option>Tesla Model 3</option>
+                    <option>Porsche Macan</option>
+                </select>
+                <input type="date" required>
+                <textarea placeholder="Bericht (optioneel)" rows="3"></textarea>
+                <button type="submit" class="btn-primary">Plan Proefrit</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="32" height="32">
+                    <path d="M5 25 Q5 18 12 16 L28 16 Q35 18 35 25 L35 28 L5 28 Z" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <circle cx="13" cy="28" r="4" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <circle cx="27" cy="28" r="4" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                </svg>
+                <span>Auto<span class="accent">Gallery</span></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Showroom</h4><a href="#showroom">Occasions</a><a href="#modellen">Configurator</a><a href="#diensten">Diensten</a></div>
+                <div class="footer-col"><h4>Bedrijf</h4><a href="#over">Over Ons</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>030 123 45 67</span><span>info@autogallery.nl</span><span>Stationsweg 100</span><span>3511 EH Utrecht</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 AutoGallery B.V. — KVK 68123450 — Bovag Erkend</span>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
