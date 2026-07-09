@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Lumière — Hair & Beauty</title>
+    <meta name="description" content="Studio Lumière — Kapper & hair stylist. Knippen, kleuren, balayage, behandelingen. Sinds 2010. KVK 49382017">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-scissors">✂</div>
+            <div class="loader-text">Studio Lumière</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <circle cx="20" cy="20" r="16" fill="none" stroke="#e8a0c8" stroke-width="1.5"/>
+                    <path d="M12 14 Q20 8 28 14 L28 26 Q20 32 12 26 Z" fill="none" stroke="#e8a0c8" stroke-width="1.5" opacity="0.5"/>
+                </svg>
+                <span>Studio <em>Lumière</em></span>
+            </a>
+            <div class="nav-links">
+                <a href="#diensten">Diensten</a>
+                <a href="#transform">3D Transform</a>
+                <a href="#team">Team</a>
+                <a href="#prijzen">Prijzen</a>
+                <a href="#contact" class="nav-cta">Boek Afspraak</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="hair-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Hair & Beauty — Sinds 2010</div>
+            <h1>Jouw haar,<br>jouw <em>verhaal</em></h1>
+            <p>Van subtiel knipje tot dramatische make-over. Bij Studio Lumière begrijpen we dat haar meer is dan alleen haar — het is identiteit.</p>
+            <div class="hero-actions">
+                <a href="#diensten" class="btn-primary">Bekijk Diensten</a>
+                <a href="#transform" class="btn-ghost">3D Haar Transform</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="15">0</span><span>Jaar Ervaring</span></div>
+                <div class="stat"><span class="stat-num" data-target="8000">0</span><span>Klanten</span></div>
+                <div class="stat"><span class="stat-num" data-target="6">0</span><span>Stylisten</span></div>
+                <div class="stat"><span class="stat-num" data-target="4.9">0</span><span>Google Score</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll voor transformatie</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="transform">
+        <div class="section-header">
+            <div class="section-tag">3D Haar Transformator</div>
+            <h2>Probeer je nieuwe look</h2>
+            <p>Kies een haarkleur en lengte en zie direct het resultaat in 3D. Sleep om te draaien.</p>
+        </div>
+        <div class="transform-wrap">
+            <canvas id="transform-canvas"></canvas>
+            <div class="transform-panel">
+                <div class="transform-group">
+                    <h4>Kleur</h4>
+                    <div class="color-picker">
+                        <button class="color-btn active" data-color="#3a2418" data-name="Donker Bruin" style="background: #3a2418;"></button>
+                        <button class="color-btn" data-color="#8a5a30" data-name="Licht Bruin" style="background: #8a5a30;"></button>
+                        <button class="color-btn" data-color="#d4a050" data-name="Blond" style="background: #d4a050;"></button>
+                        <button class="color-btn" data-color="#e84020" data-name="Rood" style="background: #e84020;"></button>
+                        <button class="color-btn" data-color="#1a1a1a" data-name="Zwart" style="background: #1a1a1a;"></button>
+                        <button class="color-btn" data-color="#a020c0" data-name="Paars" style="background: #a020c0;"></button>
+                    </div>
+                </div>
+                <div class="transform-group">
+                    <h4>Lengte</h4>
+                    <div class="length-picker">
+                        <button class="length-btn active" data-length="short">Kort</button>
+                        <button class="length-btn" data-length="medium">Medium</button>
+                        <button class="length-btn" data-length="long">Lang</button>
+                    </div>
+                </div>
+                <div class="transform-group">
+                    <h4>Stijl</h4>
+                    <div class="style-picker">
+                        <button class="style-btn active" data-style="straight">Steil</button>
+                        <button class="style-btn" data-style="wavy">Golf</button>
+                        <button class="style-btn" data-style="curly">Krul</button>
+                    </div>
+                </div>
+                <div class="transform-summary">
+                    <div class="summary-row"><span>Kleur</span><strong id="sum-color">Donker Bruin</strong></div>
+                    <div class="summary-row"><span>Lengte</span><strong id="sum-length">Kort</strong></div>
+                    <div class="summary-row"><span>Stijl</span><strong id="sum-style">Steil</strong></div>
+                </div>
+                <a href="#contact" class="btn-primary transform-btn">Deze Look Boeken</a>
+                <div class="transform-hint">↻ Sleep om te draaien</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diensten">
+        <div class="section-header">
+            <div class="section-tag">Onze Diensten</div>
+            <h2>Alles voor jouw haar</h2>
+        </div>
+        <div class="diensten-grid">
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">✂️</div>
+                <h3>Knippen</h3>
+                <p>Dames, heren en kinderen. Op maat geknipt naar jouw wens, met advies over vorm en verzorging.</p>
+                <span class="dienst-price">vanaf € 35</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🎨</div>
+                <h3>Kleuren</h3>
+                <p>Volle kleur, highlights, lowlights of balayage. Met topmerken als Wella en L'Oréal.</p>
+                <span class="dienst-price">vanaf € 65</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">✨</div>
+                <h3>Balayage</h3>
+                <p>Natuurlijke zon-gezoende highlights, met de hand geschilderd. Subtiel en elegant.</p>
+                <span class="dienst-price">vanaf € 120</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">💆</div>
+                <h3>Behandelingen</h3>
+                <p>Keratine, olaplex, hydratatie. Herstel en verzorg je haar met professionele behandelingen.</p>
+                <span class="dienst-price">vanaf € 45</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">👰</div>
+                <h3>Bridal Hair</h3>
+                <p>Bruidskapsels voor de mooiste dag van je leven. Inclusief proefsessie.</p>
+                <span class="dienst-price">vanaf € 150</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">💇</div>
+                <h3>Extensions</h3>
+                <p>Haarverlenging met 100% natuurlijk haar. Tape-in of keratine bond methodes.</p>
+                <span class="dienst-price">vanaf € 250</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="section-header">
+            <div class="section-tag">Ons Team</div>
+            <h2>De stylisten</h2>
+            <p>Een team van gepassioneerde professionals, elk met hun eigen specialiteit.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card" data-anim="fade-up">
+                <div class="team-avatar" style="background: linear-gradient(135deg, #e8a0c8, #c870a0);">👩</div>
+                <h3>Sophie Lumière</h3>
+                <span class="team-role">Oprichter & Master Stylist</span>
+                <p>15 jaar ervaring. Specialist in balayage en bridal hair.</p>
+            </div>
+            <div class="team-card" data-anim="fade-up">
+                <div class="team-avatar" style="background: linear-gradient(135deg, #a0c8e8, #70a0c8);">👩‍🦰</div>
+                <h3>Emma de Vries</h3>
+                <span class="team-role">Color Specialist</span>
+                <p>Expert in kleuren en balayage. Wella Master Color Expert.</p>
+            </div>
+            <div class="team-card" data-anim="fade-up">
+                <div class="team-avatar" style="background: linear-gradient(135deg, #c8e8a0, #a0c870);">👨</div>
+                <h3>Daan Bakker</h3>
+                <span class="team-role">Herenspecialist</span>
+                <p>Précisie knippen en barbering. Fade expert.</p>
+            </div>
+            <div class="team-card" data-anim="fade-up">
+                <div class="team-avatar" style="background: linear-gradient(135deg, #e8c8a0, #c8a070);">👩‍🦱</div>
+                <h3>Lisa Chen</h3>
+                <span class="team-role">Treatment Expert</span>
+                <p>Specialist in haarbehandelingen en herstel. Olaplex certified.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="prijzen">
+        <div class="section-header">
+            <div class="section-tag">Prijzen</div>
+            <h2>Onze prijslijst</h2>
+        </div>
+        <div class="prijzen-list">
+            <div class="prijs-row" data-anim="fade-up"><span>Dames knippen</span><strong>€ 35 - € 55</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Heren knippen</span><strong>€ 25 - € 35</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Kinderen knippen</span><strong>€ 20 - € 25</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Kleuren (volle kleur)</span><strong>€ 65 - € 95</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Highlights</span><strong>€ 85 - € 140</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Balayage</span><strong>€ 120 - € 180</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Olaplex behandeling</span><strong>€ 45 - € 65</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Keratine behandeling</span><strong>€ 95 - € 150</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Bridal hair</span><strong>€ 150 - € 250</strong></div>
+            <div class="prijs-row" data-anim="fade-up"><span>Extensions (consult)</span><strong>gratis</strong></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Boek je afspraak</h2>
+                <p>Bel ons of vul het formulier in. We nemen binnen 24 uur contact op.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Salon</span><span>Haarlemmerstraat 78, 1013 EM Amsterdam</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31201234567">020 123 45 67</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@studiolumiere.nl">info@studiolumiere.nl</a></div>
+                    <div class="contact-item"><span class="label">Open</span><span>Di-Vr 9:00-19:00, Za 9:00-17:00</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>49382017</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="afspraak-form">
+                <h3>Afspraak Maken</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Welke behandeling?</option>
+                    <option>Knippen</option><option>Kleuren</option><option>Balayage</option>
+                    <option>Behandeling</option><option>Bridal Hair</option><option>Extensions</option>
+                </select>
+                <div class="form-row"><input type="date" required><select required><option value="">Tijd</option><option>9:00</option><option>10:00</option><option>11:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option></select></div>
+                <textarea placeholder="Opmerkingen..." rows="3"></textarea>
+                <button type="submit" class="btn-primary">Aanvragen</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <circle cx="20" cy="20" r="16" fill="none" stroke="#e8a0c8" stroke-width="1.5"/>
+                </svg>
+                <span>Studio <em>Lumière</em></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Diensten</h4><a href="#diensten">Knippen</a><a href="#diensten">Kleuren</a><a href="#diensten">Balayage</a></div>
+                <div class="footer-col"><h4>Salon</h4><a href="#team">Team</a><a href="#prijzen">Prijzen</a><a href="#contact">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Haarlemmerstraat 78</span><span>1013 EM Amsterdam</span><span>020 123 45 67</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 Studio Lumière — KVK 49382017</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
