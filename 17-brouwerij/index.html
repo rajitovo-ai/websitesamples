@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brouwerij Drie Eiken — Ambachtelijk Bier</title>
+    <meta name="description" content="Brouwerij Drie Eiken — Ambachtelijk bier gebrouwen sinds 2014. Van IPA tot stout, van bok tot tripel. KVK 60345821">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-glass">
+                <div class="loader-beer"></div>
+            </div>
+            <div class="loader-text">Drie Eiken</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <path d="M10 8 L10 32 Q10 35 13 35 L27 35 Q30 35 30 32 L30 8 Z" fill="none" stroke="#d4a020" stroke-width="2"/>
+                    <path d="M10 20 L30 20" stroke="#d4a020" stroke-width="1" opacity="0.4"/>
+                    <circle cx="20" cy="14" r="2" fill="#d4a020" opacity="0.3"/>
+                </svg>
+                <span>Drie <em>Eiken</em></span>
+            </a>
+            <div class="nav-links">
+                <a href="#bieren">Bieren</a>
+                <a href="#schenken">Schenk Animatie</a>
+                <a href="#brouwen">Brouw Proces</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Proeflokaal</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="beer-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Ambachtelijke Brouwerij — Sinds 2014</div>
+            <h1>Bier met<br><em>karakter</em></h1>
+            <p>Gebrouwen met water uit eigen bron, hop uit eigen tuin en drie eikenhouten vaten. Geen compromissen, alleen smaak.</p>
+            <div class="hero-actions">
+                <a href="#bieren" class="btn-primary">Ontdek Bieren</a>
+                <a href="#schenken" class="btn-ghost">Schenk een Glas</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="18">0</span><span>Bier Soorten</span></div>
+                <div class="stat"><span class="stat-num" data-target="11">0</span><span>Jaar Brouwen</span></div>
+                <div class="stat"><span class="stat-num" data-target="3">0</span><span>Eiken Vaten</span></div>
+                <div class="stat"><span class="stat-num" data-target="50000">0</span><span>Liter/Jaar</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll om te schenken</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="schenken">
+        <div class="section-header">
+            <div class="section-tag">Schenk Animatie</div>
+            <h2>Het perfecte glas</h2>
+            <p>Scroll en zie hoe het glas zich vult — van de eerste druppel tot de perfecte schuimkraag.</p>
+        </div>
+        <div class="schenken-wrap">
+            <canvas id="pour-canvas"></canvas>
+            <div class="schenken-info">
+                <h3>Het schenken</h3>
+                <div class="schenken-steps">
+                    <div class="schenk-step"><span class="step-icon">1</span><div><strong>Helling</strong><p>Schenk het glas onder een hoek van 45° voor de eerste 2/3.</p></div></div>
+                    <div class="schenk-step"><span class="step-icon">2</span><div><strong>Rechtzetten</strong><p>Zet het glas recht en schenk de laatste 1/3 in het midden.</p></div></div>
+                    <div class="schenk-step"><span class="step-icon">3</span><div><strong>Schuimkraag</strong><p>Laat een schuimkraag van 2 vingers ontstaan voor de aroma's.</p></div></div>
+                    <div class="schenk-step"><span class="step-icon">4</span><div><strong>Genieten</strong><p>Wacht 2 minuten, dan is het schuim stabiel. Proost!</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bieren">
+        <div class="section-header">
+            <div class="section-tag">Onze Bieren</div>
+            <h2>Van blond tot stout</h2>
+            <p>Een selectie uit ons vaste assortiment. Seizoensbieren komen en gaan.</p>
+        </div>
+        <div class="bieren-grid">
+            <div class="bier-card" data-anim="fade-up">
+                <div class="bier-glass" style="--beer: #f0c020; --foam: #fff0c0;">
+                    <div class="glass-body"><div class="beer-fill"></div><div class="foam-top"></div></div>
+                </div>
+                <div class="bier-info">
+                    <span class="bier-style">IPA</span>
+                    <h3>Eiken IPA</h3>
+                    <p>Bitter, bloemig, citrus. 6.5% — onze bestseller.</p>
+                    <div class="bier-meta"><span>IBU 65</span><span>EBC 12</span><span>6.5%</span></div>
+                </div>
+            </div>
+            <div class="bier-card" data-anim="fade-up">
+                <div class="bier-glass" style="--beer: #d4a020; --foam: #f0e0a0;">
+                    <div class="glass-body"><div class="beer-fill"></div><div class="foam-top"></div></div>
+                </div>
+                <div class="bier-info">
+                    <span class="bier-style">Tripel</span>
+                    <h3>Drie Eiken Tripel</h3>
+                    <p>Zoet, fruitig, kruidig. 8.2% — onze signature.</p>
+                    <div class="bier-meta"><span>IBU 32</span><span>EBC 10</span><span>8.2%</span></div>
+                </div>
+            </div>
+            <div class="bier-card" data-anim="fade-up">
+                <div class="bier-glass" style="--beer: #a06028; --foam: #e8c890;">
+                    <div class="glass-body"><div class="beer-fill"></div><div class="foam-top"></div></div>
+                </div>
+                <div class="bier-info">
+                    <span class="bier-style">Stout</span>
+                    <h3>Donkere Eik Stout</h3>
+                    <p>Koffie, chocolade, roosterton. 7.8% — voor donkere dagen.</p>
+                    <div class="bier-meta"><span>IBU 45</span><span>EBC 90</span><span>7.8%</span></div>
+                </div>
+            </div>
+            <div class="bier-card" data-anim="fade-up">
+                <div class="bier-glass" style="--beer: #d48020; --foam: #f0d090;">
+                    <div class="glass-body"><div class="beer-fill"></div><div class="foam-top"></div></div>
+                </div>
+                <div class="bier-info">
+                    <span class="bier-style">Blond</span>
+                    <h3>Eiken Blond</h3>
+                    <p>Zacht, moutig, licht bitter. 5.5% — makkelijk drinkbaar.</p>
+                    <div class="bier-meta"><span>IBU 25</span><span>EBC 8</span><span>5.5%</span></div>
+                </div>
+            </div>
+            <div class="bier-card" data-anim="fade-up">
+                <div class="bier-glass" style="--beer: #b07020; --foam: #e8c080;">
+                    <div class="glass-body"><div class="beer-fill"></div><div class="foam-top"></div></div>
+                </div>
+                <div class="bier-info">
+                    <span class="bier-style">Bok</span>
+                    <h3>Herfst Bok</h3>
+                    <p>Karamel, moutig, vol. 6.8% — seizoensbier herfst.</p>
+                    <div class="bier-meta"><span>IBU 28</span><span>EBC 40</span><span>6.8%</span></div>
+                </div>
+            </div>
+            <div class="bier-card" data-anim="fade-up">
+                <div class="bier-glass" style="--beer: #e8a830; --foam: #f8e8b0;">
+                    <div class="glass-body"><div class="beer-fill"></div><div class="foam-top"></div></div>
+                </div>
+                <div class="bier-info">
+                    <span class="bier-style">Wit</span>
+                    <h3>Eiken Wit</h3>
+                    <p>Verfrissend, coriander, sinaasappel. 4.8% — zomers.</p>
+                    <div class="bier-meta"><span>IBU 12</span><span>EBC 6</span><span>4.8%</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brouwen">
+        <div class="section-header">
+            <div class="section-tag">Brouw Proces</div>
+            <h2>Van graan tot glas</h2>
+            <p>Vier stappen, twee weken, oneindig veel geduld.</p>
+        </div>
+        <div class="brouwen-steps">
+            <div class="brouw-step" data-anim="fade-up">
+                <div class="brouw-num">01</div>
+                <h3>Maischen</h3>
+                <p>Gemalen mout gemengd met water op 65°C. Zetmeel wordt suiker. 2 uur lang.</p>
+            </div>
+            <div class="brouw-step" data-anim="fade-up">
+                <div class="brouw-num">02</div>
+                <h3>Koken</h3>
+                <p>De wort wordt gekookt en hop wordt toegevoegd. Bitterheid en aroma ontstaan.</p>
+            </div>
+            <div class="brouw-step" data-anim="fade-up">
+                <div class="brouw-num">03</div>
+                <h3>Gisten</h3>
+                <p>Gist wordt toegevoegd. Suiker wordt alcohol. 7-14 dagen rijping.</p>
+            </div>
+            <div class="brouw-step" data-anim="fade-up">
+                <div class="brouw-num">04</div>
+                <h3>Rijpen</h3>
+                <p>In eikenhouten vaten rijpt het bier tot het perfect is. Minimaal 2 weken.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over Drie Eiken</div>
+                <h2>Drie vaten, één passie</h2>
+                <p>Brouwerij Drie Eiken werd opgericht in 2014 door drie vrienden die hun kantoorbaan inruilden voor een brouwketel. De naam komt van de drie eikenhouten rijpingsvaten die het hart van de brouwerij vormen.</p>
+                <p>Wij brouwen in kleine batches — maximaal 1000 liter per keer. Dit geeft ons de vrijheid om te experimenteren en de kwaliteit op elk moment te controleren. Onze bieren zijn ongefilterd en ongepasteuriseerd — levend, zoals bier hoort te zijn.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✦</span><span>Ongefilterd & ongepasteuriseerd</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Water uit eigen bron</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Eikenhouten rijpingsvaten</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Lokale ingrediënten</span></div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat"><span class="num">18</span><span>Biersoorten</span></div>
+                <div class="over-stat"><span class="num">50k</span><span>Liter/jaar</span></div>
+                <div class="over-stat"><span class="num">11</span><span>Jaar brouwen</span></div>
+                <div class="over-stat"><span class="num">4.7★</span><span>Untappd score</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Proeflokaal</div>
+                <h2>Kom proeven</h2>
+                <p>Ons proeflokaal is geopend elke donderdag tot zaterdag. Proef onze bieren rechtstreeks uit de bron.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Brouwerij</span><span>Brouwerstraat 3, 5038 EH Tilburg</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31131234567">013 123 45 67</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@drieeiken.nl">info@drieeiken.nl</a></div>
+                    <div class="contact-item"><span class="label">Proeflokaal</span><span>Do-Za 15:00-22:00</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>60345821</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="contact-form">
+                <h3>Rondleiding Boeken</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Met hoeveel personen?</option>
+                    <option>1-5 personen</option><option>6-10 personen</option><option>10-20 personen</option><option>20+ personen</option>
+                </select>
+                <input type="date" required>
+                <textarea placeholder="Speciale wensen..." rows="3"></textarea>
+                <button type="submit" class="btn-primary">Boek Rondleiding</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <path d="M10 8 L10 32 Q10 35 13 35 L27 35 Q30 35 30 32 L30 8 Z" fill="none" stroke="#d4a020" stroke-width="2"/>
+                </svg>
+                <span>Drie <em>Eiken</em></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Bieren</h4><a href="#bieren">IPA</a><a href="#bieren">Tripel</a><a href="#bieren">Stout</a><a href="#bieren">Seizoensbieren</a></div>
+                <div class="footer-col"><h4>Bezoek</h4><a href="#contact">Proeflokaal</a><a href="#contact">Rondleiding</a><a href="#over">Over Ons</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Brouwerstraat 3</span><span>5038 EH Tilburg</span><span>013 123 45 67</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 Brouwerij Drie Eiken — KVK 60345821 — Drink verantwoord</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
