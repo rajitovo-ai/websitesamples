@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domaine Zonnewende — Wijnmaker & Wijngaard</title>
+    <meta name="description" content="Domaine Zonnewende — Ambachtelijke wijnmaker met eigen wijngaard in Limburg. Van druif tot fles. Sinds 2009. KVK 42183057">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-grape"></div>
+            <div class="loader-text">Domaine Zonnewende</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <circle cx="20" cy="16" r="4" fill="#8a2050" opacity="0.6"/>
+                    <circle cx="15" cy="20" r="4" fill="#8a2050" opacity="0.6"/>
+                    <circle cx="25" cy="20" r="4" fill="#8a2050" opacity="0.6"/>
+                    <circle cx="20" cy="24" r="4" fill="#8a2050" opacity="0.6"/>
+                    <path d="M20 12 Q20 6 24 4" fill="none" stroke="#4a8a3a" stroke-width="2"/>
+                </svg>
+                <span>Domaine <em>Zonnewende</em></span>
+            </a>
+            <div class="nav-links">
+                <a href="#wijnen">Wijnen</a>
+                <a href="#wijngaard">3D Wijngaard</a>
+                <a href="#proces">Wijnmaker Proces</a>
+                <a href="#bezoek">Bezoek & Proeverij</a>
+                <a href="#contact" class="nav-cta">Bestel of Bezoek</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="vineyard-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Ambachtelijke Wijnmaker — Sinds 2009</div>
+            <h1>Van druif<br>tot <em>fles</em></h1>
+            <p>In de glooiende heuvels van Zuid-Limburg groeien onze druiven. Met de hand geplukt, met passie gemaakt. Welkom bij Domaine Zonnewende.</p>
+            <div class="hero-actions">
+                <a href="#wijnen" class="btn-primary">Ontdek Wijnen</a>
+                <a href="#wijngaard" class="btn-ghost">3D Wijngaard Tour</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="16">0</span><span>Jaar Wijnmaken</span></div>
+                <div class="stat"><span class="stat-num" data-target="12">0</span><span>Wijnen</span></div>
+                <div class="stat"><span class="stat-num" data-target="8">0</span><span>Hectare</span></div>
+                <div class="stat"><span class="stat-num" data-target="25000">0</span><span>Flessen/Jaar</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll door de wijngaard</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="wijngaard">
+        <div class="section-header">
+            <div class="section-tag">3D Wijngaard</div>
+            <h2>Wandel door het land</h2>
+            <p>Scroll en vlieg over de wijngaard. Zie de druivenranken in de ochtendzon. Sleep om te draaien.</p>
+        </div>
+        <div class="wijngaard-wrap">
+            <canvas id="vineyard3d-canvas"></canvas>
+            <div class="wijngaard-info">
+                <div class="info-card">
+                    <h3>Onze Locatie</h3>
+                    <p>Zuid-Limburg — de enige plek in Nederland met de juiste bodem en het klimaat voor wijnbouw.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Druivenrassen</h3>
+                    <p>Solaris, Johanniter, Pinot Noir, Regent — variëteiten aangepast aan het Nederlandse klimaat.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Bodem</h3>
+                    <p>Loess en mergel — kalkrijke bodem die zorgt voor mineraliteit in onze wijnen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="wijnen">
+        <div class="section-header">
+            <div class="section-tag">Onze Wijnen</div>
+            <h2>Een selectie uit de kelder</h2>
+            <p>Van frisse witte tot volle rode — elke wijn vertelt het verhaal van zijn jaar.</p>
+        </div>
+        <div class="wijnen-grid">
+            <div class="wijn-card" data-anim="fade-up">
+                <div class="wijn-bottle" style="--wine: #e8d020;">
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"></div>
+                </div>
+                <div class="wijn-info">
+                    <span class="wijn-type">Wit · Droog</span>
+                    <h3>Solaris 2023</h3>
+                    <p>Friss, citrus, groene appel. Mineralig door de kalkbodem. 12% vol.</p>
+                    <div class="wijn-bottom"><span class="wijn-price">€ 14.50</span><button class="btn-small">Bestel</button></div>
+                </div>
+            </div>
+            <div class="wijn-card" data-anim="fade-up">
+                <div class="wijn-bottle" style="--wine: #d4a820;">
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"></div>
+                </div>
+                <div class="wijn-info">
+                    <span class="wijn-type">Wit · Halfdroog</span>
+                    <h3>Johanniter 2023</h3>
+                    <p>Zacht, perzik, meloen. Rijke wijn met een lange afdronk. 11.5% vol.</p>
+                    <div class="wijn-bottom"><span class="wijn-price">€ 13.50</span><button class="btn-small">Bestel</button></div>
+                </div>
+            </div>
+            <div class="wijn-card" data-anim="fade-up">
+                <div class="wijn-bottle" style="--wine: #8a2030;">
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"></div>
+                </div>
+                <div class="wijn-info">
+                    <span class="wijn-type">Rood · Licht</span>
+                    <h3>Pinot Noir 2022</h3>
+                    <p>Rood fruit, aarde, zijdezacht. Gerijpt op Frans eiken. 13% vol.</p>
+                    <div class="wijn-bottom"><span class="wijn-price">€ 22.00</span><button class="btn-small">Bestel</button></div>
+                </div>
+            </div>
+            <div class="wijn-card" data-anim="fade-up">
+                <div class="wijn-bottle" style="--wine: #6a1820;">
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"></div>
+                </div>
+                <div class="wijn-info">
+                    <span class="wijn-type">Rood · Vol</span>
+                    <h3>Regent 2022</h3>
+                    <p>Donker fruit, kruid, chocolade. Stevige structuur. 13.5% vol.</p>
+                    <div class="wijn-bottom"><span class="wijn-price">€ 19.50</span><button class="btn-small">Bestel</button></div>
+                </div>
+            </div>
+            <div class="wijn-card" data-anim="fade-up">
+                <div class="wijn-bottle" style="--wine: #e8a830;">
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"></div>
+                </div>
+                <div class="wijn-info">
+                    <span class="wijn-type">Rosé · Droog</span>
+                    <h3>Zonnewende Rosé 2023</h3>
+                    <p>Aardbei, framboos, verfrissend. De zomer in een glas. 11% vol.</p>
+                    <div class="wijn-bottom"><span class="wijn-price">€ 12.50</span><button class="btn-small">Bestel</button></div>
+                </div>
+            </div>
+            <div class="wijn-card" data-anim="fade-up">
+                <div class="wijn-bottle" style="--wine: #c8a020;">
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"></div>
+                </div>
+                <div class="wijn-info">
+                    <span class="wijn-type">Mousserend</span>
+                    <h3>Brut Cuvée</h3>
+                    <p>Traditionele methode, finesse, toast. Voor speciale momenten. 12% vol.</p>
+                    <div class="wijn-bottom"><span class="wijn-price">€ 24.50</span><button class="btn-small">Bestel</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proces">
+        <div class="section-header">
+            <div class="section-tag">Wijnmaker Proces</div>
+            <h2>Van rank tot fles</h2>
+            <p>Een jaar werk, een leven passie. Dit is hoe wij wijn maken.</p>
+        </div>
+        <div class="proces-timeline">
+            <div class="proces-step" data-anim="fade-up">
+                <div class="proces-season">Lente</div>
+                <div class="proces-num">01</div>
+                <h3>Snoeien & Groei</h3>
+                <p>In maart snoeien we de ranken. In mei komen de eerste bladeren en bloesems.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="proces-season">Zomer</div>
+                <div class="proces-num">02</div>
+                <h3>Zetting & Rijping</h3>
+                <p>Na de bloei vormen zich de druiven. In de zomer rijpen ze en ontwikkelen suiker.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="proces-season">Herfst</div>
+                <div class="proces-num">03</div>
+                <h3>Oogst & Persen</h3>
+                <p>In september-oktober plukken we met de hand. Direct persen voor wit, laten staan voor rood.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="proces-season">Winter</div>
+                <div class="proces-num">04</div>
+                <h3>Gisten & Rijpen</h3>
+                <p>De most gist in roestvrijstalen tanks of eiken vaten. Rijping duurt 6-18 maanden.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="proces-season">Volgend Jaar</div>
+                <div class="proces-num">05</div>
+                <h3>Bottelen & Rusten</h3>
+                <p>De wijn wordt gebotteld en mag nog maanden rusten op fles voordat hij verkocht wordt.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="bezoek">
+        <div class="bezoek-wrap">
+            <div class="bezoek-text">
+                <div class="section-tag">Bezoek & Proeverij</div>
+                <h2>Proef het terroir</h2>
+                <p>Bezoek onze wijngaard voor een rondleiding en proeverij. Zie waar de druiven groeien, proef hoe het land smaakt.</p>
+                <div class="bezoek-options">
+                    <div class="bezoek-option"><strong>Wijngaard Tour</strong><span>1 uur · € 12.50 p.p.</span><p>Rondleiding door de wijngaard met uitleg over wijnbouw.</p></div>
+                    <div class="bezoek-option"><strong>Proeverij</strong><span>1.5 uur · € 25 p.p.</span><p>5 wijnen proeven met streekkaas en brood.</p></div>
+                    <div class="bezoek-option"><strong>Diner & Wijn</strong><span>3 uur · € 65 p.p.</span><p>4-gangen diner met wijnarrangement.</p></div>
+                </div>
+            </div>
+            <div class="bezoek-form-wrap">
+                <form class="bezoek-form" id="bezoek-form">
+                    <h3>Boek een Bezoek</h3>
+                    <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Welke activiteit?</option>
+                        <option>Wijngaard Tour (€ 12.50)</option><option>Proeverij (€ 25)</option><option>Diner & Wijn (€ 65)</option>
+                    </select>
+                    <div class="form-row"><input type="date" required><select required><option value="">Personen</option><option>1-2</option><option>3-5</option><option>6-10</option><option>10+</option></select></div>
+                    <button type="submit" class="btn-primary">Boeken</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Domaine Zonnewende</h2>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Wijngaard</span><span>Wijngaardstraat 7, 6301 CM Valkenburg</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31431234567">043 123 45 67</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@zonnewende.nl">info@zonnewende.nl</a></div>
+                    <div class="contact-item"><span class="label">Proeverij</span><span>Do-Zo 11:00-18:00 (april t/m oktober)</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>42183057</span></div>
+                </div>
+            </div>
+            <div class="contact-newsletter">
+                <h3>Blijf op de hoogte</h3>
+                <p>Ontvang nieuws over nieuwe wijnen, oogstdata en evenementen.</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Email adres" required>
+                    <button type="submit" class="btn-primary">Aanmelden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <circle cx="20" cy="16" r="4" fill="#8a2050" opacity="0.6"/>
+                    <circle cx="15" cy="20" r="4" fill="#8a2050" opacity="0.6"/>
+                    <circle cx="25" cy="20" r="4" fill="#8a2050" opacity="0.6"/>
+                </svg>
+                <span>Domaine <em>Zonnewende</em></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Wijnen</h4><a href="#wijnen">Wit</a><a href="#wijnen">Rood</a><a href="#wijnen">Rosé</a><a href="#wijnen">Mousserend</a></div>
+                <div class="footer-col"><h4>Bezoek</h4><a href="#bezoek">Tour</a><a href="#bezoek">Proeverij</a><a href="#bezoek">Diner</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Wijngaardstraat 7</span><span>6301 CM Valkenburg</span><span>043 123 45 67</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 Domaine Zonnewende — KVK 42183057 — Drink verantwoord</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
