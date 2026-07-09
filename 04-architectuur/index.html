@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHITECTUUR — Studio voor Moderne Architectuur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-line"></div>
+            <div class="loader-text">ARCHITECTUUR STUDIO</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-brand">ARCHITECTUUR</div>
+        <div class="nav-menu">
+            <a href="#projecten">Projecten</a>
+            <a href="#proces">Proces</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <canvas id="webgl"></canvas>
+
+    <div id="content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="line">Vorm volgt</span>
+                    <span class="line thin">licht</span>
+                </h1>
+                <p class="hero-desc">Wij ontwerpen ruimtes die ademen. Structuren die vertellen. Gebouwen die herinneren.</p>
+            </div>
+            <div class="hero-scroll">
+                <span>Scroll om te bouwen</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </section>
+
+        <section class="build-section" id="projecten">
+            <div class="build-info">
+                <span class="section-label">01 — CONSTRUCTIE</span>
+                <h2 class="section-title">Van Grond tot Kroon</h2>
+                <p class="section-desc">Elk gebouw begint met een lijn. Scroll om de structuur te zien groeien — van fundering tot dak, van skelet tot huid. Wij geloven in transparantie: laat het proces zien, niet alleen het resultaat.</p>
+            </div>
+        </section>
+
+        <section class="material-section">
+            <div class="material-info right">
+                <span class="section-label">02 — MATERIAAL</span>
+                <h2 class="section-title">Beton, Hout, Licht</h3>
+                <p class="section-desc">Drie elementen. Oneindige combinaties. Beton voor massa, hout voor warmte, licht voor ziel. Wij kiezen materialen die ouder worden met gratie.</p>
+                <div class="material-list">
+                    <div class="material-item">
+                        <span class="material-name">Beton</span>
+                        <span class="material-desc">Gegoten op locatie, 40 jaar garantie</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-name">Hout</span>
+                        <span class="material-desc">FSC-gecertificeerd Europees eiken</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-name">Glas</span>
+                        <span class="material-desc">Driedubbel isolerend, 98% UV-filter</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interior-section">
+            <div class="interior-info left">
+                <span class="section-label">03 — INTERIEUR</span>
+                <h2 class="section-title">Binnen de Muren</h2>
+                <p class="section-desc">Een snede door het gebouw onthult het hart. Ruimte is niet wat je ziet — het is wat je ervaart. Wij ontwerpen van binnen naar buiten.</p>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <div class="projects-header">
+                <h2 class="projects-title">Gerealiseerd Werk</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #d5d0c8, #a8a298);">
+                        <div class="project-overlay">
+                            <span class="project-year">2024</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Villa Horizon</h3>
+                        <p class="project-location">Utrecht, NL</p>
+                        <span class="project-type">Woning</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #c8c0b0, #988e7e);">
+                        <div class="project-overlay">
+                            <span class="project-year">2023</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Paviljoen Zuid</h3>
+                        <p class="project-location">Rotterdam, NL</p>
+                        <span class="project-type">Cultuur</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #b8b0a0, #888070);">
+                        <div class="project-overlay">
+                            <span class="project-year">2023</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Kantoor Noord</h3>
+                        <p class="project-location">Amsterdam, NL</p>
+                        <span class="project-type">Kantoor</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #d0c8b8, #a09888);">
+                        <div class="project-overlay">
+                            <span class="project-year">2022</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Loft Industrie</h3>
+                        <p class="project-location">Eindhoven, NL</p>
+                        <span class="project-type">Woning</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section" id="proces">
+            <div class="process-content">
+                <h2 class="process-title">Het Proces</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>Luisteren</h3>
+                            <p>Elk project begint met een gesprek. Wij luisteren naar de locatie, de cliënt, het licht.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>Schetsen</h3>
+                            <p>Van idee tot lijn. Honderden schetsen leiden tot één essentie.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>Modelleren</h3>
+                            <p>3D-modellen brengen het ontwerp tot leven. Elk detail wordt getest.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <div class="step-content">
+                            <h3>Bouwen</h3>
+                            <p>Van tekening naar realiteit. Wij begeleiden elke steen, elke balk, elke ruit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="contact-content">
+                <h2 class="contact-title">Start een Project</h2>
+                <p class="contact-text">Vertel ons je visie. Wij maken het tastbaar.</p>
+                <a href="#" class="contact-cta">
+                    <span>Plan een Gesprek</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">ARCHITECTUUR STUDIO</div>
+                <div class="footer-meta">
+                    <span>Amsterdam · Rotterdam · Utrecht</span>
+                    <span>KVK 81234567</span>
+                    <span>© 2025</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

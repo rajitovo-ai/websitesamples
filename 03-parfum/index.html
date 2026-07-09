@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARFUM — De Essentie van Geur</title>
+    <meta name="description" content="Een sensorische reis door de wereld van parfum.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="shader-canvas"></canvas>
+    <canvas id="particle-canvas"></canvas>
+
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">PARFUM</div>
+            <div class="loader-sub">De essentie laden...</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-logo">PARFUM</div>
+        <div class="nav-links">
+            <a href="#noten">Noten</a>
+            <a href="#collectie">Collectie</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div id="liquid-progress">
+        <div class="liquid-fill"></div>
+        <div class="liquid-label">SCROLL</div>
+    </div>
+
+    <main id="content">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-bottle">
+                <div class="bottle-container">
+                    <div class="bottle">
+                        <div class="bottle-neck"></div>
+                        <div class="bottle-cap"></div>
+                        <div class="bottle-body">
+                            <div class="bottle-liquid"></div>
+                            <div class="bottle-shine"></div>
+                            <div class="bottle-label">
+                                <span class="label-name">L'ESSENCE</span>
+                                <span class="label-sub">Eau de Parfum</span>
+                                <span class="label-vol">100ml</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottle-shadow"></div>
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-word">De</span>
+                    <span class="title-word italic">Essentie</span>
+                </h1>
+                <p class="hero-tagline">Een symfonie van geur. Een reis van de ziel.</p>
+                <div class="scroll-hint">
+                    <span>Ontdek de noten</span>
+                    <div class="hint-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Top Notes -->
+        <section class="note-section" id="noten" data-color="bergamot">
+            <div class="note-content">
+                <div class="note-visual">
+                    <div class="note-circle top-note">
+                        <div class="circle-inner"></div>
+                        <span class="note-label">TOP</span>
+                    </div>
+                </div>
+                <div class="note-text">
+                    <span class="note-number">01</span>
+                    <h2 class="note-title">Topnoten</h2>
+                    <p class="note-subtitle">Het eerste contact</p>
+                    <p class="note-desc">Bergamot, citroen en roze peper. De eerste indruk — helder, sprankelend, vluchtig. Zoals de ochtendzon op een citroenveld. Deze noten verdwijnen binnen 15 minuten, maar zij maken de eerste belofte.</p>
+                    <div class="note-ingredients">
+                        <span class="ingredient">Bergamot</span>
+                        <span class="ingredient">Citroen</span>
+                        <span class="ingredient">Roze Peper</span>
+                        <span class="ingredient">Mandarijn</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heart Notes -->
+        <section class="note-section" data-color="roos">
+            <div class="note-content reversed">
+                <div class="note-visual">
+                    <div class="note-circle heart-note">
+                        <div class="circle-inner"></div>
+                        <span class="note-label">HART</span>
+                    </div>
+                </div>
+                <div class="note-text">
+                    <span class="note-number">02</span>
+                    <h2 class="note-title">Hartnoten</h2>
+                    <p class="note-subtitle">De ziel van de geur</p>
+                    <p class="note-desc">Roos, jasmijn en iris. Het hart onthult zich na de eerste vluchtige noten. Dit is de persoonlijkheid van de parfum — bloemig, sensueel, diep. De noten die je uren bijblijven.</p>
+                    <div class="note-ingredients">
+                        <span class="ingredient">Roos</span>
+                        <span class="ingredient">Jasmijn</span>
+                        <span class="ingredient">Iris</span>
+                        <span class="ingredient">Freesia</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Base Notes -->
+        <section class="note-section" data-color="oud">
+            <div class="note-content">
+                <div class="note-visual">
+                    <div class="note-circle base-note">
+                        <div class="circle-inner"></div>
+                        <span class="note-label">BASIS</span>
+                    </div>
+                </div>
+                <div class="note-text">
+                    <span class="note-number">03</span>
+                    <h2 class="note-title">Basisnoten</h2>
+                    <p class="note-subtitle">De blijvende herinnering</p>
+                    <p class="note-desc">Oud, sandelhout, vanille en musk. De basis is het fundament — warm, aards, sensueel. Deze noten blijven op de huid tot de volgende dag. Zij zijn de herinnering die achterblijft.</p>
+                    <div class="note-ingredients">
+                        <span class="ingredient">Oud</span>
+                        <span class="ingredient">Sandelhout</span>
+                        <span class="ingredient">Vanille</span>
+                        <span class="ingredient">Musk</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection -->
+        <section class="collection-section" id="collectie">
+            <div class="collection-header">
+                <h2 class="collection-title">De Collectie</h2>
+                <p class="collection-sub">Drie geuren. Drie verhalen.</p>
+            </div>
+            <div class="collection-grid">
+                <div class="perfume-card" data-color="#e8c170">
+                    <div class="card-bottle">
+                        <div class="mini-bottle gold">
+                            <div class="mini-liquid"></div>
+                        </div>
+                    </div>
+                    <h3 class="perfume-name">Lumière</h3>
+                    <p class="perfume-type">Eau de Parfum</p>
+                    <p class="perfume-notes">Bergamot · Roos · Amber</p>
+                    <div class="perfume-price">€ 145</div>
+                </div>
+                <div class="perfume-card" data-color="#c85a7a">
+                    <div class="card-bottle">
+                        <div class="mini-bottle rose">
+                            <div class="mini-liquid"></div>
+                        </div>
+                    </div>
+                    <h3 class="perfume-name">Rose Éternelle</h3>
+                    <p class="perfume-type">Extrait de Parfum</p>
+                    <p class="perfume-notes">Roos · Jasmijn · Oud</p>
+                    <div class="perfume-price">€ 189</div>
+                </div>
+                <div class="perfume-card" data-color="#5a6c8a">
+                    <div class="card-bottle">
+                        <div class="mini-bottle blue">
+                            <div class="mini-liquid"></div>
+                        </div>
+                    </div>
+                    <h3 class="perfume-name">Nuit Bleue</h3>
+                    <p class="perfume-type">Eau de Parfum</p>
+                    <p class="perfume-notes">Iris · Sandelhout · Musk</p>
+                    <div class="perfume-price">€ 165</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <blockquote class="quote">
+                <p>"Parfum is de onzichtbare, onvergetelijke, ultieme accessoire van een vrouw. Het kondigt haar komst aan en verlengt haar vertrek."</p>
+                <cite>— Coco Chanel</cite>
+            </blockquote>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section" id="contact">
+            <div class="contact-inner">
+                <h2 class="contact-title">Vind Jouw Essentie</h2>
+                <p class="contact-text">Bezoek onze boetiek voor een persoonlijk advies.</p>
+                <a href="#" class="contact-cta">
+                    <span>Boetiek Bezoeken</span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-logo">PARFUM</div>
+                <div class="footer-info">
+                    <span>Paris — Sinds 1923</span>
+                    <span class="footer-dot">·</span>
+                    <span>Met de hand vervaardigd</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

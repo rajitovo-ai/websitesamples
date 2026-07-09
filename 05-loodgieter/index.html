@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterland — Loodgieter & Sanitair ZZP</title>
+    <meta name="description" content="Professionele loodgieter in Amsterdam. Lekkages, installaties, badkamerrenovaties. Snelle service, eerlijke prijzen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="ripple-canvas"></canvas>
+
+    <nav id="nav">
+        <div class="nav-brand">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" width="24" height="24">
+                <path d="M12 2C8 8 6 12 6 15a6 6 0 0012 0c0-3-2-7-6-13z" fill="currentColor"/>
+            </svg>
+            <span>Waterland</span>
+        </div>
+        <div class="nav-links">
+            <a href="#diensten">Diensten</a>
+            <a href="#werkwijze">Werkwijze</a>
+            <a href="#projecten">Projecten</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="tel:+31612345678" class="nav-phone">
+            <span>📞</span> 06 1234 5678
+        </a>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-bg">
+                <svg class="pipe-network" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+                    <!-- Pipe paths -->
+                    <path class="pipe-path" d="M0,300 L200,300 L200,150 L400,150 L400,300 L600,300 L600,450 L800,450 L800,200 L1000,200 L1000,350 L1200,350" fill="none" stroke="rgba(77,184,255,0.15)" stroke-width="3"/>
+                    <path class="pipe-path pipe-2" d="M0,450 L150,450 L150,250 L350,250 L350,500 L550,500 L550,100 L750,100 L750,400 L950,400 L950,550 L1200,550" fill="none" stroke="rgba(77,184,255,0.1)" stroke-width="2"/>
+                    <!-- Flow particles -->
+                    <circle class="flow-particle" r="4">
+                        <animateMotion dur="8s" repeatCount="indefinite">
+                            <mpath href="#pipe-path-1"/>
+                        </animateMotion>
+                    </circle>
+                    <circle class="flow-particle" r="3">
+                        <animateMotion dur="6s" repeatCount="indefinite" begin="2s">
+                            <mpath href="#pipe-path-1"/>
+                        </animateMotion>
+                    </circle>
+                    <circle class="flow-particle" r="3">
+                        <animateMotion dur="7s" repeatCount="indefinite" begin="4s">
+                            <mpath href="#pipe-path-2"/>
+                        </animateMotion>
+                    </circle>
+                    <path id="pipe-path-1" d="M0,300 L200,300 L200,150 L400,150 L400,300 L600,300 L600,450 L800,450 L800,200 L1000,200 L1000,350 L1200,350" fill="none" stroke="none"/>
+                    <path id="pipe-path-2" d="M0,450 L150,450 L150,250 L350,250 L350,500 L550,500 L550,100 L750,100 L750,400 L950,400 L950,550 L1200,550" fill="none" stroke="none"/>
+                </svg>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>24/7 Spoeddienst Beschikbaar</span>
+                </div>
+                <h1 class="hero-title">
+                    Lekkage? <span class="accent">Geen paniek.</span><br>
+                    Wij lossen het op.
+                </h1>
+                <p class="hero-subtitle">
+                    Professionele loodgieter in Amsterdam en omstreken. Van lekkende kraan tot complete badkamerrenovatie — wij doen het allemaal.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Direct Offerte</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 10H15M15 10L10 5M15 10L10 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+31612345678" class="btn btn-secondary">
+                        <span>Bel Direct</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-num">15+</div>
+                        <div class="stat-label">Jaar Ervaring</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">2400+</div>
+                        <div class="stat-label">Klussen Gedaan</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">4.9★</div>
+                        <div class="stat-label">Beoordeling</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services" id="diensten">
+            <div class="section-header">
+                <span class="section-tag">DIENSTEN</span>
+                <h2 class="section-title">Wat wij voor u doen</h2>
+                <p class="section-desc">Van klein herstel tot grote installatie. Vakkundig, netjes en betrouwbaar.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+                            <path d="M24 6C16 18 12 26 12 30a12 12 0 0024 0c0-4-4-12-12-24z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="24" cy="30" r="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Lekkagedetectie</h3>
+                    <p>Met moderne apparatuur vinden wij elke lekkage — zelfs achter muren en onder vloeren.</p>
+                    <div class="service-price">vanaf €75</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+                            <rect x="14" y="8" width="20" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="24" cy="20" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 28v8M20 32h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Kraan & Sanitair</h3>
+                    <p>Installatie en reparatie van kranen, toiletten, wastafels en bidets. Alle merken.</p>
+                    <div class="service-price">vanaf €55</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+                            <rect x="8" y="14" width="32" height="26" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 22h32M16 14V8M32 14V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="16" cy="30" r="2" fill="currentColor"/>
+                            <circle cx="32" cy="30" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Badkamerrenovatie</h3>
+                    <p>Complete badkamerrenovaties van A tot Z. Ontwerp, levering en installatie onder één dak.</p>
+                    <div class="service-price">op aanvraag</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+                            <path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Cv & Verwarming</h3>
+                    <p>Installeren, onderhouden en repareren van cv-ketels, radiatoren en vloerverwarming.</p>
+                    <div class="service-price">vanaf €85</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+                            <path d="M12 36L36 12M12 12L36 36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Ontstoppen</h3>
+                    <p>Verstopte afvoer? Wij ontstoppen snel en effectief. Geen voorrijkosten binnen Amsterdam.</p>
+                    <div class="service-price">vanaf €65</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+                            <rect x="6" y="20" width="36" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 20V12h28v8" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="16" cy="30" r="3" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="32" cy="30" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Nooddienst 24/7</h3>
+                    <p>Burst pipe? Overstroming? Wij zijn 24/7 bereikbaar voor spoedeisende loodgieterswerkzaamheden.</p>
+                    <div class="service-price">24/7</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="process" id="werkwijze">
+            <div class="section-header">
+                <span class="section-tag">WERKWIJZE</span>
+                <h2 class="section-title">Hoe wij werken</h2>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-marker">
+                        <span>01</span>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <h3>Contact</h3>
+                        <p>Bel of mail ons. Wij reageren binnen 2 uur tijdens kantooruren.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-marker">
+                        <span>02</span>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <h3>Inspectie</h3>
+                        <p>Wij komen langs voor een gratis inspectie en geven een eerlijke offerte.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-marker">
+                        <span>03</span>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <h3>Uitvoering</h3>
+                        <p>Vakkundig uitgevoerd met kwaliteitsmaterialen. Netjes en op tijd.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-marker">
+                        <span>04</span>
+                    </div>
+                    <div class="step-body">
+                        <h3>Garantie</h3>
+                        <p>Op alle werkzaamheden geldt garantie. Geen kleine lettertjes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before/After -->
+        <section class="showcase" id="projecten">
+            <div class="section-header">
+                <span class="section-tag">PROJECTEN</span>
+                <h2 class="section-title">Voor en Na</h2>
+                <p class="section-desc">Zie het verschil. Badkamerrenovatie in Amsterdam-Zuid.</p>
+            </div>
+            <div class="ba-container">
+                <div class="ba-slider" id="ba-slider">
+                    <div class="ba-image ba-before">
+                        <div class="ba-label">Voor</div>
+                        <div class="ba-placeholder old"></div>
+                    </div>
+                    <div class="ba-image ba-after">
+                        <div class="ba-label">Na</div>
+                        <div class="ba-placeholder new"></div>
+                    </div>
+                    <div class="ba-handle" id="ba-handle">
+                        <div class="handle-line"></div>
+                        <div class="handle-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M8 7L3 12L8 17M16 7L21 12L16 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Area -->
+        <section class="service-area">
+            <div class="area-content">
+                <span class="section-tag">SERVICEGEBIED</span>
+                <h2 class="section-title">Waar werken wij?</h2>
+                <p class="section-desc">Wij zijn actief in Amsterdam en omliggende gemeentes.</p>
+                <div class="area-cities">
+                    <span class="city-tag">Amsterdam</span>
+                    <span class="city-tag">Amstelveen</span>
+                    <span class="city-tag">Diemen</span>
+                    <span class="city-tag">Haarlem</span>
+                    <span class="city-tag">Zaanstad</span>
+                    <span class="city-tag">Purmerend</span>
+                    <span class="city-tag">Hoofddorp</span>
+                    <span class="city-tag">Hilversum</span>
+                </div>
+            </div>
+            <div class="area-map">
+                <div class="map-pulse"></div>
+                <div class="map-pulse delay-1"></div>
+                <div class="map-pulse delay-2"></div>
+                <div class="map-center">
+                    <svg viewBox="0 0 24 24" fill="none" width="32" height="32">
+                        <path d="M12 2C8 8 6 12 6 15a6 6 0 0012 0c0-3-2-7-6-13z" fill="currentColor"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="reviews">
+            <div class="section-header">
+                <span class="section-tag">REVIEWS</span>
+                <h2 class="section-title">Wat klanten zeggen</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Snelle service bij een lekkende buis. Binnen een uur waren ze er. Zeer professioneel!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <div class="author-name">Maria de Jong</div>
+                            <div class="author-location">Amsterdam-Oost</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Hele badkamer laten renoveren. Top resultaat, netjes werk en op tijd klaar. Aanrader!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar">J</div>
+                        <div>
+                            <div class="author-name">Jeroen Bakker</div>
+                            <div class="author-location">Amsterdam-Zuid</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Eerlijke prijs, geen verrassingen. Kwamen precies op tijd en hebben het probleem direct opgelost."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <div class="author-name">Sandra Visser</div>
+                            <div class="author-location">Haarlem</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">CONTACT</span>
+                    <h2 class="section-title">Vraag een offerte aan</h2>
+                    <p class="section-desc">Vul het formulier in of bel direct. Wij reageren binnen 2 uur.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <div class="contact-label">Telefoon</div>
+                                <a href="tel:+31612345678">06 1234 5678</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉</div>
+                            <div>
+                                <div class="contact-label">E-mail</div>
+                                <a href="mailto:info@waterland.nl">info@waterland.nl</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <div class="contact-label">Werkgebied</div>
+                                <span>Amsterdam & omstreken</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">⏰</div>
+                            <div>
+                                <div class="contact-label">Openingstijden</div>
+                                <span>Ma-Vr 07:00-18:00 · Za 08:00-14:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt! Wij nemen contact met u op.');">
+                    <div class="form-group">
+                        <label>Naam</label>
+                        <input type="text" placeholder="Uw naam" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefoonnummer</label>
+                        <input type="tel" placeholder="06 1234 5678" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="naam@email.nl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Beschrijving klus</label>
+                        <textarea rows="4" placeholder="Vertel ons wat er aan de hand is..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <span>Verstuur Aanvraag</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+                            <path d="M12 2C8 8 6 12 6 15a6 6 0 0012 0c0-3-2-7-6-13z" fill="currentColor"/>
+                        </svg>
+                        Waterland
+                    </div>
+                    <p class="footer-tagline">Uw vertrouwde loodgieter in Amsterdam</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Diensten</h4>
+                    <a href="#diensten">Lekkagedetectie</a>
+                    <a href="#diensten">Badkamerrenovatie</a>
+                    <a href="#diensten">Cv & Verwarming</a>
+                    <a href="#diensten">Ontstoppen</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Bedrijf</h4>
+                    <a href="#werkwijze">Werkwijze</a>
+                    <a href="#projecten">Projecten</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>KVK 34217856</h4>
+                    <p>BTW: NL001234567B01</p>
+                    <p>Verzekerd & Gecertificeerd</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Waterland Loodgieter — Alle rechten voorbehouden</span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

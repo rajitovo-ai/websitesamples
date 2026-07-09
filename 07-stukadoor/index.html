@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StucMeester — Stukadoor & Pleisterwerk ZZP</title>
+    <meta name="description" content="Professionele stukadoor in Den Haag. Gladde stuc, spachtelputz, betonlook en decoratief pleisterwerk. Vakkundig en netjes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="texture-canvas"></canvas>
+
+    <nav id="nav">
+        <div class="nav-brand">
+            <span class="brand-mark">SM</span>
+            <span>StucMeester</span>
+        </div>
+        <div class="nav-links">
+            <a href="#diensten">Diensten</a>
+            <a href="#afwerking">Afwerking</a>
+            <a href="#projecten">Projecten</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="tel:+31623456789" class="nav-phone">06 2345 6789</a>
+    </nav>
+
+    <main>
+        <!-- Hero with 3D Room -->
+        <section class="hero" id="home">
+            <div class="room-3d">
+                <div class="room-floor"></div>
+                <div class="room-wall-back"></div>
+                <div class="room-wall-left"></div>
+                <div class="room-wall-right"></div>
+                <div class="room-ceiling"></div>
+                <div class="room-light"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Vakwerk sinds 2009</span>
+                </div>
+                <h1 class="hero-title">
+                    Muren met <span class="accent">karakter</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Van gladde stuc tot ruwe betonlook. Wij geven uw muren de afwerking die ze verdienen.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Gratis Offerte</span>
+                    </a>
+                    <a href="#afwerking" class="btn btn-ghost">
+                        <span>Bekijk Afwerkingen</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wall Texture Morph -->
+        <section class="morph-section">
+            <div class="morph-content">
+                <span class="section-tag">TRANSFORMATIE</span>
+                <h2 class="section-title">Van ruw naar <span class="italic">fluweel</span></h2>
+                <p class="section-desc">Scroll en zie hoe een kale bakstenen muur verandert in een perfect gestucte wand. Dit is wat wij dagelijks doen.</p>
+            </div>
+            <div class="morph-display" id="morph-display">
+                <div class="morph-wall morph-rough"></div>
+                <div class="morph-wall morph-smooth" id="morph-smooth"></div>
+                <div class="morph-labels">
+                    <span class="morph-label left">Baksteen</span>
+                    <span class="morph-label right">Gladde Stuc</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services" id="diensten">
+            <div class="section-header">
+                <span class="section-tag">DIENSTEN</span>
+                <h2 class="section-title">Onze Specialiteiten</h2>
+                <p class="section-desc">Elke afwerking vereist een andere techniek. Wij beheersen ze allemaal.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-texture texture-glad"></div>
+                    <div class="service-body">
+                        <h3>Gladde Stuc</h3>
+                        <p>Strakke, egale wanden. De klassieker voor moderne interieurs.</p>
+                        <div class="service-price">vanaf €35/m²</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-texture texture-spachtel"></div>
+                    <div class="service-body">
+                        <h3>Spachtelputz</h3>
+                        <p>Subtiele textuur met karakter. Populair in zowel modern als klassiek.</p>
+                        <div class="service-price">vanaf €32/m²</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-texture texture-beton"></div>
+                    <div class="service-body">
+                        <h3>Betonlook</h3>
+                        <p>Industriële uitstraling zonder beton. Stuc met betoneffect afwerking.</p>
+                        <div class="service-price">vanaf €55/m²</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-texture texture-kalk"></div>
+                    <div class="service-body">
+                        <h3>Kalkstuc</h3>
+                        <p>Natuurlijke kalkpleister. Ademende wanden met een tijdloze uitstraling.</p>
+                        <div class="service-price">vanaf €48/m²</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-texture texture-tadelakt"></div>
+                    <div class="service-body">
+                        <h3>Tadelakt</h3>
+                        <p>Marokkaanse kalkstuc, waterdicht. Ideaal voor badkamers en sauna's.</p>
+                        <div class="service-price">vanaf €85/m²</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-texture texture-decoratief"></div>
+                    <div class="service-body">
+                        <h3>Decoratief Stuc</h3>
+                        <p>Op maat gemaakte texturen en patronen. Uniek voor uw ruimte.</p>
+                        <div class="service-price">op aanvraag</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Finish Selector -->
+        <section class="finish-selector" id="afwerking">
+            <div class="section-header">
+                <span class="section-tag">AFWERKINGEN</span>
+                <h2 class="section-title">Kies uw textuur</h2>
+                <p class="section-desc">Beweeg over de swatches om de textuur te zien. Elke afwerking heeft zijn eigen karakter.</p>
+            </div>
+            <div class="finish-display">
+                <div class="finish-preview" id="finish-preview">
+                    <div class="finish-name" id="finish-name">Gladde Stuc</div>
+                    <div class="finish-desc" id="finish-desc">Strak, modern, tijdloos</div>
+                </div>
+                <div class="finish-swatches">
+                    <div class="swatch active" data-name="Gladde Stuc" data-desc="Strak, modern, tijdloos" style="background: linear-gradient(135deg, #e8e0d4, #d4cfc5);"></div>
+                    <div class="swatch" data-name="Spachtelputz" data-desc="Gestructureerd, subtiel, warm" style="background: linear-gradient(135deg, #d8d0c4, #c4bfb5);"></div>
+                    <div class="swatch" data-name="Betonlook" data-desc="Industrieel, rauw, krachtig" style="background: linear-gradient(135deg, #b0b0b0, #888888);"></div>
+                    <div class="swatch" data-name="Kalkstuc" data-desc="Natuurlijk, ademend, zacht" style="background: linear-gradient(135deg, #f0e8dc, #e0d8cc);"></div>
+                    <div class="swatch" data-name="Tadelakt" data-desc="Waterdicht, luxe, oosters" style="background: linear-gradient(135deg, #d4c8b8, #c0b4a4);"></div>
+                    <div class="swatch" data-name="Decoratief" data-desc="Uniek, creatief, persoonlijk" style="background: linear-gradient(135deg, #c8b8a8, #b8a898);"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before/After -->
+        <section class="showcase" id="projecten">
+            <div class="section-header">
+                <span class="section-tag">PROJECTEN</span>
+                <h2 class="section-title">Voor en Na</h2>
+                <p class="section-desc">Schuif om het verschil te zien. Een woonkamertransformatie in Den Haag.</p>
+            </div>
+            <div class="ba-container">
+                <div class="ba-slider" id="ba-slider">
+                    <div class="ba-image ba-before">
+                        <div class="ba-label">Voor — Baksteen</div>
+                        <div class="ba-placeholder old-wall"></div>
+                    </div>
+                    <div class="ba-image ba-after">
+                        <div class="ba-label">Na — Gladde Stuc</div>
+                        <div class="ba-placeholder new-wall"></div>
+                    </div>
+                    <div class="ba-handle" id="ba-handle">
+                        <div class="handle-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M8 7L3 12L8 17M16 7L21 12L16 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="process-section">
+            <div class="section-header">
+                <span class="section-tag">WERKWIJZE</span>
+                <h2 class="section-title">Stap voor Stap</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
+                            <rect x="8" y="8" width="32" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M14 20h20M14 28h20M14 36h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="process-num">01</div>
+                    <h3>Inspectie</h3>
+                    <p>Wij beoordelen de ondergrond en bespreken de gewenste afwerking. Gratis en vrijblijvend.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
+                            <path d="M24 8L8 20v20h32V20L24 8z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M18 40V28h12v12" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="process-num">02</div>
+                    <h3>Voorbereiding</h3>
+                    <p>Ondergrond egaliseren, hechingsgrond aanbrengen en ruimte afschermen.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
+                            <rect x="6" y="14" width="36" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M14 26h20M14 32h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M24 6v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="process-num">03</div>
+                    <h3>Stucen</h3>
+                    <p>Pleister aanbrengen in meerdere lagen. Elke laag droogt voordat de volgende volgt.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <svg viewBox="0 0 48 48" fill="none" width="40" height="40">
+                            <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 24l6 6 12-12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="process-num">04</div>
+                    <h3>Afwerking</h3>
+                    <p>Schuren, polijsten of structuur aanbrengen. De laatste hand die het verschil maakt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="reviews">
+            <div class="section-header">
+                <span class="section-tag">REVIEWS</span>
+                <h2 class="section-title">Klanten aan het woord</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Onze woonkamer is getransformeerd. De muren zijn strak en perfect afgewerkt. Echte vakmensen."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">K</div>
+                        <div>
+                            <div class="author-name">Karin de Wit</div>
+                            <div class="author-location">Den Haag</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Betonlook stuc in de keuken — prachtig resultaat! Netjes gewerkt en op tijd klaar."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">R</div>
+                        <div>
+                            <div class="author-name">Robert Hendriks</div>
+                            <div class="author-location">Rotterdam</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Tadelakt in de badkamer. Wat een luxe uitstraling! Warm aanbevolen voor wie iets speciaals wil."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">E</div>
+                        <div>
+                            <div class="author-name">Emma Bos</div>
+                            <div class="author-location">Leiden</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">CONTACT</span>
+                    <h2 class="section-title">Vraag een offerte aan</h2>
+                    <p class="section-desc">Gratis inspectie en advies bij u thuis. Binnen 24 uur reactie.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <span class="contact-emoji">📞</span>
+                            <div>
+                                <div class="contact-label">Telefoon</div>
+                                <a href="tel:+31623456789">06 2345 6789</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-emoji">✉</span>
+                            <div>
+                                <div class="contact-label">E-mail</div>
+                                <a href="mailto:info@stucmeester.nl">info@stucmeester.nl</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-emoji">📍</span>
+                            <div>
+                                <div class="contact-label">Werkgebied</div>
+                                <span>Den Haag · Rotterdam · Leiden</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-emoji">⏰</span>
+                            <div>
+                                <div class="contact-label">Openingstijden</div>
+                                <span>Ma-Vr 07:00-17:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt! Wij nemen snel contact op.');">
+                    <div class="form-group">
+                        <label>Naam</label>
+                        <input type="text" placeholder="Uw naam" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefoon</label>
+                        <input type="tel" placeholder="06 ..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="naam@email.nl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Type afwerking</label>
+                        <select required>
+                            <option value="">Kies een afwerking...</option>
+                            <option>Gladde Stuc</option>
+                            <option>Spachtelputz</option>
+                            <option>Betonlook</option>
+                            <option>Kalkstuc</option>
+                            <option>Tadelakt</option>
+                            <option>Decoratief</option>
+                            <option>Weet ik nog niet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Bericht</label>
+                        <textarea rows="3" placeholder="Vertel ons over uw project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <span>Verstuur</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <span class="brand-mark">SM</span> StucMeester
+                    </div>
+                    <p class="footer-tagline">Vakwerk pleisterwerk sinds 2009</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Diensten</h4>
+                    <a href="#diensten">Gladde Stuc</a>
+                    <a href="#diensten">Spachtelputz</a>
+                    <a href="#diensten">Betonlook</a>
+                    <a href="#diensten">Tadelakt</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Bedrijf</h4>
+                    <a href="#projecten">Projecten</a>
+                    <a href="#afwerking">Afwerkingen</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>KVK 45678901</h4>
+                    <p>BTW NL004567890B01</p>
+                    <p>Verzekerd & Gecertificeerd</p>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2025 StucMeester — Alle rechten voorbehouden</div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

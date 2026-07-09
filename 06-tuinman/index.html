@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Groene Tuinman — Hovenier & Onderhoud</title>
+    <meta name="description" content="Professionele hovenier in Utrecht. Tuinaanleg, onderhoud, bestrating en beplanting. Groene vingers, eerlijke prijzen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <nav id="nav">
+        <div class="nav-brand">
+            <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+                <path d="M12 2C12 2 6 6 6 12C6 16 9 18 12 18C15 18 18 16 18 12C18 6 12 2 12 2Z" fill="currentColor"/>
+                <path d="M12 18V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>De Groene Tuinman</span>
+        </div>
+        <div class="nav-links">
+            <a href="#diensten">Diensten</a>
+            <a href="#seizoenen">Seizoenen</a>
+            <a href="#projecten">Projecten</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="nav-cta">Offerte Aanvragen</a>
+    </nav>
+
+    <!-- Season Selector -->
+    <div id="season-selector">
+        <button class="season-btn active" data-season="lente">🌱 Lente</button>
+        <button class="season-btn" data-season="zomer">☀ Zomer</button>
+        <button class="season-btn" data-season="herfst">🍂 Herfst</button>
+        <button class="season-btn" data-season="winter">❄ Winter</button>
+    </div>
+
+    <main>
+        <!-- Hero with parallax garden -->
+        <section class="hero" id="home">
+            <div class="hero-parallax">
+                <div class="parallax-layer layer-sky" data-speed="0.1"></div>
+                <div class="parallax-layer layer-mountains" data-speed="0.2"></div>
+                <div class="parallax-layer layer-trees" data-speed="0.4"></div>
+                <div class="parallax-layer layer-bushes" data-speed="0.6"></div>
+                <div class="parallax-layer layer-grass" data-speed="0.8"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="leaf-icon">🌿</span>
+                    <span>Gratis inspectie & advies</span>
+                </div>
+                <h1 class="hero-title">
+                    Uw tuin, <span class="italic">groen</span><br>
+                    en <span class="accent">levend</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Van onderhoud tot complete aanleg. Wij brengen uw tuin tot leven — in elk seizoen.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Vraag Offerte Aan</span>
+                    </a>
+                    <a href="#diensten" class="btn btn-outline">
+                        <span>Bekijk Diensten</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <div class="scroll-leaf">🍂</div>
+                <span>Scroll om te ontdekken</span>
+            </div>
+        </section>
+
+        <!-- Growing Plants Section -->
+        <section class="grow-section">
+            <div class="grow-content">
+                <span class="section-tag">ONS WERK</span>
+                <h2 class="section-title">Wij laten <span class="italic">dingen groeien</span></h2>
+                <p class="section-desc">Elke tuin begint met een zaadje. Zie hoe wij uw buitenruimte laten bloeien — van kale grond tot weelderige oase.</p>
+            </div>
+            <div class="plants-container">
+                <svg class="plant-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMax meet">
+                    <!-- Plant 1: Tree -->
+                    <g class="plant-group" data-delay="0">
+                        <path class="plant-stem" d="M150,300 Q148,200 150,120" fill="none" stroke="#5a3a20" stroke-width="4" stroke-linecap="round"/>
+                        <circle class="plant-leaf" cx="150" cy="100" r="40" fill="#4a8a3a" opacity="0.8"/>
+                        <circle class="plant-leaf" cx="130" cy="110" r="30" fill="#5a9a4a" opacity="0.7"/>
+                        <circle class="plant-leaf" cx="170" cy="110" r="30" fill="#3a7a2a" opacity="0.7"/>
+                        <circle class="plant-leaf" cx="150" cy="80" r="25" fill="#6aaa5a" opacity="0.6"/>
+                    </g>
+                    <!-- Plant 2: Bush -->
+                    <g class="plant-group" data-delay="0.2">
+                        <path class="plant-stem" d="M350,300 Q348,250 350,200" fill="none" stroke="#4a3a20" stroke-width="3" stroke-linecap="round"/>
+                        <ellipse class="plant-leaf" cx="350" cy="180" rx="50" ry="35" fill="#5a8a3a" opacity="0.8"/>
+                        <ellipse class="plant-leaf" cx="330" cy="190" rx="30" ry="25" fill="#6a9a4a" opacity="0.7"/>
+                        <ellipse class="plant-leaf" cx="370" cy="185" rx="30" ry="25" fill="#4a7a2a" opacity="0.7"/>
+                    </g>
+                    <!-- Plant 3: Flowers -->
+                    <g class="plant-group" data-delay="0.4">
+                        <path class="plant-stem" d="M550,300 Q548,270 550,240" fill="none" stroke="#3a5a20" stroke-width="2" stroke-linecap="round"/>
+                        <path class="plant-stem" d="M540,300 Q538,280 540,255" fill="none" stroke="#3a5a20" stroke-width="2" stroke-linecap="round"/>
+                        <path class="plant-stem" d="M560,300 Q558,275 560,250" fill="none" stroke="#3a5a20" stroke-width="2" stroke-linecap="round"/>
+                        <circle class="plant-leaf" cx="550" cy="235" r="12" fill="#e85a7a" opacity="0.9"/>
+                        <circle class="plant-leaf" cx="540" cy="250" r="10" fill="#f0c050" opacity="0.9"/>
+                        <circle class="plant-leaf" cx="560" cy="245" r="10" fill="#a85ae8" opacity="0.9"/>
+                        <circle class="plant-leaf" cx="550" cy="235" r="5" fill="#fff" opacity="0.6"/>
+                    </g>
+                    <!-- Plant 4: Grass tufts -->
+                    <g class="plant-group" data-delay="0.6">
+                        <path class="plant-stem" d="M700,300 Q698,290 700,275" fill="none" stroke="#4a8a3a" stroke-width="2" stroke-linecap="round"/>
+                        <path class="plant-stem" d="M690,300 Q688,292 690,280" fill="none" stroke="#4a8a3a" stroke-width="2" stroke-linecap="round"/>
+                        <path class="plant-stem" d="M710,300 Q708,290 710,278" fill="none" stroke="#4a8a3a" stroke-width="2" stroke-linecap="round"/>
+                        <path class="plant-stem" d="M695,300 Q693,285 695,270" fill="none" stroke="#5a9a4a" stroke-width="2" stroke-linecap="round"/>
+                        <path class="plant-stem" d="M705,300 Q703,287 705,272" fill="none" stroke="#5a9a4a" stroke-width="2" stroke-linecap="round"/>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services" id="diensten">
+            <div class="section-header">
+                <span class="section-tag">DIENSTEN</span>
+                <h2 class="section-title">Wat wij doen</h2>
+                <p class="section-desc">Van maaien tot aanleggen. Alles voor uw tuin.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-emoji">🌿</div>
+                    <h3>Tuinonderhoud</h3>
+                    <p>Regelmatig onderhoud: maaien, snoeien, wieden en bemesten. Uw tuin altijd verzorgd.</p>
+                    <div class="service-price">vanaf €35/u</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-emoji">🏗</div>
+                    <h3>Tuinaanleg</h3>
+                    <p>Complete aanleg van nieuwe tuinen. Ontwerp, beplanting, bestrating en verlichting.</p>
+                    <div class="service-price">op aanvraag</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-emoji">🧱</div>
+                    <h3>Bestrating</h3>
+                    <p>Terrassen, paden en opritten. Klinkers, tegels of natuursteen — vakkundig gelegd.</p>
+                    <div class="service-price">vanaf €45/m²</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-emoji">🌳</div>
+                    <h3>Bomen & Snoei</h3>
+                    <p>Bomen kappen, snoeien en vormen. Veilig en volgens de juiste technieken.</p>
+                    <div class="service-price">vanaf €55/u</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-emoji">💧</div>
+                    <h3>Beregening</h3>
+                    <p>Installatie en onderhoud van beregeningssystemen. Slim waterbeheer voor uw tuin.</p>
+                    <div class="service-price">vanaf €395</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-emoji">🪴</div>
+                    <h3>Beplanting & Advies</h3>
+                    <p>Persoonlijk plantenadvies en aanleg. De juiste plant op de juiste plek.</p>
+                    <div class="service-price">vanaf €65/u</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seasons -->
+        <section class="seasons" id="seizoenen">
+            <div class="section-header">
+                <span class="section-tag">SEIZOENEN</span>
+                <h2 class="section-title">Het jaar door</h2>
+                <p class="section-desc">Elk seizoen vraagt andere zorg. Wij zijn er het hele jaar.</p>
+            </div>
+            <div class="seasons-grid">
+                <div class="season-card" data-season="lente">
+                    <div class="season-icon">🌱</div>
+                    <h3>Lente</h3>
+                    <p>Wakker worden. Snoeien, bemesten, zaaien. De tuin voorbereiden op een nieuw jaar.</p>
+                    <ul>
+                        <li>• Voorjaarssnoei</li>
+                        <li>• Gazon aanleggen</li>
+                        <li>• Bloembollen planten</li>
+                    </ul>
+                </div>
+                <div class="season-card" data-season="zomer">
+                    <div class="season-icon">☀</div>
+                    <h3>Zomer</h3>
+                    <p>Onderhoud en genieten. Maaien, water geven en onkruid verwijderen.</p>
+                    <ul>
+                        <li>• Regelmatig maaien</li>
+                        <li>• Beregening controleren</li>
+                        <li>• Buitenplanten verzorgen</li>
+                    </ul>
+                </div>
+                <div class="season-card" data-season="herfst">
+                    <div class="season-icon">🍂</div>
+                    <h3>Herfst</h3>
+                    <p>Afsluiten en voorbereiden. Bladeren ruimen, beschermen en planten.</p>
+                    <ul>
+                        <li>• Bladeren ruimen</li>
+                        <li>• Herfstplanten</li>
+                        <li>• Beschermen tegen vorst</li>
+                    </ul>
+                </div>
+                <div class="season-card" data-season="winter">
+                    <div class="season-icon">❄</div>
+                    <h3>Winter</h3>
+                    <p>Rusten en plannen. Snoeien van fruitbomen en voorjaarsplannen maken.</p>
+                    <ul>
+                        <li>• Wintersnoei</li>
+                        <li>• Vrijwaren van sneeuw</li>
+                        <li>• Ontwerp nieuw seizoen</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section class="portfolio" id="projecten">
+            <div class="section-header">
+                <span class="section-tag">PROJECTEN</span>
+                <h2 class="section-title">Ons Groene Werk</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image grad-1">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">Aanleg</span>
+                            <h3>Stadstuin De Bilt</h3>
+                            <p>Complete aanleg · 120m²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image grad-2">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">Onderhoud</span>
+                            <h3>Landgoed Baarn</h3>
+                            <p>Periodiek onderhoud · 500m²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image grad-3">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">Bestrating</span>
+                            <h3>Terras Utrecht</h3>
+                            <p>Natuursteen terras · 45m²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image grad-4">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">Beplanting</span>
+                            <h3>Voortuin Amersfoort</h3>
+                            <li>Beplantingsplan · 60m²</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="section-header">
+                <span class="section-tag">KLANTEN</span>
+                <h2 class="section-title">Wat klanten zeggen</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Mijn tuin is getransformeerd van een kale vlakte naar een groene paradijs. Fantastisch werk!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: #4a8a3a;">A</div>
+                        <div>
+                            <div class="author-name">Anna van den Berg</div>
+                            <div class="author-location">De Bilt</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Betrouwbaar, punctueel en met veel kennis van zaken. Mijn tuin is nog nooit zo mooi geweest."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: #6aaa5a;">P</div>
+                        <div>
+                            <div class="author-name">Peter Janssen</div>
+                            <div class="author-location">Utrecht</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Het seizoenonderhoud is top. Altijd netjes, altijd op tijd. Echte aanrader!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: #5a9a4a;">L</div>
+                        <div>
+                            <div class="author-name">Lisa Mulder</div>
+                            <div class="author-location">Baarn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">CONTACT</span>
+                    <h2 class="section-title">Laat uw tuin groeien</h2>
+                    <p class="section-desc">Vraag een gratis inspectie aan. Wij komen langs en geven eerlijk advies.</p>
+                    <div class="contact-details">
+                        <div class="contact-row">
+                            <span class="contact-emoji">📞</span>
+                            <div>
+                                <div class="contact-label">Bel ons</div>
+                                <a href="tel:+31698765432">06 9876 5432</a>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="contact-emoji">✉</span>
+                            <div>
+                                <div class="contact-label">E-mail</div>
+                                <a href="mailto:info@groenetuinman.nl">info@groenetuinman.nl</a>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="contact-emoji">📍</span>
+                            <div>
+                                <div class="contact-label">Werkgebied</div>
+                                <span>Utrecht & omgeving</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt! Wij nemen snel contact op.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Naam</label>
+                            <input type="text" placeholder="Uw naam" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefoon</label>
+                            <input type="tel" placeholder="06 ..." required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="naam@email.nl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Wat kan ik voor u doen?</label>
+                        <textarea rows="4" placeholder="Vertel over uw tuin..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <span>Verstuur</span>
+                        <span>🌱</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+                        <path d="M12 2C12 2 6 6 6 12C6 16 9 18 12 18C15 18 18 16 18 12C18 6 12 2 12 2Z" fill="currentColor"/>
+                        <path d="M12 18V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    De Groene Tuinman
+                </div>
+                <div class="footer-info">
+                    <span>KVK 56789012</span>
+                    <span>BTW NL005678901B02</span>
+                    <span>Verzekerd & Erkend</span>
+                </div>
+                <div class="footer-copy">© 2025 De Groene Tuinman — Uw tuin in groene handen</div>
+            </div>
+        </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
