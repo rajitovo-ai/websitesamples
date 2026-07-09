@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AerialVision — Drone Fotografie & Videografie</title>
+    <meta name="description" content="AerialVision — Professionele drone fotografie en videografie. Luchtbeelden voor vastgoed, events, inspectie en meer. KVK 72345619">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-drone">
+                <div class="drone-body"></div>
+                <div class="drone-arm arm1"></div>
+                <div class="drone-arm arm2"></div>
+                <div class="drone-arm arm3"></div>
+                <div class="drone-arm arm4"></div>
+            </div>
+            <div class="loader-text">AerialVision</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <circle cx="10" cy="10" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                    <circle cx="30" cy="10" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                    <circle cx="10" cy="30" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                    <rect x="15" y="15" width="10" height="10" rx="2" fill="#00ff88" opacity="0.3"/>
+                    <line x1="10" y1="10" x2="30" y2="30" stroke="#00ff88" stroke-width="1" opacity="0.4"/>
+                    <line x1="30" y1="10" x2="10" y2="30" stroke="#00ff88" stroke-width="1" opacity="0.4"/>
+                </svg>
+                <span>Aerial<span class="accent">Vision</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#portfolio">Portfolio</a>
+                <a href="#diensten">Diensten</a>
+                <a href="#flight">3D Flight</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Boek een Flight</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="drone-canvas"></canvas>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <div class="hero-tag">RDW Erkend · Sinds 2018</div>
+                <h1>Zie de wereld<br>van <span>boven</span></h1>
+                <p>Professionele luchtbeelden die perspectief bieden. Van vastgoed tot events, van inspectie tot film — wij vliegen waar anderen niet komen.</p>
+                <div class="hero-actions">
+                    <a href="#portfolio" class="btn-primary">Bekijk Portfolio</a>
+                    <a href="#flight" class="btn-ghost">Ervaar de Flight</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="1200">0</span><span class="stat-label">Uren Gevlogen</span></div>
+                <div class="stat"><span class="stat-num" data-target="350">0</span><span class="stat-label">Projecten</span></div>
+                <div class="stat"><span class="stat-num" data-target="7">0</span><span class="stat-label">Jaar Ervaring</span></div>
+                <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-label">% RDW Erkend</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll om te vliegen</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="diensten">
+        <div class="section-header">
+            <div class="section-tag">Onze Diensten</div>
+            <h2>Luchtbeelden voor elk doel</h2>
+            <p>Wij bieden een breed scala aan drone diensten, allemaal met de hoogste kwaliteit en veiligheid.</p>
+        </div>
+        <div class="diensten-grid">
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🏠</div>
+                <h3>Vastgoed Fotografie</h3>
+                <p>Verkoop sneller met adembenemende luchtbeelden van uw pand. Inclusief 360° rondvlucht en platte-grond visualisatie.</p>
+                <span class="dienst-price">vanaf € 295</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🎬</div>
+                <h3>Film & Video</h3>
+                <p>Cinematische drone shots voor films, commercials en muziekvideo's. 4K HDR met professionele color grading.</p>
+                <span class="dienst-price">vanaf € 450</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🔍</div>
+                <h3>Inspectie</h3>
+                <p>Dakinspectie, windmolen check, bouwvoortgang — veilig en efficiënt met thermografische camera.</p>
+                <span class="dienst-price">vanaf € 350</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🎪</div>
+                <h3>Events</h3>
+                <p>Leg uw event vast vanuit de lucht. Festivals, beurzen, sportwedstrijden — dynamisch en meeslepend.</p>
+                <span class="dienst-price">vanaf € 550</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🗺️</div>
+                <h3>3D Mapping</h3>
+                <p>Orthofoto's en 3D modellen van terreinen. Ideaal voor bouwplannen, landbouw en landmeting.</p>
+                <span class="dienst-price">vanaf € 750</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🌾</div>
+                <h3>Landbouw</h3>
+                <p>NDVI vegetatie analyse, gewasmonitoring en precisielandbouw met multispectrale sensoren.</p>
+                <span class="dienst-price">vanaf € 400</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="section-header">
+            <div class="section-tag">Portfolio</div>
+            <h2>Beelden die spreken</h2>
+            <p>Een selectie uit onze recente projecten. Elke vlucht vertelt een verhaal.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item large" data-anim="fade-up" style="background: linear-gradient(135deg, #1a3a2a, #0a1a14);">
+                <div class="portfolio-overlay"><span>Kustlijn — Zeeland</span><span class="portfolio-type">Vastgoed</span></div>
+            </div>
+            <div class="portfolio-item" data-anim="fade-up" style="background: linear-gradient(135deg, #2a2a3a, #1a1a24);">
+                <div class="portfolio-overlay"><span>Stad bij Avond — Rotterdam</span><span class="portfolio-type">Film</span></div>
+            </div>
+            <div class="portfolio-item" data-anim="fade-up" style="background: linear-gradient(135deg, #3a2a1a, #1a1208);">
+                <div class="portfolio-overlay"><span>Wijngaard — Limburg</span><span class="portfolio-type">Landbouw</span></div>
+            </div>
+            <div class="portfolio-item" data-anim="fade-up" style="background: linear-gradient(135deg, #1a2a3a, #0a1218);">
+                <div class="portfolio-overlay"><span>Windmolenpark — Flevoland</span><span class="portfolio-type">Inspectie</span></div>
+            </div>
+            <div class="portfolio-item" data-anim="fade-up" style="background: linear-gradient(135deg, #2a1a2a, #1a0a1a);">
+                <div class="portfolio-overlay"><span>Festival — Amsterdam</span><span class="portfolio-type">Event</span></div>
+            </div>
+            <div class="portfolio-item" data-anim="fade-up" style="background: linear-gradient(135deg, #1a3a3a, #0a1a1a);">
+                <div class="portfolio-overlay"><span>Bouwsite — Utrecht</span><span class="portfolio-type">3D Mapping</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flight">
+        <div class="section-header">
+            <div class="section-tag">3D Flight Experience</div>
+            <h2>Vlieg met ons mee</h2>
+            <p>Bestuur de drone door een 3D landschap. Gebruik je muis om te draaien en scroll om te bewegen.</p>
+        </div>
+        <div class="flight-wrap">
+            <canvas id="flight-canvas"></canvas>
+            <div class="flight-hud">
+                <div class="hud-item"><span>ALT</span><strong id="hud-alt">0m</strong></div>
+                <div class="hud-item"><span>SPD</span><strong id="hud-spd">0 m/s</strong></div>
+                <div class="hud-item"><span>DIR</span><strong id="hud-dir">N</strong></div>
+                <div class="hud-item"><span>BAT</span><strong id="hud-bat">100%</strong></div>
+            </div>
+            <div class="flight-hint">↻ Sleep om te sturen</div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over AerialVision</div>
+                <h2>Pioniers in de lucht</h2>
+                <p>AerialVision werd opgericht in 2018 door luchtvaartenthousiastelingen met een passie voor fotografie. Wat begon met één drone en een droom, is nu het meest vertrouwde dronebedrijf van de regio.</p>
+                <p>Wij vliegen met de nieuwste DJI Inspire 3 en Mavic 3 Pro drones, allemaal RDW gecertificeerd. Onze piloten hebben jarenlange ervaring en vliegen altijd veilig en verantwoord.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✦</span><span>RDW gecertificeerde piloten</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>4K HDR & 8K RAW kwaliteit</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Volledig verzekerd</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Snelle levering (48u)</span></div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat"><span class="num">1.200+</span><span>Vlieguren</span></div>
+                <div class="over-stat"><span class="num">350+</span><span>Projecten</span></div>
+                <div class="over-stat"><span class="num">7</span><span>Jaar ervaring</span></div>
+                <div class="over-stat"><span class="num">4.9★</span><span>Klantbeoordeling</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Boek uw vlucht</h2>
+                <p>Vertel ons wat u nodig hebt en wij maken het waar. Vrijblijvende offerte binnen 24 uur.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Adres</span><span>Vliegveldweg 45, 5762 RM Deurne</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31493123456">0493 12 34 56</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@aerialvision.nl">info@aerialvision.nl</a></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>72345619</span></div>
+                    <div class="contact-item"><span class="label">RDW</span><span>Erkend drone operator NL-2024-087</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="booking-form">
+                <h3>Boek een Flight</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Welke dienst?</option>
+                    <option>Vastgoed fotografie</option><option>Film & video</option><option>Inspectie</option>
+                    <option>Events</option><option>3D Mapping</option><option>Landbouw</option>
+                </select>
+                <input type="date" required>
+                <textarea placeholder="Vertel ons over uw project..." rows="3"></textarea>
+                <button type="submit" class="btn-primary">Verstuur Aanvraag</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <circle cx="10" cy="10" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                    <circle cx="30" cy="10" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                    <circle cx="10" cy="30" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="5" fill="none" stroke="#00ff88" stroke-width="2"/>
+                </svg>
+                <span>Aerial<span class="accent">Vision</span></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Diensten</h4><a href="#diensten">Vastgoed</a><a href="#diensten">Film</a><a href="#diensten">Inspectie</a><a href="#diensten">Events</a></div>
+                <div class="footer-col"><h4>Bedrijf</h4><a href="#over">Over Ons</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Vliegveldweg 45</span><span>5762 RM Deurne</span><span>0493 12 34 56</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 AerialVision — KVK 72345619 — RDW Erkend NL-2024-087</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
