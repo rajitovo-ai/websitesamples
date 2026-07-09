@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Tandmeester — Tandartspraktijk</title>
+    <meta name="description" content="De Tandmeester — Moderne tandartspraktijk. Preventie, esthetiek, implantologie. Pijnvrij en persoonlijk. KVK 54129830">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-tooth">🦷</div>
+            <div class="loader-text">De Tandmeester</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <path d="M20 8 Q14 8 14 16 Q14 24 16 30 Q18 34 20 32 Q22 34 24 30 Q26 24 26 16 Q26 8 20 8 Z" fill="none" stroke="#00b8d4" stroke-width="2"/>
+                </svg>
+                <span>De <em>Tandmeester</em></span>
+            </a>
+            <div class="nav-links">
+                <a href="#diensten">Diensten</a>
+                <a href="#tand">3D Tand Model</a>
+                <a href="#behandeling">Behandelingen</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Maak Afspraak</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="tooth-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Moderne Tandartspraktijk — Sinds 2008</div>
+            <h1>Gezonde tanden,<br>stralende <em>glimlach</em></h1>
+            <p>Pijnvrije behandelingen met de nieuwste technieken. Persoonlijke aandacht voor elke patiënt. Welkom bij De Tandmeester.</p>
+            <div class="hero-actions">
+                <a href="#diensten" class="btn-primary">Onze Diensten</a>
+                <a href="#tand" class="btn-ghost">3D Tand Bekijken</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="17">0</span><span>Jaar Ervaring</span></div>
+                <div class="stat"><span class="stat-num" data-target="4500">0</span><span>Patiënten</span></div>
+                <div class="stat"><span class="stat-num" data-target="8">0</span><span>Behandelingen</span></div>
+                <div class="stat"><span class="stat-num" data-target="4.8">0</span><span>Google Score</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll voor de tand</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="tand">
+        <div class="section-header">
+            <div class="section-tag">3D Tand Model</div>
+            <h2>Ontdek de anatomie</h2>
+            <p>Klik op een tanddeel om meer te weten. Sleep om te draaien.</p>
+        </div>
+        <div class="tand-wrap">
+            <canvas id="tooth3d-canvas"></canvas>
+            <div class="tand-panel">
+                <h3>Tand Anatomie</h3>
+                <div class="tand-parts">
+                    <button class="part-btn active" data-part="glazuur">Tandglazuur</button>
+                    <button class="part-btn" data-part="dentine">Dentine</button>
+                    <button class="part-btn" data-part="pulpa">Pulpa</button>
+                    <button class="part-btn" data-part="wortel">Wortel</button>
+                </div>
+                <div class="part-info">
+                    <h4 id="part-name">Tandglazuur</h4>
+                    <p id="part-desc">De buitenste laag van de tand — het hardste materiaal in het menselijk lichaam. Beschermt tegen slijtage en hitte.</p>
+                </div>
+                <div class="tand-hint">↻ Sleep om te draaien</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diensten">
+        <div class="section-header">
+            <div class="section-tag">Diensten</div>
+            <h2>Alles voor uw gebit</h2>
+        </div>
+        <div class="diensten-grid">
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🦷</div>
+                <h3>Algemene Tandheelkunde</h3>
+                <p>Periodieke controle, vullingen, trekken. De basis voor een gezond gebit.</p>
+                <span class="dienst-tag">Vergoed door zorgverzekering</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">✨</div>
+                <h3>Esthetische Tandheelkunde</h3>
+                <p>Wittere tanden, facings, composiet vullingen. Voor een mooie glimlach.</p>
+                <span class="dienst-tag">vanaf € 350</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🔧</div>
+                <h3>Implantologie</h3>
+                <p>Vervanging van ontbrekende tanden met implantaten. Vast en natuurlijk.</p>
+                <span class="dienst-tag">vanaf € 1.800</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🧒</div>
+                <h3>Kinder tandheelkunde</h3>
+                <p>Speciale aandacht voor de kleintjes. Speels en angstvrij.</p>
+                <span class="dienst-tag">Vergoed tot 18 jaar</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🪥</div>
+                <h3>Preventie & Mondhygiëne</h3>
+                <p>Professionele gebitsreiniging, fluor behandeling, sealants.</p>
+                <span class="dienst-tag">vanaf € 45</span>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">😴</div>
+                <h3>Angstbehandeling</h3>
+                <p>Speciale aanpak voor angstige patiënten. Sedatie mogelijk.</p>
+                <span class="dienst-tag">Op afspraak</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="behandeling">
+        <div class="section-header">
+            <div class="section-tag">Behandelingen</div>
+            <h2>Wat we doen</h2>
+            <p>Een overzicht van onze meest voorkomende behandelingen en tarieven.</p>
+        </div>
+        <div class="behandeling-list">
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Periodieke controle</h3><p>Jaarlijkse controle van gebit en tandvlees</p></div>
+                <span class="bh-price">€ 25</span>
+            </div>
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Tandsteen verwijderen</h3><p>Professionele reiniging door mondhygiënist</p></div>
+                <span class="bh-price">€ 45</span>
+            </div>
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Composiet vulling</h3><p>Tooth-colored vulling voor gaatjes</p></div>
+                <span class="bh-price">€ 60 - € 120</span>
+            </div>
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Wortelkanaalbehandeling</h3><p>Behandeling van ontstoken tandzenuw</p></div>
+                <span class="bh-price">€ 200 - € 400</span>
+            </div>
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Tand trekken</h3><p>Verwijdering van een tand of kies</p></div>
+                <span class="bh-price">€ 50 - € 150</span>
+            </div>
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Tanden bleken</h3><p>Professioneel witter maken van tanden</p></div>
+                <span class="bh-price">€ 350</span>
+            </div>
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Facings</h3><p>Dunne schilletjes voor een perfecte glimlach</p></div>
+                <span class="bh-price">€ 450 / tand</span>
+            </div>
+            <div class="behandeling-row" data-anim="fade-up">
+                <div class="bh-info"><h3>Implantaat</h3><p>Vervanging van ontbrekende tand</p></div>
+                <span class="bh-price">€ 1.800 - € 2.500</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over De Tandmeester</div>
+                <h2>Modern, pijnvrij, persoonlijk</h2>
+                <p>De Tandmeester is in 2008 opgericht door tandarts Maarten de Vries. Na jaren in grote kliniekjes besloot hij een praktijk te bouwen waar patiënten zich echt op hun gemak voelen.</p>
+                <p>Onze praktijk is uitgerust met de nieuwste technologie: digitale röntgen, 3D scans, en microscopische behandeling. Maar het belangrijkst is nog altijd de menselijke aandacht.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✦</span><span>Pijnvrije behandelingen</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Digitale röntgen & 3D scans</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Avonduren beschikbaar</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Alle zorgverzekeraars</span></div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat"><span class="num">17</span><span>Jaar ervaring</span></div>
+                <div class="over-stat"><span class="num">4500+</span><span>Patiënten</span></div>
+                <div class="over-stat"><span class="num">6</span><span>Behandelaars</span></div>
+                <div class="over-stat"><span class="num">4.8★</span><span>Google score</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Maak een afspraak</h2>
+                <p>Bel ons of vul het formulier in. Voor spoed buiten kantooruren: 0900-1234567.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Praktijk</span><span>Weg naar de Mond 14, 5612 XB Eindhoven</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31402345678">040 234 56 78</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@detandmeester.nl">info@detandmeester.nl</a></div>
+                    <div class="contact-item"><span class="label">Open</span><span>Ma-Vr 8:00-17:00, Do avond 18:00-21:00</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>54129830</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="afspraak-form">
+                <h3>Afspraak Maken</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <input type="date" required>
+                <select required>
+                    <option value="">Reden van bezoek</option>
+                    <option>Periodieke controle</option><option>Tandsteen verwijderen</option>
+                    <option>Klacht / pijn</option><option>Esthetische behandeling</option>
+                    <option>Implantologie</option><option>Eerste intake</option>
+                </select>
+                <textarea placeholder="Opmerkingen..." rows="3"></textarea>
+                <button type="submit" class="btn-primary">Aanvragen</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <path d="M20 8 Q14 8 14 16 Q14 24 16 30 Q18 34 20 32 Q22 34 24 30 Q26 24 26 16 Q26 8 20 8 Z" fill="none" stroke="#00b8d4" stroke-width="2"/>
+                </svg>
+                <span>De <em>Tandmeester</em></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Diensten</h4><a href="#diensten">Algemeen</a><a href="#diensten">Esthetisch</a><a href="#diensten">Implantologie</a></div>
+                <div class="footer-col"><h4>Praktijk</h4><a href="#over">Over Ons</a><a href="#behandeling">Tarieven</a><a href="#contact">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Weg naar de Mond 14</span><span>5612 XB Eindhoven</span><span>040 234 56 78</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 De Tandmeester — KVK 54129830 — Alle zorgverzekeraars</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
