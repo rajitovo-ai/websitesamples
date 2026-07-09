@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DakVakman — Specialist in Dakbedekking sinds 1998</title>
+    <meta name="description" content="DakVakman is uw specialist in dakbedekking, dakrenovatie en onderhoud. KVK 71234567 — Gratis inspectie & offerte">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-icon">
+                <svg viewBox="0 0 100 60" width="80" height="48">
+                    <polygon points="10,30 50,5 90,30 90,55 10,55" fill="none" stroke="#e8873a" stroke-width="2" class="loader-roof"/>
+                </svg>
+            </div>
+            <div class="loader-text">DakVakman</div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="32" height="32">
+                    <polygon points="5,20 20,5 35,20 35,35 5,35" fill="#e8873a"/>
+                    <polygon points="5,20 20,5 35,20" fill="#d97a2e"/>
+                </svg>
+                <span>DakVakman</span>
+            </a>
+            <div class="nav-links">
+                <a href="#diensten">Diensten</a>
+                <a href="#materialen">Materialen</a>
+                <a href="#projecten">Projecten</a>
+                <a href="#over-ons">Over Ons</a>
+                <a href="#contact" class="nav-cta">Gratis Inspectie</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="three-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Specialist sinds 1998</div>
+            <h1>Uw Dak,<br>Onze <span>Zorg</span></h1>
+            <p>Van dakpannen tot leien, van inspectie tot renovatie — wij maken van uw dak een schild dat een leven lang meegaat.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Gratis Dakinspectie</a>
+                <a href="#projecten" class="btn-ghost">Bekijk Projecten</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="2750">0</span><span class="stat-label">Daken Gelegd</span></div>
+                <div class="stat"><span class="stat-num" data-target="27">0</span><span class="stat-label">Jaar Ervaring</span></div>
+                <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-label">% Garantie</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>Scroll om het dak te bouwen</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <section id="diensten">
+        <div class="section-header">
+            <div class="section-tag">Onze Diensten</div>
+            <h2>Alles onder één dak</h2>
+            <p>Van klein onderhoud tot complete dakrenovatie — wij hebben de expertise in huis.</p>
+        </div>
+        <div class="diensten-grid">
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">
+                    <svg viewBox="0 0 64 64" width="48" height="48">
+                        <polygon points="8,28 32,8 56,28 56,56 8,56" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                        <line x1="8" y1="28" x2="56" y2="28" stroke="currentColor" stroke-width="2.5"/>
+                        <line x1="20" y1="28" x2="20" y2="56" stroke="currentColor" stroke-width="2"/>
+                        <line x1="32" y1="28" x2="32" y2="56" stroke="currentColor" stroke-width="2"/>
+                        <line x1="44" y1="28" x2="44" y2="56" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3>Nieuwe Daken</h3>
+                <p>Compleet nieuw dak inclusief constructie, isolatie en afwerking. Vakkundig gelegd met 10 jaar garantie.</p>
+                <ul>
+                    <li>Dakpannen & leien</li>
+                    <li>EPDM & bitumen</li>
+                    <li>Inclusief isolatie</li>
+                </ul>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">
+                    <svg viewBox="0 0 64 64" width="48" height="48">
+                        <rect x="10" y="20" width="44" height="30" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                        <path d="M10 20 L32 8 L54 20" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                        <circle cx="32" cy="35" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <line x1="32" y1="29" x2="32" y2="41" stroke="currentColor" stroke-width="2"/>
+                        <line x1="26" y1="35" x2="38" y2="35" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3>Dakrenovatie</h3>
+                <p>Is uw dak aan vervanging toe? Wij beoordelen de staat en renoveren efficiënt en duurzaam.</p>
+                <ul>
+                    <li>Volledige inspectie</li>
+                    <li>Lekkage opsporing</li>
+                    <li>Draagconstructie herstel</li>
+                </ul>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">
+                    <svg viewBox="0 0 64 64" width="48" height="48">
+                        <path d="M8 30 L32 10 L56 30" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                        <line x1="12" y1="30" x2="12" y2="54" stroke="currentColor" stroke-width="2.5"/>
+                        <line x1="52" y1="30" x2="52" y2="54" stroke="currentColor" stroke-width="2.5"/>
+                        <line x1="8" y1="54" x2="56" y2="54" stroke="currentColor" stroke-width="2.5"/>
+                        <path d="M20 35 Q24 32 28 35 Q32 38 36 35 Q40 32 44 35" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3>Onderhoud & Reparatie</h3>
+                <p>Periodiek onderhoud verlengt de levensduur van uw dak. Snelle reparatie bij stormschade.</p>
+                <ul>
+                    <li>Stormschade herstel</li>
+                    <li>Pannen vervangen</li>
+                    <li>Hemelwaterafvoer</li>
+                </ul>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">
+                    <svg viewBox="0 0 64 64" width="48" height="48">
+                        <rect x="10" y="12" width="44" height="40" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                        <line x1="10" y1="24" x2="54" y2="24" stroke="currentColor" stroke-width="2"/>
+                        <line x1="10" y1="36" x2="54" y2="36" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="20" cy="18" r="2" fill="currentColor"/>
+                        <circle cx="32" cy="30" r="2" fill="currentColor"/>
+                        <circle cx="44" cy="42" r="2" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>Dakisolatie</h3>
+                <p>Energiebesparing begint bij goede dakisolatie. Wij isoleren volgens de nieuwste bouwvoorschriften.</p>
+                <ul>
+                    <li>HR++ isolatie</li>
+                    <li>Spouwisolatie</li>
+                    <li>Energiebesparing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="materialen">
+        <div class="section-header">
+            <div class="section-tag">Dakmaterialen</div>
+            <h2>Kies uw materiaal</h2>
+            <p>Elk materiaal heeft zijn eigen karakter. Bekijk de opties en ontdek wat bij uw huis past.</p>
+        </div>
+        <div class="materiaal-selector">
+            <div class="materiaal-tabs">
+                <button class="materiaal-tab active" data-mat="pannen">Dakpannen</button>
+                <button class="materiaal-tab" data-mat="leien">Leien</button>
+                <button class="materiaal-tab" data-mat="riet">Riet</button>
+                <button class="materiaal-tab" data-mat="epdm">EPDM</button>
+            </div>
+            <div class="materiaal-display">
+                <div class="materiaal-info active" data-mat="pannen">
+                    <div class="materiaal-visual" style="background: linear-gradient(135deg, #c8704a, #a55a38);">
+                        <div class="pan-pattern"></div>
+                    </div>
+                    <div class="materiaal-details">
+                        <h3>Keramische Dakpannen</h3>
+                        <p class="materiaal-desc">De klassieker onder de dakbedekking. Keramische pannen gaan 50 tot 100 jaar mee en zijn verkrijgbaar in diverse kleuren en profielen.</p>
+                        <div class="materiaal-specs">
+                            <div class="spec"><span>Levensduur</span><strong>50-100 jaar</strong></div>
+                            <div class="spec"><span>Onderhoud</span><strong>Laag</strong></div>
+                            <div class="spec"><span>Isolatie</span><strong>Goed</strong></div>
+                            <div class="spec"><span>Prijs</span><strong>€££</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="materiaal-info" data-mat="leien">
+                    <div class="materiaal-visual" style="background: linear-gradient(135deg, #4a4a52, #2a2a32);">
+                        <div class="lei-pattern"></div>
+                    </div>
+                    <div class="materiaal-details">
+                        <h3>Natuurleien</h3>
+                        <p class="materiaal-desc">Elegante, donkere leien voor een verfijnde uitstraling. Bijzonder duurzaam en onderhoudsarm, ideaal voor monumentale panden.</p>
+                        <div class="materiaal-specs">
+                            <div class="spec"><span>Levensduur</span><strong>75-150 jaar</strong></div>
+                            <div class="spec"><span>Onderhoud</span><strong>Zeer laag</strong></div>
+                            <div class="spec"><span>Isolatie</span><strong>Matig</strong></div>
+                            <div class="spec"><span>Prijs</span><strong>€£££</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="materiaal-info" data-mat="riet">
+                    <div class="materiaal-visual" style="background: linear-gradient(135deg, #c4a868, #a08848);">
+                        <div class="riet-pattern"></div>
+                    </div>
+                    <div class="materiaal-details">
+                        <h3>Rietbedekking</h3>
+                        <p class="materiaal-desc">Natuurlijke, warme uitstraling met uitstekende isolerende eigenschappen. Typisch voor Nederlandse landschapsstijl.</p>
+                        <div class="materiaal-specs">
+                            <div class="spec"><span>Levensduur</span><strong>25-40 jaar</strong></div>
+                            <div class="spec"><span>Onderhoud</span><strong>Periodiek</strong></div>
+                            <div class="spec"><span>Isolatie</span><strong>Uitstekend</strong></div>
+                            <div class="spec"><span>Prijs</span><strong>€£££</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="materiaal-info" data-mat="epdm">
+                    <div class="materiaal-visual" style="background: linear-gradient(135deg, #333338, #1a1a1e);">
+                        <div class="epdm-pattern"></div>
+                    </div>
+                    <div class="materiaal-details">
+                        <h3>EPDM Rubber</h3>
+                        <p class="materiaal-desc">Synthetische rubber membraan voor platte daken. Zeer flexibel, naadloos en extreem weerbestendig. De moderne keuze.</p>
+                        <div class="materiaal-specs">
+                            <div class="spec"><span>Levensduur</span><strong>40-50 jaar</strong></div>
+                            <div class="spec"><span>Onderhoud</span><strong>Zeer laag</strong></div>
+                            <div class="spec"><span>Isolatie</span><strong>Goed</strong></div>
+                            <div class="spec"><span>Prijs</span><strong>€£</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projecten">
+        <div class="section-header">
+            <div class="section-tag">Recente Projecten</div>
+            <h2>Werk dat we trots maken</h2>
+            <p>Een selectie uit onze recente dakprojecten door heel Nederland.</p>
+        </div>
+        <div class="projecten-grid">
+            <div class="project-card" data-anim="fade-up">
+                <div class="project-img" style="background: linear-gradient(135deg, #c8704a, #8a4a28);">
+                    <div class="project-overlay">
+                        <span>Villa Waterrijk — Woerden</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-type">Nieuw Dak</span>
+                    <h3>Keramische Pannen</h3>
+                    <p>Compleet nieuw dak voor een moderne villa. Inclusief HR-isolatie en nieuwe hemelwaterafvoer.</p>
+                </div>
+            </div>
+            <div class="project-card" data-anim="fade-up">
+                <div class="project-img" style="background: linear-gradient(135deg, #4a4a52, #2a2a32);">
+                    <div class="project-overlay">
+                        <span>Boerderij De Hoeve — Barneveld</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-type">Renovatie</span>
+                    <h3>Natuurleien Renovatie</h3>
+                    <p>Volledige renovatie van monumentale boerderij. Behoud van karakter met moderne isolatietechniek.</p>
+                </div>
+            </div>
+            <div class="project-card" data-anim="fade-up">
+                <div class="project-img" style="background: linear-gradient(135deg, #c4a868, #8a7038);">
+                    <div class="project-overlay">
+                        <span>Rietkap Rijswijk — Den Haag</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-type">Rietbedekking</span>
+                    <h3>Nieuwe Rietkap</h3>
+                    <p>Vervanging van oude rietkap bij monumentale woning. Handgekapt riet van topkwaliteit.</p>
+                </div>
+            </div>
+            <div class="project-card" data-anim="fade-up">
+                <div class="project-img" style="background: linear-gradient(135deg, #333338, #555560);">
+                    <div class="project-overlay">
+                        <span>Kantoorpand Centrum — Utrecht</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-type">Plat Dak</span>
+                    <h3>EPDM Membrane</h3>
+                    <p>Vervanging van bitumen door EPDM op plat kantoorpand. 500m² naadloze afwerking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="over-ons">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over DakVakman</div>
+                <h2>Vakmanschap dat generaties overbrugt</h2>
+                <p>Sinds 1998 legt DakVakman daken door heel Nederland. Wat begon als een eenmanszaak is uitgegroeid tot een team van 12 ervaren dakdekkers, elk met hun eigen specialisme.</p>
+                <p>Wij geloven dat een goed dak meer is dan pannen op een huis. Het is bescherming, comfort en gemoedsrust voor decennia. Daarom werken wij uitsluitend met de beste materialen en de hoogste standaard van vakmanschap.</p>
+                <div class="over-features">
+                    <div class="over-feature">
+                        <div class="feature-check">✓</div>
+                        <span>10 jaar garantie op alle werkzaamheden</span>
+                    </div>
+                    <div class="over-feature">
+                        <div class="feature-check">✓</div>
+                        <span>Erkende Vakbekwaamheid (BKB gecertificeerd)</span>
+                    </div>
+                    <div class="over-feature">
+                        <div class="feature-check">✓</div>
+                        <span>Gratis inspectie en vrijblijvende offerte</span>
+                    </div>
+                    <div class="over-feature">
+                        <div class="feature-check">✓</div>
+                        <span>Verzekerd & KVK geregistreerd (71234567)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat-card">
+                    <span class="over-stat-num">2.750+</span>
+                    <span class="over-stat-label">Daken gelegd</span>
+                </div>
+                <div class="over-stat-card">
+                    <span class="over-stat-num">27</span>
+                    <span class="over-stat-label">Jaar in vak</span>
+                </div>
+                <div class="over-stat-card">
+                    <span class="over-stat-num">12</span>
+                    <span class="over-stat-label">Dakdekkers</span>
+                </div>
+                <div class="over-stat-card">
+                    <span class="over-stat-num">4.9★</span>
+                    <span class="over-stat-label">Klantbeoordeling</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="section-header">
+            <div class="section-tag">Klantervaringen</div>
+            <h2>Wat onze klanten zeggen</h2>
+        </div>
+        <div class="reviews-track">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Na een stormschade hadden we snel hulp nodig. DakVakman stond binnen 2 uur op de stoep. Vakkundig, snel en eerlijk geprijsd."</p>
+                <div class="review-author">
+                    <div class="review-avatar" style="background: #e8873a;">JM</div>
+                    <div><strong>Jeroen Maas</strong><span>Woerden</span></div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Compleet nieuw dak voor onze villa. Het team was netjes, punctueel en hield de bouwplaats schoon. Het resultaat is prachtig."</p>
+                <div class="review-author">
+                    <div class="review-avatar" style="background: #4a8a5a;">SD</div>
+                    <div><strong>Sandra de Vries</strong><span>Barneveld</span></div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Onze monumentale boerderij kreeg nieuwe leien. DakVakman begreep de historische waarde en werkte met groot respect voor het pand."</p>
+                <div class="review-author">
+                    <div class="review-avatar" style="background: #5a6a9a;">HK</div>
+                    <div><strong>Henk Klaassen</strong><span>Den Haag</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Klaar voor een dak dat meegaat?</h2>
+                <p>Vraag vandaag nog een gratis dakinspectie aan. Wij komen langs, beoordelen de staat van uw dak en geven u een eerlijk advies — zonder verplichtingen.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-label">Telefoon</span>
+                        <a href="tel:+31341234567">0341 23 45 67</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:info@dakvakman.nl">info@dakvakman.nl</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Adres</span>
+                        <span>Industrieweg 42, 3441 AS Woerden</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">KVK</span>
+                        <span>71234567</span>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" id="offerte-form">
+                <h3>Gratis Dakinspectie Aanvragen</h3>
+                <div class="form-row">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoonnummer" required>
+                </div>
+                <input type="email" placeholder="Email adres" required>
+                <input type="text" placeholder="Adres + postcode">
+                <select required>
+                    <option value="">Type dakwerk</option>
+                    <option>Nieuw dak</option>
+                    <option>Dakrenovatie</option>
+                    <option>Onderhoud / reparatie</option>
+                    <option>Dakisolatie</option>
+                    <option>Anders</option>
+                </select>
+                <textarea placeholder="Vertel ons over uw project..." rows="4"></textarea>
+                <button type="submit" class="btn-primary">Verstuur Aanvraag</button>
+                <p class="form-note">Wij reageren binnen 24 uur op werkdagen.</p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="32" height="32">
+                    <polygon points="5,20 20,5 35,20 35,35 5,35" fill="#e8873a"/>
+                    <polygon points="5,20 20,5 35,20" fill="#d97a2e"/>
+                </svg>
+                <span>DakVakman</span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h4>Diensten</h4>
+                    <a href="#diensten">Nieuwe Daken</a>
+                    <a href="#diensten">Dakrenovatie</a>
+                    <a href="#diensten">Onderhoud</a>
+                    <a href="#diensten">Dakisolatie</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Bedrijf</h4>
+                    <a href="#over-ons">Over Ons</a>
+                    <a href="#projecten">Projecten</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <span>0341 23 45 67</span>
+                    <span>info@dakvakman.nl</span>
+                    <span>Industrieweg 42</span>
+                    <span>3441 AS Woerden</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 DakVakman B.V. — KVK 71234567</span>
+            <span>Erkend dakdekkersbedrijf — BKB Gecertificeerd</span>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
