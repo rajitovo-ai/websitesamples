@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hout&Hand — Meubelmakerij op Maat</title>
+    <meta name="description" content="Hout&Hand — Meubels op maat gemaakt. Tafels, stoelen, kasten en meer. Vakmanschap sinds 2008. KVK 50382194">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-saw"></div>
+            <div class="loader-text">Hout & Hand</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <rect x="8" y="8" width="24" height="24" rx="2" fill="none" stroke="#b8783a" stroke-width="2"/>
+                    <path d="M12 14 L28 14 M12 20 L28 20 M12 26 L28 26" stroke="#b8783a" stroke-width="1" opacity="0.4"/>
+                    <path d="M14 12 L14 28 L20 28 L20 12 Z" fill="#b8783a" opacity="0.2"/>
+                </svg>
+                <span>Hout<em>&Hand</em></span>
+            </a>
+            <div class="nav-links">
+                <a href="#collectie">Collectie</a>
+                <a href="#proces">Het Proces</a>
+                <a href="#configurator">Stoel Configurator</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Offerte Aanvragen</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="chair-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Meubelmakerij op Maat — Sinds 2008</div>
+            <h1>Hout dat<br><em>leeft</em> in uw huis</h1>
+            <p>Elk meubelstuk vertelt een verhaal. Van boomstam tot voltooid kunstwerk — met de hand gemaakt, voor een leven lang.</p>
+            <div class="hero-actions">
+                <a href="#collectie" class="btn-primary">Bekijk Collectie</a>
+                <a href="#proces" class="btn-ghost">Zie Het Proces</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="850">0</span><span>Meubels Gemaakt</span></div>
+                <div class="stat"><span class="stat-num" data-target="17">0</span><span>Jaar Vakmanschap</span></div>
+                <div class="stat"><span class="stat-num" data-target="100">0</span><span>% Op Maat</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll om de stoel te bouwen</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="proces">
+        <div class="section-header">
+            <div class="section-tag">Het Maakproces</div>
+            <h2>Van stam tot stoel</h2>
+            <p>Scroll en zie hoe onze stoel stuk voor stuk wordt opgebouwd — van ruwe onderdelen tot voltooid meubel.</p>
+        </div>
+        <div class="proces-steps">
+            <div class="proces-step" data-anim="fade-up">
+                <div class="step-num">01</div>
+                <h3>Selectie</h3>
+                <p>Wij selecteren de fijnste houtsoorten — eiken, walnoot, essen — elk met zijn eigen karakter en nerf.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="step-num">02</div>
+                <h3>Droging</h3>
+                <p>Hout moet rusten. Minimaal 2 jaar drogen voordat het klaar is voor bewerking. Geduld is een deugd.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="step-num">03</div>
+                <h3>Vormgeving</h3>
+                <p>Elk onderdeel wordt met de hand gevormd. Schaafwerk, freeswerk en schuurwerk — precisie in elke beweging.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="step-num">04</div>
+                <h3>Assemblage</h3>
+                <p>Traditionele verbindingen — geen schroeven, geen lijm. Houtverbindingen die generaties meegaan.</p>
+            </div>
+            <div class="proces-step" data-anim="fade-up">
+                <div class="step-num">05</div>
+                <h3>Afwerking</h3>
+                <p>Natuurlijke oliën en wasen die het hout beschermen en de nerf tot leven brengen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="collectie">
+        <div class="section-header">
+            <div class="section-tag">Onze Collectie</div>
+            <h2>Stukken die blijvend zijn</h2>
+        </div>
+        <div class="collectie-grid">
+            <div class="meubel-card" data-anim="fade-up">
+                <div class="meubel-img" style="background: linear-gradient(135deg, #3a2a1a, #2a1a0a);">
+                    <div class="wood-grain"></div>
+                </div>
+                <div class="meubel-info">
+                    <span class="meubel-cat">Eettafel</span>
+                    <h3>De Landbouw</h3>
+                    <p>Massief eiken eettafel, 240×100cm, met natuurlijke rand en botanische olie afwerking.</p>
+                    <span class="meubel-price">€ 2.850</span>
+                </div>
+            </div>
+            <div class="meubel-card" data-anim="fade-up">
+                <div class="meubel-img" style="background: linear-gradient(135deg, #2a1a0e, #1a0e06);">
+                    <div class="wood-grain dark"></div>
+                </div>
+                <div class="meubel-info">
+                    <span class="meubel-cat">Fauteuil</span>
+                    <h3>De Lezer</h3>
+                    <p>Walnoot houten fauteuil met leren zitting. Hand gevormde armleuningen, traditionele verbindingen.</p>
+                    <span class="meubel-price">€ 1.450</span>
+                </div>
+            </div>
+            <div class="meubel-card" data-anim="fade-up">
+                <div class="meubel-img" style="background: linear-gradient(135deg, #4a3a2a, #2a1a0a);">
+                    <div class="wood-grain light"></div>
+                </div>
+                <div class="meubel-info">
+                    <span class="meubel-cat">Kast</span>
+                    <h3>De Bewaarder</h3>
+                    <p>Essenhouten kast met glazen deuren en handgesmede ijzeren handvatten. 180×60×200cm.</p>
+                    <span class="meubel-price">€ 3.200</span>
+                </div>
+            </div>
+            <div class="meubel-card" data-anim="fade-up">
+                <div class="meubel-img" style="background: linear-gradient(135deg, #3a2a1a, #1a1208);">
+                    <div class="wood-grain"></div>
+                </div>
+                <div class="meubel-info">
+                    <span class="meubel-cat">Bijzettafel</span>
+                    <h3>De Gast</h3>
+                    <p>Ronde bijzettafel in eiken met draaiende voet. Perfect naast de bank of fauteuil.</p>
+                    <span class="meubel-price">€ 680</span>
+                </div>
+            </div>
+            <div class="meubel-card" data-anim="fade-up">
+                <div class="meubel-img" style="background: linear-gradient(135deg, #2a1e12, #1a1208);">
+                    <div class="wood-grain dark"></div>
+                </div>
+                <div class="meubel-info">
+                    <span class="meubel-cat">Bureau</span>
+                    <h3>De Denker</h3>
+                    <p>Werkbureau in walnoot, 160×70cm, met ladeblok en kabelbeheer. Elegant en functioneel.</p>
+                    <span class="meubel-price">€ 1.890</span>
+                </div>
+            </div>
+            <div class="meubel-card" data-anim="fade-up">
+                <div class="meubel-img" style="background: linear-gradient(135deg, #3a2a1a, #2a1a0a);">
+                    <div class="wood-grain"></div>
+                </div>
+                <div class="meubel-info">
+                    <span class="meubel-cat">Kapstok</span>
+                    <h3>De Verwelkomer</h3>
+                    <p>Vrije-vorm kapstok in eiken met 6 haken en paraplustandaard. Stevig en karaktervol.</p>
+                    <span class="meubel-price">€ 450</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="configurator">
+        <div class="section-header">
+            <div class="section-tag">3D Stoel Configurator</div>
+            <h2>Stel uw stoel samen</h2>
+            <p>Kies houtsoort en afwerking en zie direct het resultaat in 3D.</p>
+        </div>
+        <div class="config-wrap">
+            <div class="config-canvas">
+                <canvas id="config-chair-canvas"></canvas>
+                <div class="config-hint">↻ Sleep om te draaien</div>
+            </div>
+            <div class="config-panel">
+                <div class="config-group">
+                    <h4>Houtsoort</h4>
+                    <div class="wood-picker">
+                        <button class="wood-btn active" data-wood="#b8783a" data-name="Eiken">Eiken</button>
+                        <button class="wood-btn" data-wood="#5a3a1a" data-name="Walnoot">Walnoot</button>
+                        <button class="wood-btn" data-wood="#d4a878" data-name="Es">Es</button>
+                        <button class="wood-btn" data-wood="#8a5a2a" data-name="Mahonie">Mahonie</button>
+                    </div>
+                </div>
+                <div class="config-group">
+                    <h4>Zitting</h4>
+                    <div class="seat-picker">
+                        <button class="seat-btn active" data-seat="#3a2a1a" data-name="Hout">Hout</button>
+                        <button class="seat-btn" data-seat="#6a4a2a" data-name="Leder Bruin">Leder Bruin</button>
+                        <button class="seat-btn" data-seat="#2a2a2a" data-name="Leder Zwart">Leder Zwart</button>
+                        <button class="seat-btn" data-seat="#8a7a5a" data-name="Linnen">Linnen</button>
+                    </div>
+                </div>
+                <div class="config-summary">
+                    <div class="summary-row"><span>Houtsoort</span><strong id="sum-wood">Eiken</strong></div>
+                    <div class="summary-row"><span>Zitting</span><strong id="sum-seat">Hout</strong></div>
+                    <div class="summary-price"><span>Vanaf</span><strong>€ 680</strong></div>
+                </div>
+                <a href="#contact" class="btn-primary config-btn">Deze Stoel Offreren</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over Hout&Hand</div>
+                <h2>Vakmanschap met ziel</h2>
+                <p>Hout&Hand begon in 2008 als een kleine werkplaats in een oude boerderij. Oprichter Thomas van Dijk had één ideaal: meubels maken die generaties meegaan, met respect voor materiaal en ambacht.</p>
+                <p>Vandaag werken wij met een team van 5 meubelmakers in onze werkplaats in Culemborg. Elk meubel wordt nog steeds met de hand gemaakt — van de eerste schaafbewerking tot de laatste waslaag.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✦</span><span>100% massief hout, geen fineer</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Traditionele houtverbindingen</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Duurzaam geoogst hout (FSC)</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Levenslange garantie op constructie</span></div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat"><span class="num">850+</span><span>Meubels gemaakt</span></div>
+                <div class="over-stat"><span class="num">17</span><span>Jaar ervaring</span></div>
+                <div class="over-stat"><span class="num">5</span><span>Meubelmakers</span></div>
+                <div class="over-stat"><span class="num">4.9★</span><span>Klantbeoordeling</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Vertel ons uw wensen</h2>
+                <p>Of het nu een specifieke tafel is of een compleet interieur — wij maken het. Vraag een vrijblijvende offerte aan.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Werkplaats</span><span>Industriestraat 15, 4101 AG Culemborg</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31345123456">0345 12 34 56</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@hourenhand.nl">info@hourenhand.nl</a></div>
+                    <div class="contact-item"><span class="label">Bezoek</span><span>Op afspraak, Di-Vr 9:00-17:00</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>50382194</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="offerte-form">
+                <h3>Offerte Aanvragen</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Wat wilt u laten maken?</option>
+                    <option>Eettafel</option><option>Stoel / fauteuil</option><option>Kast</option>
+                    <option>Bureau</option><option>Complete inrichting</option><option>Anders</option>
+                </select>
+                <input type="text" placeholder="Afmetingen (optioneel)">
+                <textarea placeholder="Beschrijf uw wensen..." rows="4"></textarea>
+                <button type="submit" class="btn-primary">Verstuur Aanvraag</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <rect x="8" y="8" width="24" height="24" rx="2" fill="none" stroke="#b8783a" stroke-width="2"/>
+                </svg>
+                <span>Hout<em>&Hand</em></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Collectie</h4><a href="#collectie">Tafels</a><a href="#collectie">Stoelen</a><a href="#collectie">Kasten</a></div>
+                <div class="footer-col"><h4>Bedrijf</h4><a href="#over">Over Ons</a><a href="#proces">Proces</a><a href="#contact">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Industriestraat 15</span><span>4101 AG Culemborg</span><span>0345 12 34 56</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 Hout&Hand — KVK 50382194 — FSC Gecertificeerd</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
