@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseFit — Fitness Studio</title>
+    <meta name="description" content="PulseFit — Persoonlijke fitness studio. Groepslessen, personal training, kracht en cardio. Word je sterkste zelf. KVK 58293401">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-pulse"></div>
+            <div class="loader-text">PULSEFIT</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <path d="M5 20 L12 20 L15 10 L20 30 L25 14 L28 20 L35 20" fill="none" stroke="#ff3838" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>PULSE<em>FIT</em></span>
+            </a>
+            <div class="nav-links">
+                <a href="#lessen">Lessen</a>
+                <a href="#workout">3D Workout</a>
+                <a href="#tarieven">Tarieven</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Proefles Aanvragen</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="fitness-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Persoonlijke Fitness — Sinds 2016</div>
+            <h1>WORD JE<br><em>STERKSTE</em> ZELF</h1>
+            <p>Geen drukte, geen wachtrijen. Alleen jij, je doelen en de beste coaches. Welkom bij PulseFit.</p>
+            <div class="hero-actions">
+                <a href="#tarieven" class="btn-primary">Bekijk Tarieven</a>
+                <a href="#workout" class="btn-ghost">3D Workout Guide</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="800">0</span><span>Leden</span></div>
+                <div class="stat"><span class="stat-num" data-target="25">0</span><span>Lessen/Week</span></div>
+                <div class="stat"><span class="stat-num" data-target="12">0</span><span>Coaches</span></div>
+                <div class="stat"><span class="stat-num" data-target="7">0</span><span>Dagen Open</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll om te bewegen</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="lessen">
+        <div class="section-header">
+            <div class="section-tag">Onze Lessen</div>
+            <h2>VIND JOUW WORKOUT</h2>
+            <p>Van kracht tot cardio, van yoga tot HIIT. Er is altijd een les die bij jou past.</p>
+        </div>
+        <div class="lessen-grid">
+            <div class="les-card" data-anim="fade-up">
+                <div class="les-icon">💪</div>
+                <span class="les-intensity">Hoog</span>
+                <h3>HIIT Training</h3>
+                <p>30 minuten maximale inspanning. Verbrand vet, bouw conditie. Voor alle niveaus.</p>
+                <div class="les-schedule"><span>Ma/Wo/Vr 18:00</span><span>45 min</span></div>
+            </div>
+            <div class="les-card" data-anim="fade-up">
+                <div class="les-icon">🏋️</div>
+                <span class="les-intensity">Gemiddeld</span>
+                <h3>Kracht Training</h3>
+                <p>Free weights en machines. Bouw spiermassa en kracht onder begeleiding.</p>
+                <div class="les-schedule"><span>Di/Do 19:00</span><span>60 min</span></div>
+            </div>
+            <div class="les-card" data-anim="fade-up">
+                <div class="les-icon">🧘</div>
+                <span class="les-intensity">Laag</span>
+                <h3>Yoga & Mobility</h3>
+                <p>Flexibiliteit, balans en ontspanning. Herstel je lichaam na zware trainingen.</p>
+                <div class="les-schedule"><span>Za 10:00, Zo 9:00</span><span>60 min</span></div>
+            </div>
+            <div class="les-card" data-anim="fade-up">
+                <div class="les-icon">🚴</div>
+                <span class="les-intensity">Hoog</span>
+                <h3>Spinning</h3>
+                <p>Indoor cycling met muziek en motivatie. Bouw uithoudingsvermogen en verbrand calorieën.</p>
+                <div class="les-schedule"><span>Ma/Wo 19:30, Za 11:00</span><span>45 min</span></div>
+            </div>
+            <div class="les-card" data-anim="fade-up">
+                <div class="les-icon">🥊</div>
+                <span class="les-intensity">Hoog</span>
+                <h3>Boxing Fit</h3>
+                <p>Boxtechnieken gecombineerd met fitness. Kracht, conditie en coördinatie.</p>
+                <div class="les-schedule"><span>Di/Do 18:00</span><span>50 min</span></div>
+            </div>
+            <div class="les-card" data-anim="fade-up">
+                <div class="les-icon">🏃</div>
+                <span class="les-intensity">Gemiddeld</span>
+                <h3>Personal Training</h3>
+                <p>1-op-1 begeleiding op maat. Jouw doelen, jouw tempo, jouw resultaten.</p>
+                <div class="les-schedule"><span>Op afspraak</span><span>60 min</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workout">
+        <div class="section-header">
+            <div class="section-tag">3D Workout Guide</div>
+            <h2>BEWEG IN 3D</h2>
+            <p>Scroll en zie een 3D figuur door workout bewegingen gaan. Kies een oefening om te zien.</p>
+        </div>
+        <div class="workout-wrap">
+            <canvas id="workout-canvas"></canvas>
+            <div class="workout-panel">
+                <h3>Kies een oefening</h3>
+                <div class="exercise-picker">
+                    <button class="ex-btn active" data-ex="squat">Squat</button>
+                    <button class="ex-btn" data-ex="pushup">Push-up</button>
+                    <button class="ex-btn" data-ex="jump">Jumping Jack</button>
+                    <button class="ex-btn" data-ex="lunge">Lunge</button>
+                </div>
+                <div class="exercise-info">
+                    <h4 id="ex-name">Squat</h4>
+                    <p id="ex-desc">Sta rechtop, voeten op schouderbreedte. Zak door je knieën alsof je gaat zitten. Houd je rug recht.</p>
+                    <div class="ex-stats">
+                        <div><span>Herhalingen</span><strong>15</strong></div>
+                        <div><span>Sets</span><strong>3</strong></div>
+                        <div><span>Rust</span><strong>60s</strong></div>
+                    </div>
+                </div>
+                <div class="workout-hint">↻ Sleep om te draaien</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tarieven">
+        <div class="section-header">
+            <div class="section-tag">Tarieven</div>
+            <h2>KIES JOUW PLAN</h2>
+            <p>Geen verborgen kosten, geen lange contracten. Flexibel en eerlijk.</p>
+        </div>
+        <div class="tarieven-grid">
+            <div class="tarief-card" data-anim="fade-up">
+                <h3>Basis</h3>
+                <span class="tarief-price">€ 29<span class="per">/maand</span></span>
+                <ul>
+                    <li>✓ Onbeperkt fitness</li>
+                    <li>✓ 2 groepslessen/week</li>
+                    <li>✓ Kleedkamer & douche</li>
+                    <li>✓ App met schema's</li>
+                    <li class="muted">✗ Personal training</li>
+                    <li class="muted">✗ Sauna</li>
+                </ul>
+                <a href="#contact" class="btn-ghost">Kies Basis</a>
+            </div>
+            <div class="tarief-card popular" data-anim="fade-up">
+                <div class="popular-badge">Populair</div>
+                <h3>Premium</h3>
+                <span class="tarief-price">€ 49<span class="per">/maand</span></span>
+                <ul>
+                    <li>✓ Onbeperkt fitness</li>
+                    <li>✓ Onbeperkt groepslessen</li>
+                    <li>✓ 2 PT sessies/maand</li>
+                    <li>✓ Sauna & stoombad</li>
+                    <li>✓ Voedingsadvies</li>
+                    <li>✓ App met schema's</li>
+                </ul>
+                <a href="#contact" class="btn-primary">Kies Premium</a>
+            </div>
+            <div class="tarief-card" data-anim="fade-up">
+                <h3>Elite</h3>
+                <span class="tarief-price">€ 89<span class="per">/maand</span></span>
+                <ul>
+                    <li>✓ Alles uit Premium</li>
+                    <li>✓ Onbeperkt PT</li>
+                    <li>✓ Eigen coach</li>
+                    <li>✓ InBody scans</li>
+                    <li>✓ Massage (2x/maand)</li>
+                    <li>✓ Prioriteit bij lesseness</li>
+                </ul>
+                <a href="#contact" class="btn-ghost">Kies Elite</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over PulseFit</div>
+                <h2>Meer dan een sportschool</h2>
+                <p>PulseFit is in 2016 opgericht met één missie: fitness toegankelijk maken voor iedereen, zonder intimidatie. Geen spiegelgangen, geen oordelen — alleen een gemeenschap die elkaar pusht.</p>
+                <p>Onze 12 gecertificeerde coaches staan klaar om je te helpen, of je nu beginner of gevorderd bent. Met 25 lessen per week is er altijd iets dat bij je past.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✦</span><span>Persoonlijke begeleiding</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Moderne apparatuur</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Sauna & stoombad</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Gratis parkeren</span></div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat"><span class="num">800+</span><span>Leden</span></div>
+                <div class="over-stat"><span class="num">25</span><span>Lessen/week</span></div>
+                <div class="over-stat"><span class="num">12</span><span>Coaches</span></div>
+                <div class="over-stat"><span class="num">4.8★</span><span>Google score</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Start vandaag</h2>
+                <p>Eerste proefles is gratis. Kom langs en voel de PulseFit vibe.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Studio</span><span>Sportlaan 45, 5621 BB Eindhoven</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31402345678">040 234 56 78</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@pulsefit.nl">info@pulsefit.nl</a></div>
+                    <div class="contact-item"><span class="label">Open</span><span>Ma-Vr 6:00-22:00, Za-Zo 8:00-18:00</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>58293401</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="proefles-form">
+                <h3>Proefles Aanvragen</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Welke les wil je proberen?</option>
+                    <option>HIIT Training</option><option>Kracht Training</option><option>Yoga & Mobility</option>
+                    <option>Spinning</option><option>Boxing Fit</option><option>Personal Training</option>
+                </select>
+                <input type="date" required>
+                <textarea placeholder="Doel of vraag..." rows="3"></textarea>
+                <button type="submit" class="btn-primary">Aanvragen</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <path d="M5 20 L12 20 L15 10 L20 30 L25 14 L28 20 L35 20" fill="none" stroke="#ff3838" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>PULSE<em>FIT</em></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Lessen</h4><a href="#lessen">HIIT</a><a href="#lessen">Kracht</a><a href="#lessen">Yoga</a><a href="#lessen">Spinning</a></div>
+                <div class="footer-col"><h4>Bedrijf</h4><a href="#over">Over Ons</a><a href="#tarieven">Tarieven</a><a href="#contact">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Sportlaan 45</span><span>5621 BB Eindhoven</span><span>040 234 56 78</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 PulseFit — KVK 58293401 — Word je sterkste zelf</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
