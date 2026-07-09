@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonWacht — Zonnepanelen & Energiebesparing</title>
+    <meta name="description" content="ZonWacht — Zonnepanelen installatie voor woning en bedrijf. Bereken je besparing. Sinds 2012. KVK 37294810">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-sun"></div>
+            <div class="loader-text">ZonWacht</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <circle cx="20" cy="20" r="8" fill="#ffa020"/>
+                    <g stroke="#ffa020" stroke-width="2" stroke-linecap="round">
+                        <line x1="20" y1="4" x2="20" y2="8"/><line x1="20" y1="32" x2="20" y2="36"/>
+                        <line x1="4" y1="20" x2="8" y2="20"/><line x1="32" y1="20" x2="36" y2="20"/>
+                        <line x1="8" y1="8" x2="11" y2="11"/><line x1="29" y1="29" x2="32" y2="32"/>
+                        <line x1="32" y1="8" x2="29" y2="11"/><line x1="11" y1="29" x2="8" y2="32"/>
+                    </g>
+                </svg>
+                <span>Zon<em>Wacht</em></span>
+            </a>
+            <div class="nav-links">
+                <a href="#calculator">Besparingscalculator</a>
+                <a href="#panelen">Panelen</a>
+                <a href="#voordelen">Voordelen</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Offerte Aanvragen</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="solar-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag">Zonnepanelen Installatie — Sinds 2012</div>
+            <h1>Zet zon<br>in <em>besparing</em></h1>
+            <p>Het dak van je huis produceert stroom. Wij maken het mogelijk. Bereken direct wat je kunt besparen.</p>
+            <div class="hero-actions">
+                <a href="#calculator" class="btn-primary">Bereken Besparing</a>
+                <a href="#panelen" class="btn-ghost">Bekijk Panelen</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="3500">0</span><span>Installaties</span></div>
+                <div class="stat"><span class="stat-num" data-target="13">0</span><span>Jaar Ervaring</span></div>
+                <div class="stat"><span class="stat-num" data-target="25">0</span><span>Jaar Garantie</span></div>
+                <div class="stat"><span class="stat-num" data-target="100">0</span><span>% Recyclbaar</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll voor de zon</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="calculator">
+        <div class="section-header">
+            <div class="section-tag">Besparingscalculator</div>
+            <h2>Bereken jouw besparing</h2>
+            <p>Vul je gegevens in en zie direct wat zonnepanelen voor jou kunnen opleveren.</p>
+        </div>
+        <div class="calc-wrap">
+            <div class="calc-form">
+                <div class="calc-field">
+                    <label>Maandelijkse stroomrekening</label>
+                    <div class="calc-slider-wrap">
+                        <input type="range" id="calc-bill" min="50" max="500" value="150" step="10">
+                        <span class="calc-value">€ <span id="bill-val">150</span></span>
+                    </div>
+                </div>
+                <div class="calc-field">
+                    <label>Dakoppervlak (m²)</label>
+                    <div class="calc-slider-wrap">
+                        <input type="range" id="calc-roof" min="10" max="100" value="30" step="5">
+                        <span class="calc-value"><span id="roof-val">30</span> m²</span>
+                    </div>
+                </div>
+                <div class="calc-field">
+                    <label>Ligging dak</label>
+                    <select id="calc-orientation">
+                        <option value="south">Zuid (optimaal)</option>
+                        <option value="east-west">Oost-West</option>
+                        <option value="east">Oost</option>
+                        <option value="west">West</option>
+                    </select>
+                </div>
+                <div class="calc-field">
+                    <label>Huidige stroomprijs (€/kWh)</label>
+                    <div class="calc-slider-wrap">
+                        <input type="range" id="calc-price" min="0.20" max="0.50" value="0.30" step="0.01">
+                        <span class="calc-value">€ <span id="price-val">0.30</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="calc-results">
+                <div class="result-card primary">
+                    <span class="result-label">Aantal panelen</span>
+                    <span class="result-value" id="r-panels">12</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-label">Vermogen</span>
+                    <span class="result-value" id="r-power">4.3 kWp</span>
+                </div>
+                <div class="result-card highlight">
+                    <span class="result-label">Jaarlijkse besparing</span>
+                    <span class="result-value" id="r-saving">€ 850</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-label">Terugverdientijd</span>
+                    <span class="result-value" id="r-payback">7.2 jaar</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-label">CO₂ besparing/jaar</span>
+                    <span class="result-value" id="r-co2">1.8 ton</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-label">Investering</span>
+                    <span class="result-value" id="r-investment">€ 6.100</span>
+                </div>
+                <a href="#contact" class="btn-primary calc-btn">Offerte Opvragen</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="panelen">
+        <div class="section-header">
+            <div class="section-tag">Onze Panelen</div>
+            <h2>Premium kwaliteit</h2>
+            <p>Wij installeren alleen A-merken met de hoogste efficiëntie en langste garantie.</p>
+        </div>
+        <div class="panelen-grid">
+            <div class="paneel-card" data-anim="fade-up">
+                <div class="paneel-img" style="background: linear-gradient(135deg, #1a3a5a, #0a2030);">
+                    <div class="paneel-visual"></div>
+                </div>
+                <div class="paneel-info">
+                    <span class="paneel-brand">SunPower Maxeon</span>
+                    <h3>Maxeon 3</h3>
+                    <p>Hoogste efficiëntie op de markt. 25 jaar productgarantie.</p>
+                    <div class="paneel-specs">
+                        <div><span>Vermogen</span><strong>400 Wp</strong></div>
+                        <div><span>Efficiëntie</span><strong>22.8%</strong></div>
+                        <div><span>Garantie</span><strong>25 jr</strong></div>
+                    </div>
+                    <span class="paneel-price">€ 350 / paneel</span>
+                </div>
+            </div>
+            <div class="paneel-card" data-anim="fade-up">
+                <div class="paneel-img" style="background: linear-gradient(135deg, #1a3a4a, #0a2025);">
+                    <div class="paneel-visual"></div>
+                </div>
+                <div class="paneel-info">
+                    <span class="paneel-brand">LG NeON</span>
+                    <h3>NeON R</h3>
+                    <p>Betrouwbare all-round paneel met uitstekende prestaties.</p>
+                    <div class="paneel-specs">
+                        <div><span>Vermogen</span><strong>365 Wp</strong></div>
+                        <div><span>Efficiëntie</span><strong>21.4%</strong></div>
+                        <div><span>Garantie</span><strong>25 jr</strong></div>
+                    </div>
+                    <span class="paneel-price">€ 280 / paneel</span>
+                </div>
+            </div>
+            <div class="paneel-card" data-anim="fade-up">
+                <div class="paneel-img" style="background: linear-gradient(135deg, #2a3a1a, #152010);">
+                    <div class="paneel-visual"></div>
+                </div>
+                <div class="paneel-info">
+                    <span class="paneel-brand">Trina Vertex</span>
+                    <h3>Vertex S+</h3>
+                    <p>Goede prijs-kwaliteit. Ideaal voor standaard daken.</p>
+                    <div class="paneel-specs">
+                        <div><span>Vermogen</span><strong>425 Wp</strong></div>
+                        <div><span>Efficiëntie</span><strong>21.2%</strong></div>
+                        <div><span>Garantie</span><strong>25 jr</strong></div>
+                    </div>
+                    <span class="paneel-price">€ 220 / paneel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="voordelen">
+        <div class="section-header">
+            <div class="section-tag">Voordelen</div>
+            <h2>Waarom zonnepanelen?</h2>
+        </div>
+        <div class="voordelen-grid">
+            <div class="voordeel" data-anim="fade-up">
+                <div class="voordeel-icon">💰</div>
+                <h3>Lagere energierekening</h3>
+                <p>Verlaag je stroomkosten met 50-70%. De panelen verdienen zichzelf terug in 6-8 jaar.</p>
+            </div>
+            <div class="voordeel" data-anim="fade-up">
+                <div class="voordeel-icon">🌱</div>
+                <h3>CO₂ reductie</h3>
+                <p>Een gemiddeld systeem bespaar 1.5-2 ton CO₂ per jaar. Goed voor het klimaat.</p>
+            </div>
+            <div class="voordeel" data-anim="fade-up">
+                <div class="voordeel-icon">🏠</div>
+                <h3>Meer woningwaarde</h3>
+                <p>Woningen met zonnepanelen zijn meer waard en verkopen sneller.</p>
+            </div>
+            <div class="voordeel" data-anim="fade-up">
+                <div class="voordeel-icon">⚡</div>
+                <h3>Energieonafhankelijkheid</h3>
+                <p>Minder afhankelijk van energieleveranciers en stijgende prijzen.</p>
+            </div>
+            <div class="voordeel" data-anim="fade-up">
+                <div class="voordeel-icon">🔧</div>
+                <h3>Onderhoudsarm</h3>
+                <p>Geen bewegende delen — zonnepanelen vereisen bijna geen onderhoud.</p>
+            </div>
+            <div class="voordeel" data-anim="fade-up">
+                <div class="voordeel-icon">🔋</div>
+                <h3>Combineer met batterij</h3>
+                <p>Sla overtollige stroom op in een thuisbatterij voor gebruik 's avonds.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over ZonWacht</div>
+                <h2>13 jaar zonne-energie</h2>
+                <p>ZonWacht is in 2012 opgericht met een missie: zonne-energie toegankelijk maken voor elk huishouden in Nederland. Sindsdien hebben wij meer dan 3500 installaties uitgevoerd.</p>
+                <p>Wij zijn gecertificeerd door SEI (Zonne-energie Installateur) en bieden 25 jaar garantie op alle installaties. Ons team van 18 monteurs installeert door heel Nederland.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✦</span><span>SEI gecertificeerd</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>25 jaar garantie</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>Gratis dakscan</span></div>
+                    <div class="over-feature"><span class="check">✦</span><span>BTW terugvraag service</span></div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat"><span class="num">3500+</span><span>Installaties</span></div>
+                <div class="over-stat"><span class="num">13</span><span>Jaar ervaring</span></div>
+                <div class="over-stat"><span class="num">18</span><span>Monteurs</span></div>
+                <div class="over-stat"><span class="num">4.9★</span><span>Klantbeoordeling</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Vraag een offerte aan</h2>
+                <p>Gratis en vrijblijvend. Wij nemen binnen 24 uur contact op voor een dakscan.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Kantoor</span><span>Energiestraat 22, 5916 PL Venlo</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31771234567">077 123 45 67</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@zonwacht.nl">info@zonwacht.nl</a></div>
+                    <div class="contact-item"><span class="label">Open</span><span>Ma-Vr 8:00-17:00</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>37294810</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="offerte-form">
+                <h3>Offerte Aanvragen</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Adres + postcode" required>
+                <select required>
+                    <option value="">Type woning</option>
+                    <option>Eengezinswoning</option><option>Appartement</option>
+                    <option>Rijwoning</option><option>Bedrijfspand</option>
+                </select>
+                <textarea placeholder="Vragen of opmerkingen..." rows="3"></textarea>
+                <button type="submit" class="btn-primary">Aanvragen</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="28" height="28">
+                    <circle cx="20" cy="20" r="8" fill="#ffa020"/>
+                </svg>
+                <span>Zon<em>Wacht</em></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Panelen</h4><a href="#panelen">SunPower</a><a href="#panelen">LG NeON</a><a href="#panelen">Trina</a></div>
+                <div class="footer-col"><h4>Bedrijf</h4><a href="#over">Over Ons</a><a href="#calculator">Calculator</a><a href="#contact">Contact</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Energiestraat 22</span><span>5916 PL Venlo</span><span>077 123 45 67</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 ZonWacht — KVK 37294810 — SEI Gecertificeerd</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
