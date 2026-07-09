@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YachtSelect — Premium Yacht Broker</title>
+    <meta name="description" content="YachtSelect — Uw partner in premium jachten. Koop, verkoop en charter. Sinds 2010. KVK 54129870">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-wave">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="loader-text">YachtSelect</div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 40" width="34" height="34">
+                    <path d="M5 28 L35 28 L32 22 L8 22 Z" fill="#1a8ad4"/>
+                    <path d="M20 22 L20 8 L32 22" fill="none" stroke="#1a8ad4" stroke-width="2"/>
+                    <path d="M5 30 Q10 33 20 30 Q30 33 35 30" fill="none" stroke="#1a8ad4" stroke-width="1.5" opacity="0.5"/>
+                </svg>
+                <span>Yacht<span class="accent">Select</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#vloot">Vloot</a>
+                <a href="#tour">3D Tour</a>
+                <a href="#diensten">Diensten</a>
+                <a href="#over">Over Ons</a>
+                <a href="#contact" class="nav-cta">Plan Bezichtiging</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <canvas id="yacht-canvas"></canvas>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <div class="hero-tag">Premium Yacht Brokerage — Sinds 2010</div>
+                <h1>De zee<br>roept <span>luider</span></h1>
+                <p>Ontdek onze exclusieve collectie motor- en zeiljachten. Van 30 tot 100 voet, elk met een verhaal.</p>
+                <div class="hero-actions">
+                    <a href="#vloot" class="btn-primary">Bekijk Vloot</a>
+                    <a href="#tour" class="btn-ghost">3D Jacht Tour</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" data-target="145">0</span><span class="stat-label">Jachten Verkocht</span></div>
+                <div class="stat"><span class="stat-num" data-target="15">0</span><span class="stat-label">Jaar Ervaring</span></div>
+                <div class="stat"><span class="stat-num" data-target="38">0</span><span class="stat-label">Jachten in Vloot</span></div>
+                <div class="stat"><span class="stat-num" data-target="4.9">0</span><span class="stat-label">Klant Score</span></div>
+            </div>
+        </div>
+        <div class="scroll-hint"><span>Scroll om de zee te verkennen</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section id="vloot">
+        <div class="section-header">
+            <div class="section-tag">Onze Vloot</div>
+            <h2>Beschikbare Jachten</h2>
+            <p>Een selectie uit onze huidige aanbod. Elke jacht is volledig geïnspecteerd en gecertificeerd.</p>
+        </div>
+        <div class="vloot-grid">
+            <div class="yacht-card" data-anim="fade-up">
+                <div class="yacht-img" style="background: linear-gradient(180deg, #0a2030 0%, #1a4a6a 100%);">
+                    <div class="yacht-silhouette">
+                        <svg viewBox="0 0 300 100" width="100%">
+                            <path d="M20 70 L280 70 L260 85 L40 85 Z" fill="#1a8ad4" opacity="0.3"/>
+                            <rect x="60" y="40" width="180" height="30" fill="#2a9ad4" opacity="0.2"/>
+                            <rect x="80" y="25" width="100" height="15" fill="#2a9ad4" opacity="0.15"/>
+                            <path d="M20 70 L280 70 L260 85 L40 85 Z" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="yacht-info">
+                    <div class="yacht-top"><h3>Azimut 55 Fly</h3><span class="yacht-price">€ 1.250.000</span></div>
+                    <p class="yacht-sub">Motorjacht — 2019 · 16.76m</p>
+                    <div class="yacht-specs">
+                        <span>⚓ 55 voet</span><span>🛏️ 3 cabines</span><span>⚡ 2x 1000 pk</span><span>📅 2019</span>
+                    </div>
+                </div>
+            </div>
+            <div class="yacht-card" data-anim="fade-up">
+                <div class="yacht-img" style="background: linear-gradient(180deg, #0a1a20 0%, #1a3a4a 100%);">
+                    <div class="yacht-silhouette">
+                        <svg viewBox="0 0 300 100" width="100%">
+                            <path d="M30 65 L270 65 L250 80 L50 80 Z" fill="#1a8ad4" opacity="0.3"/>
+                            <rect x="70" y="35" width="160" height="30" fill="#2a9ad4" opacity="0.2"/>
+                            <path d="M150 35 L150 10 L220 35" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                            <path d="M30 65 L270 65 L250 80 L50 80 Z" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="yacht-info">
+                    <div class="yacht-top"><h3>Bavaria 46 Cruiser</h3><span class="yacht-price">€ 385.000</span></div>
+                    <p class="yacht-sub">Zeiljacht — 2021 · 14.27m</p>
+                    <div class="yacht-specs">
+                        <span>⚓ 46 voet</span><span>🛏️ 4 cabines</span><span>🌬️ Sloop</span><span>📅 2021</span>
+                    </div>
+                </div>
+            </div>
+            <div class="yacht-card" data-anim="fade-up">
+                <div class="yacht-img" style="background: linear-gradient(180deg, #0a1a30 0%, #1a3a60 100%);">
+                    <div class="yacht-silhouette">
+                        <svg viewBox="0 0 300 100" width="100%">
+                            <path d="M15 70 L285 70 L265 85 L35 85 Z" fill="#1a8ad4" opacity="0.3"/>
+                            <rect x="50" y="38" width="200" height="32" fill="#2a9ad4" opacity="0.2"/>
+                            <rect x="70" y="22" width="120" height="16" fill="#2a9ad4" opacity="0.15"/>
+                            <path d="M15 70 L285 70 L265 85 L35 85 Z" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="yacht-info">
+                    <div class="yacht-top"><h3>Princess V65</h3><span class="yacht-price">€ 2.100.000</span></div>
+                    <p class="yacht-sub">Motorjacht — 2022 · 20.15m</p>
+                    <div class="yacht-specs">
+                        <span>⚓ 65 voet</span><span>🛏️ 3 cabines</span><span>⚡ 2x 1550 pk</span><span>📅 2022</span>
+                    </div>
+                </div>
+            </div>
+            <div class="yacht-card" data-anim="fade-up">
+                <div class="yacht-img" style="background: linear-gradient(180deg, #0a1520 0%, #1a3a50 100%);">
+                    <div class="yacht-silhouette">
+                        <svg viewBox="0 0 300 100" width="100%">
+                            <path d="M25 68 L275 68 L255 82 L45 82 Z" fill="#1a8ad4" opacity="0.3"/>
+                            <rect x="65" y="37" width="170" height="31" fill="#2a9ad4" opacity="0.2"/>
+                            <path d="M150 37 L150 8 L230 37" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                            <path d="M25 68 L275 68 L255 82 L45 82 Z" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="yacht-info">
+                    <div class="yacht-top"><h3>Bénéteau Oceanis 51</h3><span class="yacht-price">€ 525.000</span></div>
+                    <p class="yacht-sub">Zeiljacht — 2023 · 15.38m</p>
+                    <div class="yacht-specs">
+                        <span>⚓ 51 voet</span><span>🛏️ 4 cabines</span><span>🌬️ Sloop</span><span>📅 2023</span>
+                    </div>
+                </div>
+            </div>
+            <div class="yacht-card" data-anim="fade-up">
+                <div class="yacht-img" style="background: linear-gradient(180deg, #0a1020 0%, #1a2a48 100%);">
+                    <div class="yacht-silhouette">
+                        <svg viewBox="0 0 300 100" width="100%">
+                            <path d="M10 72 L290 72 L270 87 L30 87 Z" fill="#1a8ad4" opacity="0.3"/>
+                            <rect x="45" y="36" width="210" height="36" fill="#2a9ad4" opacity="0.2"/>
+                            <rect x="65" y="18" width="140" height="18" fill="#2a9ad4" opacity="0.15"/>
+                            <path d="M10 72 L290 72 L270 87 L30 87 Z" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="yacht-info">
+                    <div class="yacht-top"><h3>Sunseeker 86 Yacht</h3><span class="yacht-price">€ 5.800.000</span></div>
+                    <p class="yacht-sub">Motorjacht — 2020 · 26.20m</p>
+                    <div class="yacht-specs">
+                        <span>⚓ 86 voet</span><span>🛏️ 4 cabines</span><span>⚡ 2x 1948 pk</span><span>📅 2020</span>
+                    </div>
+                </div>
+            </div>
+            <div class="yacht-card" data-anim="fade-up">
+                <div class="yacht-img" style="background: linear-gradient(180deg, #0a1a18 0%, #1a3a38 100%);">
+                    <div class="yacht-silhouette">
+                        <svg viewBox="0 0 300 100" width="100%">
+                            <path d="M30 65 L270 65 L250 80 L50 80 Z" fill="#1a8ad4" opacity="0.3"/>
+                            <rect x="70" y="33" width="160" height="32" fill="#2a9ad4" opacity="0.2"/>
+                            <path d="M150 33 L150 5 L235 33" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                            <path d="M30 65 L270 65 L250 80 L50 80 Z" fill="none" stroke="#1a8ad4" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="yacht-info">
+                    <div class="yacht-top"><h3>Hanse 548</h3><span class="yacht-price">€ 445.000</span></div>
+                    <p class="yacht-sub">Zeiljacht — 2022 · 16.20m</p>
+                    <div class="yacht-specs">
+                        <span>⚓ 54 voet</span><span>🛏️ 3 cabines</span><span>🌬️ Sloop</span><span>📅 2022</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tour">
+        <div class="section-header">
+            <div class="section-tag">3D Jacht Tour</div>
+            <h2>Verken het jacht van alle kanten</h2>
+            <p>Draai het model, zoom in en ontdek de details. Scroll om de camera te bewegen.</p>
+        </div>
+        <div class="tour-wrap">
+            <canvas id="tour-canvas"></canvas>
+            <div class="tour-hint">↻ Sleep om te draaien · Scroll om te zoomen</div>
+            <div class="tour-info">
+                <h3>Azimut 55 Fly — Details</h3>
+                <div class="tour-specs">
+                    <div class="tour-spec"><span>Lengte</span><strong>16.76m</strong></div>
+                    <div class="tour-spec"><span>Breedte</span><strong>4.90m</strong></div>
+                    <div class="tour-spec"><span>Diepgang</span><strong>1.68m</strong></div>
+                    <div class="tour-spec"><span>Waterlijn</span><strong>14.20m</strong></div>
+                    <div class="tour-spec"><span>Brandstof</span><strong>2x 2000L</strong></div>
+                    <div class="tour-spec"><span>Water</span><strong>800L</strong></div>
+                    <div class="tour-spec"><span>Max snelheid</span><strong>32 knopen</strong></div>
+                    <div class="tour-spec"><span>Kruissnelheid</span><strong>26 knopen</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diensten">
+        <div class="section-header">
+            <div class="section-tag">Onze Diensten</div>
+            <h2>Compleet jachtbeheer</h2>
+        </div>
+        <div class="diensten-grid">
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🚢</div>
+                <h3>Koop & Verkoop</h3>
+                <p>Wij bemiddelen bij de koop en verkoop van premium jachten. Eerlijke taxatie en transparante afwikkeling.</p>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">📋</div>
+                <h3>Charter & Verhuur</h3>
+                <p>Verhuur uw jacht wanneer u niet vaart. Wij regelen bemanning, onderhoud en boekingen.</p>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🔧</div>
+                <h3>Onderhoud & Winterstalling</h3>
+                <p>Volledig beheer van uw jacht — van periodiek onderhoud tot winterstalling en reparatie.</p>
+            </div>
+            <div class="dienst-card" data-anim="fade-up">
+                <div class="dienst-icon">🛡️</div>
+                <h3>Verzekering & Financiering</h3>
+                <p>Wij adviseren over de beste verzekering en financieel structureren van uw jachtaankoop.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="over">
+        <div class="over-content">
+            <div class="over-text">
+                <div class="section-tag">Over YachtSelect</div>
+                <h2>15 jaar passie voor de zee</h2>
+                <p>YachtSelect werd opgericht in 2010 door een groep zeelieden met één doel: de jachtmarkt transparanter en persoonlijker maken. Vandaag zijn wij de vertrouwde broker voor eigenaren door heel Europa.</p>
+                <p>Onze haven in Scheveningen is onze thuisbasis, maar onze jachten varen wereldwijd. Met een team van 8 specialisten staan wij klaar voor elke vraag.</p>
+                <div class="over-features">
+                    <div class="over-feature"><span class="check">✓</span><span>CE-gecertificeerde jachten</span></div>
+                    <div class="over-feature"><span class="check">✓</span><span>Volledige technische inspectie</span></div>
+                    <div class="over-feature"><span class="check">✓</span><span>Internationale bemiddeling</span></div>
+                    <div class="over-feature"><span class="check">✓</span><span>Eigen haven & service team</span></div>
+                </div>
+            </div>
+            <div class="over-stats">
+                <div class="over-stat"><span class="num">145</span><span>Jachten verkocht</span></div>
+                <div class="over-stat"><span class="num">38</span><span>In vloot</span></div>
+                <div class="over-stat"><span class="num">15</span><span>Jaar ervaring</span></div>
+                <div class="over-stat"><span class="num">4.9★</span><span>Klantbeoordeling</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="section-tag">Contact</div>
+                <h2>Plan een bezichtiging</h2>
+                <p>Ervaar het zelf. Plan een vrijblijvende bezichtiging aan boord van uw droomjacht.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="label">Haven</span><span>Havenkade 200, 2583 EV Scheveningen</span></div>
+                    <div class="contact-item"><span class="label">Telefoon</span><a href="tel:+31701234567">070 123 45 67</a></div>
+                    <div class="contact-item"><span class="label">Email</span><a href="mailto:info@yachtselect.nl">info@yachtselect.nl</a></div>
+                    <div class="contact-item"><span class="label">Openingstijden</span><span>Ma-Vr 9:00-17:00, Za-Zo op afspraak</span></div>
+                    <div class="contact-item"><span class="label">KVK</span><span>54129870</span></div>
+                </div>
+            </div>
+            <form class="contact-form" id="bezichtiging-form">
+                <h3>Bezichtiging Aanvragen</h3>
+                <div class="form-row"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoon" required></div>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Welke jacht interesseert u?</option>
+                    <option>Azimut 55 Fly</option>
+                    <option>Bavaria 46 Cruiser</option>
+                    <option>Princess V65</option>
+                    <option>Bénéteau Oceanis 51</option>
+                    <option>Sunseeker 86 Yacht</option>
+                    <option>Hanse 548</option>
+                </select>
+                <input type="date" required>
+                <textarea placeholder="Bericht (optioneel)" rows="3"></textarea>
+                <button type="submit" class="btn-primary">Aanvragen</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg viewBox="0 0 40 40" width="30" height="30">
+                    <path d="M5 28 L35 28 L32 22 L8 22 Z" fill="#1a8ad4"/>
+                    <path d="M20 22 L20 8 L32 22" fill="none" stroke="#1a8ad4" stroke-width="2"/>
+                </svg>
+                <span>Yacht<span class="accent">Select</span></span>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col"><h4>Vloot</h4><a href="#vloot">Motorjachten</a><a href="#vloot">Zeiljachten</a><a href="#tour">3D Tour</a></div>
+                <div class="footer-col"><h4>Diensten</h4><a href="#diensten">Koop/Verkoop</a><a href="#diensten">Charter</a><a href="#diensten">Onderhoud</a></div>
+                <div class="footer-col"><h4>Contact</h4><span>Havenkade 200</span><span>2583 EV Scheveningen</span><span>070 123 45 67</span></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 YachtSelect B.V. — KVK 54129870</span></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
