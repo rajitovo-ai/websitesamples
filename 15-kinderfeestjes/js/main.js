@@ -50,7 +50,8 @@ document.querySelectorAll('.grid article').forEach(card => {
     card.addEventListener('mouseenter', () => {
         const t = card.dataset.theme;
         if (themes[t]) {
-            gsap.to('body', { '--bg': themes[t].bg, '--accent': themes[t].accent, duration: 0.5 });
+            document.documentElement.style.setProperty('--bg', themes[t].bg);
+            document.documentElement.style.setProperty('--accent', themes[t].accent);
         }
     });
 });
