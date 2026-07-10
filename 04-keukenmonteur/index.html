@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeukenKlik — Keukenmontage op Maat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">KeukenKlik</div>
+        <div class="nav-links"><a href="#werk">Werk</a><a href="#modules">Modules</a><a href="#contact">Contact</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="kitchen" id="kitchen">
+                <div class="cabinet base left"><div class="door"></div></div>
+                <div class="cabinet base right"><div class="door"></div></div>
+                <div class="cabinet wall left"><div class="door"></div></div>
+                <div class="cabinet wall right"><div class="door"></div></div>
+                <div class="counter"></div>
+                <div class="fridge"></div>
+                <div class="stove"></div>
+            </div>
+            <div class="hero-text">
+                <span class="badge">Keukenmontage</span>
+                <h1>Elke module<br>klikt <em>perfect</em></h1>
+                <p>Van IKEA tot designkeuken: wij monteren, sluiten aan en zorgen dat alles werkt.</p>
+                <a href="#contact" class="btn">Offerte</a>
+            </div>
+        </section>
+
+        <section class="werk" id="werk">
+            <h2>Zo monteren wij</h2>
+            <div class="steps">
+                <div class="step"><span>1</span><p>Opmeten en waterpas zetten</p></div>
+                <div class="step"><span>2</span><p>Kasten monteren en verankeren</p></div>
+                <div class="step"><span>3</span><p>Blad, spoelbak en apparatuur plaatsen</p></div>
+                <div class="step"><span>4</span><p>Afsluiten en schoon opleveren</p></div>
+            </div>
+        </section>
+
+        <section class="modules" id="modules">
+            <h2>Modules & merken</h2>
+            <div class="module-grid">
+                <div class="mod">Ikea Metod</div>
+                <div class="mod">Bruynzeel</div>
+                <div class="mod">Nolte</div>
+                <div class="mod">Pelipal</div>
+                <div class="mod">Häcker</div>
+                <div class="mod">Eigen ontwerp</div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Plan uw keuken</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we plannen een montagedatum met u.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="text" placeholder="Keukenmerk / type">
+                <button type="submit" class="btn">Aanvragen</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

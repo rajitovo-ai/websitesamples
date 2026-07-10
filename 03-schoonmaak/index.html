@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schoon & Fris — Professionele Schoonmaak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="dust"></canvas>
+    <svg class="web" viewBox="0 0 100 100" preserveAspectRatio="none"><g id="webGroup"></g></svg>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">Schoon & Fris</div>
+        <div class="nav-links"><a href="#diensten">Diensten</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge">Schoonmaak op maat</span>
+                <h1>Van stofweb<br>naar <em>frisse start</em></h1>
+                <p>Voor kantoren, scholen, zorginstellingen en woningen. Milieuvriendelijk en betrouwbaar.</p>
+                <a href="#contact" class="btn">Afspraak maken</a>
+            </div>
+        </section>
+
+        <section class="diensten" id="diensten">
+            <h2>Wat we schoonmaken</h2>
+            <div class="grid">
+                <article><span>🧹</span><h3>Kantoren</h3><p>Dagelijkse of wekelijkse schoonmaak op maat.</p></article>
+                <article><span>🏠</span><h3>Woningen</h3><p>Periodiek of eenmalig, inclusief ramen en vloeren.</p></article>
+                <article><span>🏥</span><h3>Zorg & Welzijn</h3><p>Hygiënisch schoon volgens brancheprotocollen.</p></article>
+                <article><span>🪟</span><h3>Ramen & Gevels</h3><p>Streeploos glas tot grote hoogte.</p></article>
+            </div>
+        </section>
+
+        <section class="werkwijze" id="werkwijze">
+            <h2>Onze werkwijze</h2>
+            <div class="steps">
+                <div class="step"><div class="num">1</div><p>Inventarisatie</p></div>
+                <div class="step"><div class="num">2</div><p>Op maat plan</p></div>
+                <div class="step"><div class="num">3</div><p>Uitvoering</p></div>
+                <div class="step"><div class="num">4</div><p>Controle</p></div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Vrijblijvende offerte</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we nemen snel contact op.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="email" placeholder="E-mail" required>
+                <select><option>Kantoor</option><option>Woning</option><option>Zorginstelling</option><option>Anders</option></select>
+                <button type="submit" class="btn">Verstuur</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

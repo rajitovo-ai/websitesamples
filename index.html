@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIMI — 15 AWWard-Winning ZZP/MKB Websites</title>
+    <meta name="description" content="15 originele, award-waardige demo-websites voor lokale Nederlandse ZZP en MKB.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #06060a;
+            --panel: #0e0e14;
+            --card: #13131c;
+            --border: rgba(255,255,255,0.08);
+            --fg: #f4f4f7;
+            --muted: #7a7a88;
+            --accent: #a78bfa;
+            --accent-2: #22d3ee;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .wrap { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; }
+        header { margin-bottom: 3rem; position: relative; }
+        .eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.05;
+            max-width: 900px;
+        }
+        h1 span { color: var(--accent-2); }
+        .subtitle {
+            color: var(--muted);
+            margin-top: 1rem;
+            font-size: 1rem;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 1.5rem;
+            align-items: center;
+        }
+        .search {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            color: var(--fg);
+            font-size: 0.95rem;
+            min-width: 260px;
+            outline: none;
+        }
+        .search:focus { border-color: var(--accent); }
+        .count { color: var(--muted); font-size: 0.85rem; margin-left: auto; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+        }
+        .preview {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #0c0c14 0%, #1a1a2e 100%);
+        }
+        .preview::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(167,139,250,0.15), transparent 50%);
+        }
+        .num {
+            position: absolute;
+            top: 0.9rem;
+            left: 0.9rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.5rem;
+            border-radius: 99px;
+        }
+        .body { padding: 1.4rem; }
+        .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .desc {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.65rem;
+            padding: 0.25rem 0.55rem;
+            border-radius: 99px;
+            background: rgba(255,255,255,0.06);
+            color: var(--muted);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .hidden { display: none !important; }
+        @media (max-width: 600px) {
+            .wrap { padding: 2rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="eyebrow">KIMI — Autonoom gebouwd portfolio</div>
+            <h1>15 award-waardige websites voor <span>lokale ondernemers</span></h1>
+            <p class="subtitle">Statische HTML/CSS/JS demo's met 3D-animatie, scroll-gedreven effecten en een volledig eigen identiteit. Geen Next.js, geen hergebruik van bestaande glmwebsites.</p>
+            <div class="controls">
+                <input type="text" class="search" id="search" placeholder="Zoek branche of effect...">
+                <span class="count" id="count">15 websites</span>
+            </div>
+        </header>
+
+        <main class="grid" id="grid"></main>
+
+        <footer class="footer">
+            <div>Opgebouwd in <code>/home/ubuntu/Documents/glm/kimi</code></div>
+            <div>Serveer met <code>node server.js</code> op poort 5173</div>
+        </footer>
+    </div>
+
+    <script>
+        const sites = [
+            { id: '01-timmerman', title: 'Timmerman', desc: '3D houtvezel transformeert door een zaagblad naar een kozijn.', icon: '🪵', tags: ['Three.js', 'GSAP', 'ScrollTrigger'] },
+            { id: '02-verhuisbedrijf', title: 'Verhuisbedrijf', desc: 'Een huis klapt uit in kartonnen dozen, tape en bubbelfolie.', icon: '📦', tags: ['CSS 3D', 'Canvas particles'] },
+            { id: '03-schoonmaak', title: 'Schoonmaakdienst', desc: 'Spinnenweb lost op tot een glanzend oppervlak.', icon: '🧽', tags: ['SVG morph', 'WebGL'] },
+            { id: '04-keukenmonteur', title: 'Keukenmonteur', desc: 'Modulaire keuken klikt in elkaar; lades en fronten glijden open.', icon: '🍽️', tags: ['Three.js', 'ScrollTrigger'] },
+            { id: '05-zonwering', title: 'Zonwering', desc: 'Jaloezieën en rolluiken ontvouwen zich over een 3D raam.', icon: '🪟', tags: ['CSS 3D', 'GSAP'] },
+            { id: '06-behanger', title: 'Behanger', desc: 'Behangrol bedekt een muur; patronen komen tot leven met relief.', icon: '🌀', tags: ['Canvas', 'SVG'] },
+            { id: '07-vloerenlegger', title: 'Vloerenlegger', desc: 'Planken leggen zich in visgraat; houtnerf close-up op scroll.', icon: '🪵', tags: ['Three.js', 'GSAP'] },
+            { id: '08-bruiloftdj', title: 'Bruiloft DJ', desc: 'Draaiende vinylplaat met geluidsgolven en dansende lichtstralen.', icon: '🎧', tags: ['WebGL', 'Audio-reactive'] },
+            { id: '09-ontstoppingsdienst', title: 'Ontstoppingsdienst', desc: 'Ondergronds pijpennetwerk; veer breekt verstopping.', icon: '🪠', tags: ['Three.js', 'Canvas'] },
+            { id: '10-slotenmaker', title: 'Slotenmaker', desc: 'Slotcilinder opent; sleutel draait en pennen klappen in codeur.', icon: '🔐', tags: ['CSS 3D', 'SVG'] },
+            { id: '11-wagenbelettering', title: 'Wagenbelettering', desc: 'Bestelbus transformeert van blanco naar full-colour wrap.', icon: '🚐', tags: ['Three.js', 'GSAP'] },
+            { id: '12-cardetailing', title: 'Car Detailing', desc: 'Lak-anatomie: clay, polish, coating met waterdruppels.', icon: '🚗', tags: ['WebGL', 'Particles'] },
+            { id: '13-hondenuitlaat', title: 'Hondenuitlaat', desc: 'Pootafdrukken vormen een wandelroute; ballen en staarten swingen.', icon: '🐕', tags: ['Canvas', 'GSAP'] },
+            { id: '14-massage', title: 'Massagepraktijk', desc: 'Warmtegolven en etherische oliedruppels ontspannen spieren.', icon: '🧘', tags: ['WebGL shaders', 'ScrollTrigger'] },
+            { id: '15-kinderfeestjes', title: 'Kinderfeestjes', desc: 'Ballonnen en thema’s transformeren: prinses, dino, circus.', icon: '🎈', tags: ['Three.js', 'GSAP'] }
+        ];
+
+        const grid = document.getElementById('grid');
+        const search = document.getElementById('search');
+        const count = document.getElementById('count');
+
+        function render(list) {
+            grid.innerHTML = list.map(s => `
+                <a class="card" href="/${s.id}/" data-terms="${(s.title + ' ' + s.desc + ' ' + s.tags.join(' ')).toLowerCase()}">
+                    <div class="preview"><span class="num">${s.id.split('-')[0]}</span>${s.icon}</div>
+                    <div class="body">
+                        <div class="title">${s.title}</div>
+                        <div class="desc">${s.desc}</div>
+                        <div class="tags">${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+                    </div>
+                </a>
+            `).join('');
+            count.textContent = `${list.length} website${list.length === 1 ? '' : 's'}`;
+        }
+
+        search.addEventListener('input', e => {
+            const q = e.target.value.toLowerCase();
+            document.querySelectorAll('.card').forEach(card => {
+                const terms = card.dataset.terms;
+                card.classList.toggle('hidden', q && !terms.includes(q));
+            });
+            const visible = document.querySelectorAll('.card:not(.hidden)').length;
+            count.textContent = `${visible} website${visible === 1 ? '' : 's'}`;
+        });
+
+        render(sites);
+    </script>
+</body>
+</html>

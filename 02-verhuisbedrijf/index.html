@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verhuisgigant — Stressvrij Verhuizen</title>
+    <meta name="description" content="Lokale verhuizer voor particulier en zakelijk. Inpakken, vervoeren, monteren.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">Verhuisgigant</div>
+        <div class="nav-links"><a href="#over">Over</a><a href="#tarieven">Tarieven</a><a href="#contact">Contact</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="house-scene" id="houseScene">
+                <div class="house" id="house">
+                    <div class="roof"></div>
+                    <div class="walls">
+                        <div class="window window-left"></div>
+                        <div class="window window-right"></div>
+                        <div class="door"></div>
+                    </div>
+                </div>
+                <div class="boxes" id="boxes"></div>
+            </div>
+            <div class="hero-text">
+                <span class="badge">Gecertificeerd · Verzekerd</span>
+                <h1>Van oud huis<br>naar <em>nieuw begin</em></h1>
+                <p>Wij pakken, tillen, vervoeren en monteren. Jij hoeft alleen maar de sleutel te geven.</p>
+                <a href="#contact" class="btn">Gratis offerte</a>
+            </div>
+        </section>
+
+        <section class="split" id="over">
+            <div class="split-text">
+                <h2>Alles onder één dak</h2>
+                <ul>
+                    <li>Inpakmateriaal op maat</li>
+                    <li>Verhuizen binnen heel Nederland</li>
+                    <li>Montage en demontage meubels</li>
+                    <li>Verzekerd tot €100.000</li>
+                </ul>
+            </div>
+            <div class="split-visual">
+                <div class="card-box">📦</div>
+                <div class="card-box">🛋️</div>
+                <div class="card-box">🖼️</div>
+            </div>
+        </section>
+
+        <section class="tarieven" id="tarieven">
+            <h2>Tarieven</h2>
+            <div class="pricing">
+                <div class="price-card"><h3>Studio</h3><div class="price">€449</div><p>Inclusief verpakking, vervoer en 2 verhuizers.</p></div>
+                <div class="price-card featured"><h3>Appartement</h3><div class="price">€799</div><p>Complete verhuizing incl. demontage en montage.</p></div>
+                <div class="price-card"><h3>Woning</h3><div class="price">€1.249</div><p>Grote woning met tuinmeubilair en opslag.</p></div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Vraag vandaag nog een offerte</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we bellen u binnen 2 uur terug.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="tel" placeholder="Telefoon" required>
+                <input type="text" placeholder="Van adres → Naar adres">
+                <button type="submit" class="btn">Offerte aanvragen</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

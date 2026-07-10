@@ -1,0 +1,52 @@
+:root {
+    --bg: #0b1220; --panel: #122033; --accent: #2dd4bf; --accent-2: #f0abfc; --fg: #f0f9ff; --muted: #93c5fd;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+#dust { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.web { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; opacity: 0.8; pointer-events: none; }
+.nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;
+    background: rgba(11,18,32,0.7); backdrop-filter: blur(10px);
+}
+.nav-back { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+.nav-brand { font-family: 'Poppins', sans-serif; font-weight: 700; }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--fg); text-decoration: none; font-size: 0.85rem; }
+.hero {
+    min-height: 100vh; display: flex; align-items: center; padding: 6rem 8vw; position: relative; z-index: 2;
+}
+.hero-text { max-width: 620px; }
+.badge {
+    display: inline-block; padding: 0.35rem 0.8rem; border-radius: 99px;
+    background: rgba(45,212,191,0.12); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem;
+}
+h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 1.25rem; }
+h1 em { color: var(--accent-2); font-style: normal; }
+.hero-text p { color: var(--muted); font-size: 1.1rem; line-height: 1.6; max-width: 460px; margin-bottom: 2rem; }
+.btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0b1220; text-decoration: none; font-weight: 700; border-radius: 12px; border: none; cursor: pointer; transition: transform 0.2s; }
+.btn:hover { transform: translateY(-3px); }
+
+.diensten, .werkwijze, .contact { padding: 8rem 6vw; position: relative; z-index: 2; }
+.diensten h2, .werkwijze h2, .contact h2 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2.5rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.grid article { background: var(--panel); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; transition: transform 0.3s; }
+.grid article:hover { transform: translateY(-8px); border-color: rgba(45,212,191,0.3); }
+.grid span { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.grid h3 { font-family: 'Poppins', sans-serif; margin-bottom: 0.5rem; }
+.grid p { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+.steps { display: flex; gap: 1rem; flex-wrap: wrap; }
+.step { flex: 1; min-width: 150px; background: var(--panel); border-radius: 16px; padding: 1.5rem; text-align: center; }
+.step .num { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #0b1220; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1rem; }
+.step p { font-weight: 600; }
+
+.contact form { max-width: 480px; display: flex; flex-direction: column; gap: 1rem; }
+.contact input, .contact select {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--fg);
+    padding: 1rem; border-radius: 10px; font-size: 0.95rem;
+}
+.contact input:focus, .contact select:focus { outline: none; border-color: var(--accent); }
+
+@media (max-width: 700px) { .nav-links { display: none; } .hero { padding-top: 6rem; } }

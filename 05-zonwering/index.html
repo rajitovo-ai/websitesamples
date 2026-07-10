@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zonnelux — Zonwering & Raamdecoratie</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">Zonnelux</div>
+        <div class="nav-links"><a href="#producten">Producten</a><a href="#licht">Licht</a><a href="#contact">Contact</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="window-scene">
+                <div class="room">
+                    <div class="window-frame">
+                        <div class="glass"></div>
+                        <div class="slats" id="slats"></div>
+                    </div>
+                    <div class="sun" id="sun"></div>
+                    <div class="shadows" id="shadows"></div>
+                </div>
+            </div>
+            <div class="hero-text">
+                <span class="badge">Licht onder controle</span>
+                <h1>Jaloezieën die<br><em>meeschijnen</em></h1>
+                <p>Elektrische en handbediende zonwering op maat. Binnen en buiten.</p>
+                <a href="#contact" class="btn">Advies aan huis</a>
+            </div>
+        </section>
+
+        <section class="producten" id="producten">
+            <h2>Onze producten</h2>
+            <div class="grid">
+                <article><h3>Jaloezieën</h3><p>Hout, aluminium en kunststof in elke kleur en breedte.</p></article>
+                <article><h3>Rolgordijnen</h3><p>Verduisterend, transparant of dag/nacht.</p></article>
+                <article><h3>Plissé</h3><p>Sfeervol en isolerend, ook voor dakraam.</p></article>
+                <article><h3>Kn raamdecoratie</h3><p>Luxaflex, duo rolgordijnen en zonneschermen.</p></article>
+            </div>
+        </section>
+
+        <section class="licht" id="licht">
+            <h2>Licht, precies zoals jij het wilt</h2>
+            <div class="demo-bar">
+                <label for="angle">Zonnestand</label>
+                <input type="range" id="angle" min="0" max="100" value="30">
+            </div>
+            <div class="licht-viz" id="lichtViz"></div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Gratis inmeetafspraak</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we komen graag langs voor een lichtplan.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="text" placeholder="Postcode">
+                <button type="submit" class="btn">Aanvragen</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
