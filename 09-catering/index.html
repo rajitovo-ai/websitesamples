@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smaak & Stijl — Catering</title>
+    <meta name="description" content="Smaak & Stijl — Catering voor feesten, zakelijke events en private dining. KVK 69109876">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0f0d0b; --panel: #1c1815; --accent: #d4a373; --accent-2: #e63946; --fg: #f7f5f2; --muted: #a89e94; --border: rgba(255,255,255,0.08); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: auto; }
+        body { font-family:'Inter', sans-serif; color:var(--fg); background:var(--bg); overflow-x:hidden; }
+        #loader { position:fixed; inset:0; z-index:999; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.6s, visibility 0.6s; }
+        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-ring { width:48px; height:48px; border-radius:50%; border:3px solid rgba(212,163,115,0.2); border-top-color:var(--accent); animation:spin 1s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .loader-text { margin-top:1rem; color:var(--muted); font-size:0.85rem; }
+        #webgl { position:fixed; inset:0; z-index:0; outline:none; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4vw; background:rgba(15,13,11,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+        .nav-brand { font-family:'Space Grotesk'; font-weight:700; font-size:1.3rem; color:var(--fg); }
+        .nav-brand span { color:var(--accent); }
+        .nav-links { display:flex; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+        .nav-links a:hover { color:var(--accent); }
+        .nav-cta { padding:0.6rem 1.2rem; background:var(--accent); color:#0f0d0b !important; border-radius:8px; }
+        #content { position:relative; z-index:2; pointer-events:none; }
+        section { min-height:100vh; display:flex; align-items:center; padding:6rem 6vw; position:relative; }
+        .section-inner { pointer-events:auto; max-width:520px; }
+        .right { margin-left:auto; text-align:right; }
+        .right .stats { justify-content:flex-end; }
+        .eyebrow { font-family:'Space Grotesk'; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:1rem; }
+        h1, h2 { font-family:'Space Grotesk'; font-weight:700; line-height:1.1; }
+        h1 { font-size:clamp(2.5rem,5vw,5rem); margin-bottom:1.5rem; }
+        h2 { font-size:clamp(2rem,4vw,3.5rem); margin-bottom:1.25rem; }
+        p { color:var(--muted); font-size:1.05rem; line-height:1.7; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2rem; border-radius:10px; font-weight:600; text-decoration:none; background:var(--accent); color:#0f0d0b; border:none; cursor:pointer; transition:transform 0.2s; }
+        .btn:hover { transform:translateY(-3px); }
+        .btn-ghost { background:transparent; color:var(--accent); border:1.5px solid var(--accent); margin-left:0.75rem; }
+        .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+        .feature-card { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:1.2rem; }
+        .feature-card strong { display:block; font-family:'Space Grotesk'; font-size:1.1rem; margin-bottom:0.4rem; }
+        .feature-card span { font-size:0.85rem; color:var(--muted); }
+        .stats { display:flex; gap:2rem; margin-top:2rem; }
+        .stat { text-align:center; }
+        .stat-num { font-family:'Space Grotesk'; font-size:2.2rem; font-weight:700; color:var(--accent); }
+        .stat-label { font-size:0.8rem; color:var(--muted); }
+        .contact-form { max-width:460px; pointer-events:auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width:100%; padding:1rem; margin-bottom:0.75rem; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.05); color:var(--fg); font-family:inherit; font-size:0.95rem; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); }
+        .contact-form button { width:100%; }
+        .usp-list { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+        .usp-list li { display:flex; align-items:center; gap:0.75rem; color:var(--muted); }
+        .usp-list li::before { content:'✓'; color:var(--accent); font-weight:700; }
+        footer { position:relative; z-index:2; background:#080706; color:var(--muted); padding:3rem 6vw; font-size:0.85rem; }
+        footer a { color:#fff; text-decoration:none; }
+        .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+        @media (max-width:800px) { .nav-links { display:none; } .feature-grid { grid-template-columns:1fr; } .right { margin-left:0; text-align:left; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-ring"></div><div class="loader-text">Smaak & Stijl laden...</div></div>
+    <canvas id="webgl"></canvas>
+    <nav>
+        <div class="nav-brand">Smaak & <span>Stijl</span></div>
+        <div class="nav-links">
+            <a href="#events">Events</a>
+            <a href="#menu">Menu</a>
+            <a href="#particulier">Particulier</a>
+            <a href="#contact" class="nav-cta">Offerte</a>
+        </div>
+    </nav>
+    <div id="content">
+        <section id="hero">
+            <div class="section-inner">
+                <div class="eyebrow">Catering & events</div>
+                <h1>Eten dat <span style="color:var(--accent)">indruk maakt</span>.</h1>
+                <p>Van zakelijke lunch tot bruidstaart. Alles huisgemaakt, mooi opgemaakt en passend bij jouw event.</p>
+                <div>
+                    <a href="#contact" class="btn">Offerte aanvragen</a>
+                    <a href="#menu" class="btn btn-ghost">Menu's</a>
+                </div>
+                <div class="stats" style="margin-top:2.5rem;">
+                    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Events</div></div>
+                    <div class="stat"><div class="stat-num">20.000+</div><div class="stat-label">Gasten</div></div>
+                    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Beoordeling</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="events" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">01 — Events</div>
+                <h2>Catering voor <span style="color:var(--accent)">elke gelegenheid</span>.</h2>
+                <p>Recepties, borrels, congressen, bruiloften en festivals. Wij verzorgen opmaak, service en afbouw.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>Zakelijk</strong><span>Lunch, borrel, diner.</span></div>
+                    <div class="feature-card"><strong>Privé</strong><span>Verjaardag, jubileum, tuinfeest.</span></div>
+                    <div class="feature-card"><strong>Wedding</strong><span>Proefmenu, taart, service.</span></div>
+                </div>
+            </div>
+        </section>
+        <section id="menu">
+            <div class="section-inner">
+                <div class="eyebrow">02 — Menu</div>
+                <h2>Seizoensgebonden & <span style="color:var(--accent)">lokaal</span>.</h2>
+                <p>Onze menu's wisselen mee met het seizoen. We werken met lokale leveranciers en passen ons aan op dieetwensen.</p>
+                <ul class="usp-list">
+                    <li>Vegan, vegetarisch, glutenvrij</li>
+                    <li>Lokaal en duurzaam</li>
+                    <li>Huisgemaakte hapjes</li>
+                    <li>Stijlvol gepresenteerd</li>
+                </ul>
+            </div>
+        </section>
+        <section id="particulier" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">03 — Particulier</div>
+                <h2>Thuis dineren als in een <span style="color:var(--accent)">restaurant</span>.</h2>
+                <p>Private chef, BBQ, walking dinner of high tea. Wij komen bij je thuis en regelen alles tot in de puntjes.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">vanaf € 35</div><div class="stat-label">p.p.</div></div>
+                    <div class="stat"><div class="stat-num">4</div><div class="stat-label">gangen</div></div>
+                    <div class="stat"><div class="stat-num">6+</div><div class="stat-label">personen</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="section-inner">
+                <div class="eyebrow">04 — Offerte</div>
+                <h2>Vertel ons over <span style="color:var(--accent)">jouw event</span>.</h2>
+                <p>Vul het formulier in en ontvang binnen 24 uur een passende offerte.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt, Smaak & Stijl neemt binnen 24 uur contact op.');">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Type event</option>
+                        <option>Zakelijk</option>
+                        <option>Bruiloft</option>
+                        <option>Particulier</option>
+                        <option>Anders</option>
+                    </select>
+                    <textarea rows="3" placeholder="Aantal gasten, datum, wensen"></textarea>
+                    <button type="submit" class="btn">Offerte aanvragen</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div><strong>Smaak & Stijl Catering</strong><br>Keukenplein 7, 3511 EK Utrecht<br>KVK 69109876</div>
+            <div><a href="tel:+31301239900">030 123 99 00</a><br><a href="mailto:info@smaakenstijl.nl">info@smaakenstijl.nl</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const canvas = document.getElementById('webgl');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0f0d0b);
+        scene.fog = new THREE.Fog(0x0f0d0b, 8, 30);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+        camera.position.set(0, 4, 10);
+        camera.lookAt(0,0,0);
+        const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        const ambient = new THREE.AmbientLight(0xffffff, 0.4); scene.add(ambient);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.6); dir.position.set(4,8,5); dir.castShadow=true; scene.add(dir);
+        const candle = new THREE.PointLight(0xd4a373, 0, 20); candle.position.set(0, 2, 0); scene.add(candle);
+
+        // Table
+        const table = new THREE.Mesh(new THREE.CylinderGeometry(4, 4, 0.2, 64), new THREE.MeshStandardMaterial({color:0xffffff, roughness:0.8})); table.position.y=-0.5; table.receiveShadow=true; scene.add(table);
+        const cloth = new THREE.Mesh(new THREE.CylinderGeometry(4.05, 4.05, 0.05, 64), new THREE.MeshStandardMaterial({color:0xf5f5f0, roughness:0.9})); cloth.position.y=-0.35; scene.add(cloth);
+
+        // Plate
+        const plate = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 0.05, 32), new THREE.MeshStandardMaterial({color:0xffffff, roughness:0.3})); plate.position.y=-0.25; plate.receiveShadow=true; scene.add(plate);
+
+        // Cloche
+        const cloche = new THREE.Group(); scene.add(cloche); cloche.position.y=-0.22;
+        const dome = new THREE.Mesh(new THREE.SphereGeometry(0.9, 32, 32, 0, Math.PI*2, 0, Math.PI/2), new THREE.MeshStandardMaterial({color:0xdddddd, metalness:0.3, roughness:0.2, transparent:true, opacity:0.7})); cloche.add(dome);
+        const handle = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.3, 16), new THREE.MeshStandardMaterial({color:0x888888, metalness:0.5})); handle.position.y=0.9; cloche.add(handle);
+
+        // Food
+        const foodGroup = new THREE.Group(); scene.add(foodGroup); foodGroup.position.y=-0.2;
+        const foodMat = new THREE.MeshStandardMaterial({color:0x5a8a3a, roughness:0.6});
+        const food = new THREE.Mesh(new THREE.SphereGeometry(0.6, 24, 24), foodMat); food.scale.y=0.5; foodGroup.add(food);
+        const garnish = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.3, 8), new THREE.MeshStandardMaterial({color:0xd4a373})); garnish.position.set(0.2,0.3,0.1); foodGroup.add(garnish);
+        const garnish2 = garnish.clone(); garnish2.position.set(-0.2,0.3,-0.1); garnish2.rotation.z=0.5; foodGroup.add(garnish2);
+        foodGroup.scale.setScalar(0);
+
+        // Steam
+        const steamCount = 80;
+        const steamGeo = new THREE.BufferGeometry();
+        const steamPos = new Float32Array(steamCount*3);
+        const steamLife = new Float32Array(steamCount);
+        for (let i=0;i<steamCount;i++) { steamPos[i*3]=(Math.random()-0.5)*1; steamPos[i*3+1]=Math.random()*0.5; steamPos[i*3+2]=(Math.random()-0.5)*1; steamLife[i]=Math.random(); }
+        steamGeo.setAttribute('position', new THREE.BufferAttribute(steamPos,3));
+        const steamMat = new THREE.PointsMaterial({color:0xffffff, size:0.08, transparent:true, opacity:0, blending:THREE.AdditiveBlending});
+        const steam = new THREE.Points(steamGeo, steamMat); scene.add(steam);
+
+        // Floating plates in background
+        const plates = new THREE.Group(); scene.add(plates);
+        for (let i=0;i<5;i++) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.8,0.8,0.05,32), new THREE.MeshStandardMaterial({color:0xffffff, transparent:true, opacity:0.3})); p.position.set((Math.random()-0.5)*10, Math.random()*4, -3-Math.random()*5); plates.add(p); }
+
+        let progress=0;
+        ScrollTrigger.create({ trigger:'#content', start:'top top', end:'bottom bottom', scrub:0.8, onUpdate:(self)=>{ progress=self.progress; } });
+        function resize(){ camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }
+        window.addEventListener('resize', resize);
+
+        let time=0;
+        function animate() {
+            requestAnimationFrame(animate); time+=0.02;
+            const p1 = Math.min(1, progress/0.25);
+            const p2 = Math.min(1, Math.max(0,(progress-0.25)/0.25));
+            const p3 = Math.min(1, Math.max(0,(progress-0.5)/0.25));
+            const p4 = Math.min(1, Math.max(0,(progress-0.75)/0.25));
+
+            // Camera
+            camera.position.z = THREE.MathUtils.lerp(10, 6, p1);
+            camera.position.y = THREE.MathUtils.lerp(4, 2.5, p2);
+            camera.position.x = THREE.MathUtils.lerp(0, -2, p2);
+            if (p3 > 0) { camera.position.x = THREE.MathUtils.lerp(-2, 2, p3); camera.position.y = THREE.MathUtils.lerp(2.5, 3, p3); }
+            if (p4 > 0) { camera.position.x = THREE.MathUtils.lerp(2, 0, p4); camera.position.y = THREE.MathUtils.lerp(3, 4, p4); camera.position.z = THREE.MathUtils.lerp(6, 10, p4); }
+            camera.lookAt(0,0,0);
+
+            // Cloche lifts
+            cloche.position.y = THREE.MathUtils.lerp(-0.22, 1.8, p2);
+            cloche.rotation.y += 0.005;
+
+            // Food appears
+            const fs = Math.min(1, p2 * 2);
+            foodGroup.scale.setScalar(fs);
+            foodGroup.rotation.y = time * 0.2;
+
+            // Steam
+            steamMat.opacity = p2 * 0.5;
+            const sp = steam.geometry.attributes.position.array;
+            for (let i=0;i<steamCount;i++) {
+                sp[i*3+1] += 0.01;
+                sp[i*3] += Math.sin(time + i) * 0.002;
+                steamLife[i] += 0.01;
+                if (sp[i*3+1] > 2 || steamLife[i] > 1) { sp[i*3+1]=0; sp[i*3]=(Math.random()-0.5)*1; sp[i*3+2]=(Math.random()-0.5)*1; steamLife[i]=0; }
+            }
+            steam.geometry.attributes.position.needsUpdate = true;
+
+            candle.intensity = 0.4 + p2 * 1.5;
+
+            // Floating plates
+            plates.children.forEach((p,i) => { p.rotation.y += 0.01; p.position.y += Math.sin(time + i) * 0.002; });
+
+            renderer.render(scene, camera);
+        }
+        window.addEventListener('load', ()=>{ setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},600); });
+        animate();
+    </script>
+</body>
+</html>
