@@ -42,8 +42,7 @@ function draw() {
 }
 draw();
 
-// Particles van polish op scroll
-let polish = [];
+// Waterdruppels verdwijnen langzaam bij scroll
 ScrollTrigger.create({
     trigger: '.hero',
     start: 'top top',

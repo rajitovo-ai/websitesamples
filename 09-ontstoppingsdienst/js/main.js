@@ -63,7 +63,7 @@ function draw() {
 draw();
 
 ScrollTrigger.create({
-    trigger: '.content',
+    trigger: 'main',
     start: 'top top',
     end: 'bottom bottom',
     scrub: 1,

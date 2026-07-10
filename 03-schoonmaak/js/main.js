@@ -56,9 +56,9 @@ function draw() {
 draw();
 
 ScrollTrigger.create({
-    trigger: '.hero',
+    trigger: 'main',
     start: 'top top',
-    end: 'bottom top',
+    end: 'bottom bottom',
     scrub: 1,
     onUpdate: (self) => { clean = Math.min(1, self.progress * 1.5); }
 });
