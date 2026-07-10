@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureView — Beveiliging</title>
+    <meta name="description" content="SecureView — Camera's, alarmen en toegangscontrole voor woning en bedrijf. KVK 68876543">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #05060a; --panel: #0f111a; --accent: #ef233c; --accent-2: #00d4ff; --fg: #f2f4f8; --muted: #7a8199; --border: rgba(255,255,255,0.08); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: auto; }
+        body { font-family:'Inter', sans-serif; color:var(--fg); background:var(--bg); overflow-x:hidden; }
+        #loader { position:fixed; inset:0; z-index:999; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.6s, visibility 0.6s; }
+        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-ring { width:48px; height:48px; border-radius:50%; border:3px solid rgba(239,35,60,0.2); border-top-color:var(--accent); animation:spin 1s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .loader-text { margin-top:1rem; color:var(--muted); font-size:0.85rem; }
+        #webgl { position:fixed; inset:0; z-index:0; outline:none; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4vw; background:rgba(5,6,10,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+        .nav-brand { font-family:'Space Grotesk'; font-weight:700; font-size:1.3rem; color:var(--fg); }
+        .nav-brand span { color:var(--accent); }
+        .nav-links { display:flex; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+        .nav-links a:hover { color:var(--accent); }
+        .nav-cta { padding:0.6rem 1.2rem; background:var(--accent); color:#fff !important; border-radius:8px; }
+        #content { position:relative; z-index:2; pointer-events:none; }
+        section { min-height:100vh; display:flex; align-items:center; padding:6rem 6vw; position:relative; }
+        .section-inner { pointer-events:auto; max-width:520px; }
+        .right { margin-left:auto; text-align:right; }
+        .right .stats { justify-content:flex-end; }
+        .eyebrow { font-family:'Space Grotesk'; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:1rem; }
+        h1, h2 { font-family:'Space Grotesk'; font-weight:700; line-height:1.1; }
+        h1 { font-size:clamp(2.5rem,5vw,5rem); margin-bottom:1.5rem; }
+        h2 { font-size:clamp(2rem,4vw,3.5rem); margin-bottom:1.25rem; }
+        p { color:var(--muted); font-size:1.05rem; line-height:1.7; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2rem; border-radius:10px; font-weight:600; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:transform 0.2s; }
+        .btn:hover { transform:translateY(-3px); }
+        .btn-ghost { background:transparent; color:var(--accent); border:1.5px solid var(--accent); margin-left:0.75rem; }
+        .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+        .feature-card { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:1.2rem; }
+        .feature-card strong { display:block; font-family:'Space Grotesk'; font-size:1.1rem; margin-bottom:0.4rem; }
+        .feature-card span { font-size:0.85rem; color:var(--muted); }
+        .stats { display:flex; gap:2rem; margin-top:2rem; }
+        .stat { text-align:center; }
+        .stat-num { font-family:'Space Grotesk'; font-size:2.2rem; font-weight:700; color:var(--accent); }
+        .stat-label { font-size:0.8rem; color:var(--muted); }
+        .contact-form { max-width:460px; pointer-events:auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width:100%; padding:1rem; margin-bottom:0.75rem; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.05); color:var(--fg); font-family:inherit; font-size:0.95rem; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); }
+        .contact-form button { width:100%; }
+        .usp-list { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+        .usp-list li { display:flex; align-items:center; gap:0.75rem; color:var(--muted); }
+        .usp-list li::before { content:'✓'; color:var(--accent); font-weight:700; }
+        footer { position:relative; z-index:2; background:#020307; color:var(--muted); padding:3rem 6vw; font-size:0.85rem; }
+        footer a { color:#fff; text-decoration:none; }
+        .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+        @media (max-width:800px) { .nav-links { display:none; } .feature-grid { grid-template-columns:1fr; } .right { margin-left:0; text-align:left; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-ring"></div><div class="loader-text">SecureView laden...</div></div>
+    <canvas id="webgl"></canvas>
+    <nav>
+        <div class="nav-brand">Secure<span>View</span></div>
+        <div class="nav-links">
+            <a href="#cameras">Camera's</a>
+            <a href="#alarm">Alarm</a>
+            <a href="#toegang">Toegang</a>
+            <a href="#contact" class="nav-cta">Advies</a>
+        </div>
+    </nav>
+    <div id="content">
+        <section id="hero">
+            <div class="section-inner">
+                <div class="eyebrow">Beveiligingsspecialist</div>
+                <h1>Rust door <span style="color:var(--accent)">inzicht</span>.</h1>
+                <p>Camera's, alarmsystemen, toegangscontrole en 24/7 meldkameropvolging. Wij beveiligen wat voor jou telt.</p>
+                <div>
+                    <a href="#contact" class="btn">Gratis advies</a>
+                    <a href="#cameras" class="btn btn-ghost">Camera's</a>
+                </div>
+                <div class="stats" style="margin-top:2.5rem;">
+                    <div class="stat"><div class="stat-num">1.100+</div><div class="stat-label">Gebouwen beveiligd</div></div>
+                    <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Monitoring</div></div>
+                    <div class="stat"><div class="stat-num">ISO</div><div class="stat-label">gecertificeerd</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="cameras" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">01 — Camera's</div>
+                <h2>Zien is <span style="color:var(--accent)">weten</span>.</h2>
+                <p>HD, nachtzicht, 360° en slimme detectie. Bekijk live mee via app, of laat je terugkijken door onze meldkamer.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>Dome</strong><span>Discrete binnenbeveiliging.</span></div>
+                    <div class="feature-card"><strong>Bullet</strong><span>Stevig voor buiten.</span></div>
+                    <div class="feature-card"><strong>PTZ</strong><span>360° dekkend.</span></div>
+                </div>
+            </div>
+        </section>
+        <section id="alarm">
+            <div class="section-inner">
+                <div class="eyebrow">02 — Alarm</div>
+                <h2>Alarm dat <span style="color:var(--accent)">direct</span> reageert.</h2>
+                <p>Draadloos, sabotagebestendig en gekoppeld aan meldkamer. Bij een inbraak gaat de sirene af en krijg jij een melding.</p>
+                <ul class="usp-list">
+                    <li>Professionele installatie</li>
+                    <li>Slimme sensoren</li>
+                    <li>Meldkamerkoppeling</li>
+                    <li>App notificaties</li>
+                </ul>
+            </div>
+        </section>
+        <section id="toegang" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">03 — Toegang</div>
+                <h2>Toegang op <span style="color:var(--accent)">afstand</span>.</h2>
+                <p>Van codeslot tot biometrie. Wij installeren toegangscontrole voor bedrijven, VvE's en recreatieparken.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">1</div><div class="stat-label">pas</div></div>
+                    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">deuren</div></div>
+                    <div class="stat"><div class="stat-num">Log</div><div class="stat-label">van elke opening</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="section-inner">
+                <div class="eyebrow">04 — Advies</div>
+                <h2>Plan een <span style="color:var(--accent)">veiligheidscheck</span>.</h2>
+                <p>Wij komen vrijblijvend langs om risico's in kaart te brengen. Geen verplichtingen, wel inzicht.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt, SecureView neemt binnen 24 uur contact op.');">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Type object</option>
+                        <option>Woning</option>
+                        <option>Bedrijfspand</option>
+                        <option>VvE</option>
+                        <option>Anders</option>
+                    </select>
+                    <textarea rows="3" placeholder="Wensen / vragen"></textarea>
+                    <button type="submit" class="btn">Advies aanvragen</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div><strong>SecureView B.V.</strong><br>Veiligheidsstraat 22, 3521 AM Utrecht<br>KVK 68876543</div>
+            <div><a href="tel:+31301236677">030 123 66 77</a><br><a href="mailto:info@secureview.nl">info@secureview.nl</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const canvas = document.getElementById('webgl');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x05060a);
+        scene.fog = new THREE.Fog(0x05060a, 10, 40);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+        camera.position.set(0, 2, 12);
+        const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        const ambient = new THREE.AmbientLight(0xffffff, 0.2); scene.add(ambient);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.4); dir.position.set(4,8,6); scene.add(dir);
+        const redLight = new THREE.PointLight(0xef233c, 0, 30); redLight.position.set(0,3,0); scene.add(redLight);
+
+        // Wall
+        const wall = new THREE.Mesh(new THREE.PlaneGeometry(40,20), new THREE.MeshStandardMaterial({color:0x11131a}));
+        wall.position.set(0,0,-5); scene.add(wall);
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(40,20), new THREE.MeshStandardMaterial({color:0x0a0b10}));
+        floor.rotation.x=-Math.PI/2; floor.position.y=-3; scene.add(floor);
+
+        // Camera mount
+        const camGroup = new THREE.Group(); scene.add(camGroup); camGroup.position.set(0, 0.5, -2);
+        const base = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.5, 0.3, 16), new THREE.MeshStandardMaterial({color:0x2a2d3e})); base.position.y=-1.5; base.castShadow=true; camGroup.add(base);
+        const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.5, 12), new THREE.MeshStandardMaterial({color:0x3a3f54})); stem.position.y=-0.6; camGroup.add(stem);
+        const head = new THREE.Mesh(new THREE.SphereGeometry(0.35, 24, 24), new THREE.MeshStandardMaterial({color:0xffffff, roughness:0.2, metalness:0.2})); head.position.y=0.2; head.castShadow=true; camGroup.add(head);
+        const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.1, 16), new THREE.MeshBasicMaterial({color:0x000000})); lens.rotation.x=Math.PI/2; lens.position.set(0,0.2,0.3); camGroup.add(lens);
+        // Ring light
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.02, 8, 24), new THREE.MeshBasicMaterial({color:0x330000})); ring.position.set(0,0.2,0.32); camGroup.add(ring);
+
+        // Vision cone
+        const coneGeo = new THREE.ConeGeometry(2, 6, 32, 1, true);
+        const coneMat = new THREE.MeshBasicMaterial({color:0xef233c, transparent:true, opacity:0, side:THREE.DoubleSide, blending:THREE.AdditiveBlending});
+        const cone = new THREE.Mesh(coneGeo, coneMat); cone.position.set(0, 0.2, 3); cone.rotation.x=-Math.PI/2; camGroup.add(cone);
+
+        // Scanning line
+        const scanGeo = new THREE.PlaneGeometry(4, 0.05);
+        const scanMat = new THREE.MeshBasicMaterial({color:0xef233c, transparent:true, opacity:0, blending:THREE.AdditiveBlending});
+        const scan = new THREE.Mesh(scanGeo, scanMat); scan.position.set(0, 0.2, 3); scan.rotation.x=-Math.PI/2; camGroup.add(scan);
+
+        // Floating particles (dust in beam)
+        const dustCount = 300;
+        const dustGeo = new THREE.BufferGeometry();
+        const dustPos = new Float32Array(dustCount*3);
+        for (let i=0;i<dustCount;i++) { dustPos[i*3]=(Math.random()-0.5)*4; dustPos[i*3+1]=(Math.random()-0.5)*3; dustPos[i*3+2]=(Math.random()-0.5)*5; }
+        dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos,3));
+        const dustMat = new THREE.PointsMaterial({color:0xef233c, size:0.05, transparent:true, opacity:0, blending:THREE.AdditiveBlending});
+        const dust = new THREE.Points(dustGeo, dustMat); dust.position.set(0,0.2,3); camGroup.add(dust);
+
+        // Pulse rings
+        const rings = [];
+        for (let i=0;i<3;i++) {
+            const r = new THREE.Mesh(new THREE.RingGeometry(0.2+i*0.3, 0.25+i*0.3, 32), new THREE.MeshBasicMaterial({color:0xef233c, transparent:true, opacity:0, side:THREE.DoubleSide}));
+            r.position.set(0,0.2,0.4); camGroup.add(r); rings.push({mesh:r, offset:i*2});
+        }
+
+        let progress=0;
+        ScrollTrigger.create({ trigger:'#content', start:'top top', end:'bottom bottom', scrub:0.8, onUpdate:(self)=>{ progress=self.progress; } });
+        function resize(){ camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }
+        window.addEventListener('resize', resize);
+
+        let time=0;
+        function animate() {
+            requestAnimationFrame(animate); time+=0.02;
+            const p1 = Math.min(1, progress/0.25);
+            const p2 = Math.min(1, Math.max(0,(progress-0.25)/0.25));
+            const p3 = Math.min(1, Math.max(0,(progress-0.5)/0.25));
+            const p4 = Math.min(1, Math.max(0,(progress-0.75)/0.25));
+
+            // Camera pan
+            camera.position.x = THREE.MathUtils.lerp(0, -2, p1);
+            camera.position.y = THREE.MathUtils.lerp(2, 1.2, p2);
+            camera.position.z = THREE.MathUtils.lerp(12, p3 > 0 ? 9 : 6, p2);
+            if (p3 > 0) { camera.position.y = THREE.MathUtils.lerp(1.2, 2.5, p3); camera.position.z = THREE.MathUtils.lerp(6, 10, p3); }
+            if (p4 > 0) { camera.position.x = THREE.MathUtils.lerp(-2, 2, p4); camera.position.z = THREE.MathUtils.lerp(10, 12, p4); }
+            camera.lookAt(camGroup.position);
+
+            // Cam head rotates
+            camGroup.rotation.y = p2 * Math.PI * 0.6 + Math.sin(time * 0.5) * 0.1;
+            camGroup.rotation.x = p1 * 0.3;
+
+            // Cone visibility
+            cone.material.opacity = p2 * 0.25;
+            scan.material.opacity = p2 * 0.6;
+            scan.scale.x = 1 + Math.sin(time * 2) * 0.3;
+            scan.position.z = 3 + Math.sin(time * 2) * 2;
+            dustMat.opacity = p2 * 0.4;
+            redLight.intensity = 0.2 + p2 * 2;
+
+            // Ring light
+            ring.material.color.setHSL(0, 1, 0.2 + p2 * 0.5);
+            rings.forEach(r => {
+                r.mesh.material.opacity = (p2 > 0 ? 0.5 : 0) * Math.max(0, Math.sin(time * 2 + r.offset));
+                r.mesh.scale.setScalar(1 + Math.sin(time * 2 + r.offset) * 0.5);
+            });
+
+            // Night mode in last section
+            if (p4 > 0) {
+                scene.background.setHex(0x020205);
+                scene.fog.color.setHex(0x020205);
+                ambient.intensity = 0.05;
+                cone.material.color.setHex(0x00d4ff);
+                scan.material.color.setHex(0x00d4ff);
+                dustMat.color.setHex(0x00d4ff);
+            } else {
+                scene.background.setHex(0x05060a);
+                scene.fog.color.setHex(0x05060a);
+                ambient.intensity = 0.2;
+                cone.material.color.setHex(0xef233c);
+                scan.material.color.setHex(0xef233c);
+                dustMat.color.setHex(0xef233c);
+            }
+
+            renderer.render(scene, camera);
+        }
+        window.addEventListener('load', ()=>{ setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},600); });
+        animate();
+    </script>
+</body>
+</html>
