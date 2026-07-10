@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RioolSnel — Ontstopping & Rioolreiniging</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="pipeCanvas"></canvas>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">RioolSnel</div>
+        <div class="nav-links"><a href="#diensten">Diensten</a><a href="#spoed">Spoed</a><a href="#contact">Contact</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge">24/7 spoedservice</span>
+                <h1>Verstopt?<br><em>Wij sporen door</em></h1>
+                <p>Rioolontstopping, inspectie en reiniging voor particulier en zakelijk. Snel, schoon en vakkundig.</p>
+                <a href="#contact" class="btn">Bel direct</a>
+            </div>
+        </section>
+
+        <section class="diensten" id="diensten">
+            <h2>Diensten</h2>
+            <div class="grid">
+                <article><h3>Ontstopping</h3><p>Toilet, wastafel, douche en rioolputje. Snel verholpen.</p></article>
+                <article><h3>Camera-inspectie</h3><p>Inzicht in uw leidingen zonder hak- of breekwerk.</p></article>
+                <article><h3>Hogedruk reinigen</h3><p>Verwijdert vet, kalk en wortels uit rioolleidingen.</p></article>
+                <article><h3>Ontluchting</h3><p>Verhelp stank en gorgelgeluiden definitief.</p></article>
+            </div>
+        </section>
+
+        <section class="spoed" id="spoed">
+            <h2>Spoed? Wij komen eraan</h2>
+            <div class="usp">
+                <div><strong>30 min</strong><span>gemiddelde reactietijd</span></div>
+                <div><strong>100%</strong><span>vaste prijsafspraak</span></div>
+                <div><strong>7 dagen</strong><span>per week beschikbaar</span></div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Vrijblijvend advies</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, onze monteur belt u direct terug.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="tel" placeholder="Telefoon" required>
+                <textarea placeholder="Omschrijf het probleem" rows="3"></textarea>
+                <button type="submit" class="btn">Spoed aanvraag</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Soulmatch — Bruiloft & Evenementen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="viz"></canvas>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">DJ Soulmatch</div>
+        <div class="nav-links"><a href="#concept">Concept</a><a href="#sets">Sets</a><a href="#contact">Boeken</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge">Bruiloften · Feesten · Corporate</span>
+                <h1>Draaien met<br><em>gouden herinneringen</em></h1>
+                <p>Een feest met de juiste sfeer, het juiste ritme en een dansvloer die nooit leegstaat.</p>
+                <a href="#contact" class="btn">Check beschikbaarheid</a>
+            </div>
+            <div class="vinyl-scene">
+                <div class="turntable">
+                    <div class="vinyl" id="vinyl">
+                        <div class="label"></div>
+                    </div>
+                    <div class="tonearm" id="tonearm"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="concept" id="concept">
+            <h2>Het concept</h2>
+            <div class="cards">
+                <article><h3>Maatwerk playlist</h3><p>Van openingsdans tot afterparty, afgestemd op jullie verhaal.</p></article>
+                <article><h3>Premium geluid</h3><p>Kwalitatieve speakers, microfoons en licht voor elke zaal.</p></article>
+                <article><h3>Geen oprah</h3><p>Een DJ die de muziek laat spreken, zonder gekke act.</p></article>
+            </div>
+        </section>
+
+        <section class="sets" id="sets">
+            <h2>Sets</h2>
+            <div class="set-list">
+                <div class="set">Bruiloft basis — 4 uur</div>
+                <div class="set">Bruiloft deluxe — 6 uur + licht</div>
+                <div class="set">All-in party — 8 uur + geluid & licht</div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Boek deze DJ</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we checken de datum en sturen een voorstel.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="date" placeholder="Datum">
+                <button type="submit" class="btn">Verstuur</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

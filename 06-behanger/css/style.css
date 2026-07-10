@@ -1,0 +1,56 @@
+:root {
+    --bg: #1a1814; --panel: #26231d; --accent: #d4a373; --accent-2: #ccd5ae; --fg: #faedcd; --muted: #a69b8c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+#patternCanvas { position: fixed; inset: 0; z-index: 0; opacity: 0.15; pointer-events: none; }
+.wall { position: fixed; inset: 0; z-index: 1; background: linear-gradient(to bottom, var(--bg), transparent 80%); pointer-events: none; }
+.nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;
+    background: rgba(26,24,20,0.8); backdrop-filter: blur(8px);
+}
+.nav-back { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+.nav-brand { font-family: 'Libre Baskerville', serif; font-weight: 700; }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--fg); text-decoration: none; font-size: 0.85rem; }
+.hero {
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 6rem 6vw; gap: 3rem; position: relative; z-index: 2;
+}
+.hero-text { max-width: 520px; }
+.badge {
+    display: inline-block; padding: 0.35rem 0.8rem; border-radius: 99px;
+    background: rgba(212,163,115,0.12); color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem;
+}
+h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(2.6rem, 5vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.25rem; }
+h1 em { color: var(--accent); font-style: italic; }
+.hero-text p { color: var(--muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; }
+.btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #1a1814; text-decoration: none; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; transition: transform 0.2s; }
+.btn:hover { transform: translateY(-3px); }
+
+.roll-scene { display: flex; align-items: center; justify-content: center; position: relative; height: 400px; }
+.roll {
+    width: 90px; height: 260px; background: repeating-linear-gradient(90deg, #d4a373 0px, #d4a373 20px, #e9c496 20px, #e9c496 40px);
+    border-radius: 8px; position: absolute; right: 50%; top: 50%; transform: translate(50%, -50%);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4); z-index: 3;
+}
+.paper {
+    position: absolute; left: 50%; top: 50%; width: 0; height: 240px;
+    background: repeating-linear-gradient(90deg, #e9c496 0px, #e9c496 38px, #d4a373 38px, #d4a373 40px, #e9c496 40px, #e9c496 78px, #d4a373 78px, #d4a373 80px);
+    transform: translateY(-50%); border-radius: 0 4px 4px 0;
+}
+
+.collectie, .werkwijze, .contact { padding: 8rem 6vw; position: relative; z-index: 2; }
+.collectie h2, .werkwijze h2, .contact h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2.5rem; }
+.styles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.style-card { background: var(--panel); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; text-align: center; font-weight: 600; transition: transform 0.2s; }
+.style-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+.steps { display: flex; gap: 1rem; flex-wrap: wrap; }
+.step { flex: 1; min-width: 200px; background: var(--panel); border-radius: 16px; padding: 1.5rem; }
+.step span { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #1a1814; font-weight: 700; margin-bottom: 0.75rem; }
+.step p { color: var(--muted); }
+.contact form { max-width: 480px; display: flex; flex-direction: column; gap: 1rem; }
+.contact input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--fg); padding: 1rem; border-radius: 10px; font-size: 0.95rem; }
+.contact input:focus { outline: none; border-color: var(--accent); }
+
+@media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding-top: 6rem; } .nav-links { display: none; } }
