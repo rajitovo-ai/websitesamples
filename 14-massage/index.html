@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenRitueel — Massage & Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="zenCanvas"></canvas>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">ZenRitueel</div>
+        <div class="nav-links"><a href="#behandelingen">Behandelingen</a><a href="#ruimte">Ruimte</a><a href="#contact">Boeken</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge">Massage & wellness</span>
+                <h1>Laat spanning<br><em>wegdrijven</em></h1>
+                <p>Swedish, deep tissue, hotstone en aromatherapie. Een moment van complete rust.</p>
+                <a href="#contact" class="btn">Behandeling boeken</a>
+            </div>
+        </section>
+
+        <section class="behandelingen" id="behandelingen">
+            <h2>Behandelingen</h2>
+            <div class="grid">
+                <article><h3>Swedish massage</h3><div class="time">60 min · €65</div><p>Relaxerende massage voor hele lichaam.</p></article>
+                <article><h3>Deep tissue</h3><div class="time">75 min · €85</div><p>Gericht op diepe spierspanning en klachten.</p></article>
+                <article><h3>Hotstone</h3><div class="time">90 min · €95</div><p>Warme stenen voor doorbloeding en ontspanning.</p></article>
+                <article><h3>Aroma massage</h3><div class="time">60 min · €70</div><p>Etherische oliën op maat.</p></article>
+            </div>
+        </section>
+
+        <section class="ruimte" id="ruimte">
+            <h2>De behandelruimte</h2>
+            <p>Stilte, zachte muziek, dimlicht en de geur van lavendel. Alles is gericht op jouw herstel.</p>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Boek je moment</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we bevestigen je afspraak.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="datetime-local" placeholder="Gewenste datum/tijd">
+                <button type="submit" class="btn">Boek nu</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

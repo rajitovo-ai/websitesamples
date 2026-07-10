@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FantasieFeest — Kinderfeestjes & Entertainment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="partyCanvas"></canvas>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">FantasieFeest</div>
+        <div class="nav-links"><a href="#themas">Thema's</a><a href="#pakketten">Pakketten</a><a href="#contact">Boeken</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge">Kinderfeestjes op locatie</span>
+                <h1>Feestjes die<br><em>magisch</em> worden</h1>
+                <p>Prinsessen, dinosaurussen, circus of superhelden. Wij regelen decor, activiteiten en entertainment.</p>
+                <a href="#contact" class="btn">Thema kiezen</a>
+            </div>
+        </section>
+
+        <section class="themas" id="themas">
+            <h2>Kies je thema</h2>
+            <div class="grid">
+                <article data-theme="princess">👑<h3>Prinses</h3></article>
+                <article data-theme="dino">🦖<h3>Dino</h3></article>
+                <article data-theme="circus">🎪<h3>Circus</h3></article>
+                <article data-theme="superhero">🦸<h3>Superheld</h3></article>
+                <article data-theme="unicorn">🦄<h3>Eenhoorn</h3></article>
+                <article data-theme="pirate">🏴‍☠️<h3>Piraat</h3></article>
+            </div>
+        </section>
+
+        <section class="pakketten" id="pakketten">
+            <h2>Pakketten</h2>
+            <div class="cards">
+                <article><h3>Basis</h3><div class="price">€199</div><p>Decoratie en 1 entertainer, 2 uur.</p></article>
+                <article><h3>Compleet</h3><div class="price">€349</div><p>Thema-decor, entertainment, knutselen en taartmoment, 3 uur.</p></article>
+                <article><h3>Deluxe</h3><div class="price">€499</div><p>Alles inclusief fotohoek, cadeautjes en verrassingsact, 4 uur.</p></article>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Boek je feestje</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we nemen snel contact op om de details door te spreken.');">
+                <input type="text" placeholder="Naam ouder" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="text" placeholder="Leeftijd kind & gewenst thema">
+                <button type="submit" class="btn">Verstuur aanvraag</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

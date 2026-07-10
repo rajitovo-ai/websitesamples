@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlansGarage — Car Detailing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="carCanvas"></canvas>
+    <nav class="nav">
+        <a href="/" class="nav-back">← Portal</a>
+        <div class="nav-brand">GlansGarage</div>
+        <div class="nav-links"><a href="#pakketten">Pakketten</a><a href="#proces">Proces</a><a href="#contact">Contact</a></div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge">Premium detailing</span>
+                <h1>Lak die<br><em>spiegelglans</em> krijgt</h1>
+                <p>Van grondige reiniging tot keramische coating. Jouw auto verdient de beste behandeling.</p>
+                <a href="#contact" class="btn">Afspraak maken</a>
+            </div>
+        </section>
+
+        <section class="pakketten" id="pakketten">
+            <h2>Detailing pakketten</h2>
+            <div class="grid">
+                <article><h3>Bronze</h3><div class="price">€149</div><p>Handwas, velgenreiniging en interieur stofzuigen.</p></article>
+                <article><h3>Silver</h3><div class="price">€299</div><p>Clay bar, polish 1-stap, wax en glasreiniging.</p></article>
+                <article class="featured"><h3>Gold</h3><div class="price">€549</div><p>2-staps polish, keramische coating, lederverzorging.</p></article>
+            </div>
+        </section>
+
+        <section class="proces" id="proces">
+            <h2>Het proces</h2>
+            <div class="timeline">
+                <div class="tl-item"><span>1</span><p>Was & decontaminatie</p></div>
+                <div class="tl-item"><span>2</span><p>Clay bar behandeling</p></div>
+                <div class="tl-item"><span>3</span><p>Polish & corrigeren</p></div>
+                <div class="tl-item"><span>4</span><p>Coating & afdrogen</p></div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Boek uw behandeling</h2>
+            <form onsubmit="event.preventDefault(); alert('Bedankt, we bevestigen uw afspraak.');">
+                <input type="text" placeholder="Naam" required>
+                <input type="tel" placeholder="Telefoon" required>
+                <input type="text" placeholder="Merk & model">
+                <button type="submit" class="btn">Verstuur</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
