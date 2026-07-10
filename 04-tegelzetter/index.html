@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TegelTrek — Tegelzetter</title>
+    <meta name="description" content="TegelTrek — Tegelzetwerk voor badkamer, keuken en woonruimte. KVK 68654321">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #f7f4f0; --panel: #fff; --accent: #c45d3b; --accent-2: #2f5a52; --fg: #1f1a17; --muted: #6f6862; --border: rgba(0,0,0,0.08); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: auto; }
+        body { font-family:'Inter', sans-serif; color:var(--fg); background:var(--bg); overflow-x:hidden; }
+        #loader { position:fixed; inset:0; z-index:999; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.6s, visibility 0.6s; }
+        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-ring { width:48px; height:48px; border-radius:50%; border:3px solid rgba(196,93,59,0.2); border-top-color:var(--accent); animation:spin 1s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .loader-text { margin-top:1rem; color:var(--muted); font-size:0.85rem; }
+        #webgl { position:fixed; inset:0; z-index:0; outline:none; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4vw; background:rgba(247,244,240,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+        .nav-brand { font-family:'Space Grotesk'; font-weight:700; font-size:1.3rem; color:var(--fg); }
+        .nav-brand span { color:var(--accent); }
+        .nav-links { display:flex; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+        .nav-links a:hover { color:var(--accent); }
+        .nav-cta { padding:0.6rem 1.2rem; background:var(--accent); color:#fff !important; border-radius:8px; }
+        #content { position:relative; z-index:2; pointer-events:none; }
+        section { min-height:100vh; display:flex; align-items:center; padding:6rem 6vw; position:relative; }
+        .section-inner { pointer-events:auto; max-width:520px; }
+        .right { margin-left:auto; text-align:right; }
+        .right .stats { justify-content:flex-end; }
+        .eyebrow { font-family:'Space Grotesk'; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:1rem; }
+        h1, h2 { font-family:'Space Grotesk'; font-weight:700; line-height:1.1; }
+        h1 { font-size:clamp(2.5rem,5vw,5rem); margin-bottom:1.5rem; }
+        h2 { font-size:clamp(2rem,4vw,3.5rem); margin-bottom:1.25rem; }
+        p { color:var(--muted); font-size:1.05rem; line-height:1.7; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2rem; border-radius:10px; font-weight:600; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:transform 0.2s; }
+        .btn:hover { transform:translateY(-3px); }
+        .btn-ghost { background:transparent; color:var(--accent); border:1.5px solid var(--accent); margin-left:0.75rem; }
+        .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+        .feature-card { background:rgba(255,255,255,0.85); border:1px solid var(--border); border-radius:16px; padding:1.2rem; }
+        .feature-card strong { display:block; font-family:'Space Grotesk'; font-size:1.1rem; margin-bottom:0.4rem; }
+        .feature-card span { font-size:0.85rem; color:var(--muted); }
+        .stats { display:flex; gap:2rem; margin-top:2rem; }
+        .stat { text-align:center; }
+        .stat-num { font-family:'Space Grotesk'; font-size:2.2rem; font-weight:700; color:var(--accent); }
+        .stat-label { font-size:0.8rem; color:var(--muted); }
+        .contact-form { max-width:460px; pointer-events:auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width:100%; padding:1rem; margin-bottom:0.75rem; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.9); color:var(--fg); font-family:inherit; font-size:0.95rem; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); }
+        .contact-form button { width:100%; }
+        .usp-list { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+        .usp-list li { display:flex; align-items:center; gap:0.75rem; color:var(--muted); }
+        .usp-list li::before { content:'✓'; color:var(--accent); font-weight:700; }
+        footer { position:relative; z-index:2; background:#1f1a17; color:#b0a9a0; padding:3rem 6vw; font-size:0.85rem; }
+        footer a { color:#fff; text-decoration:none; }
+        .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+        @media (max-width:800px) { .nav-links { display:none; } .feature-grid { grid-template-columns:1fr; } .right { margin-left:0; text-align:left; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-ring"></div><div class="loader-text">TegelTrek laden...</div></div>
+    <canvas id="webgl"></canvas>
+    <nav>
+        <div class="nav-brand">Tegel<span>Trek</span></div>
+        <div class="nav-links">
+            <a href="#kwaliteit">Kwaliteit</a>
+            <a href="#materialen">Materialen</a>
+            <a href="#projecten">Projecten</a>
+            <a href="#contact" class="nav-cta">Offerte</a>
+        </div>
+    </nav>
+    <div id="content">
+        <section id="hero">
+            <div class="section-inner">
+                <div class="eyebrow">Tegelzetter in heel Midden-Nederland</div>
+                <h1>Tegelwerk dat <span style="color:var(--accent)">perfect</span> ligt.</h1>
+                <p>Van visgraat tot marmerlook, van badkamer tot keuken. Wij leggen, voegen en waterpassen tot het klopt.</p>
+                <div>
+                    <a href="#contact" class="btn">Gratis offerte</a>
+                    <a href="#materialen" class="btn btn-ghost">Materialen</a>
+                </div>
+                <div class="stats" style="margin-top:2.5rem;">
+                    <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Jaar ervaring</div></div>
+                    <div class="stat"><div class="stat-num">650+</div><div class="stat-label">Ruimtes</div></div>
+                    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Review</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="kwaliteit" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">01 — Kwaliteit</div>
+                <h2>Waterpas op <span style="color:var(--accent)">elke</span> tegel.</h2>
+                <p>Onze vakmannen werken met laserwaterpas, juiste lijmmortel en oog voor detail. Geen holle tegels, geen scheve voegen.</p>
+                <ul class="usp-list" style="align-items:flex-end;">
+                    <li>10 jaar garantie op werk</li>
+                    <li>Nederlandse vakmannen</li>
+                    <li>Stofvrij werken</li>
+                    <li>Netjes en op tijd</li>
+                </ul>
+            </div>
+        </section>
+        <section id="materialen">
+            <div class="section-inner">
+                <div class="eyebrow">02 — Materialen</div>
+                <h2>Kies de look die <span style="color:var(--accent)">bij je past</span>.</h2>
+                <p>Keramisch, natuursteen, mozaïek, grote formaten of visgraat. Wij adviseren je op ondergrond, lijm en voegkleur.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>Keramiek</strong><span>Duurzaam, krasvast, 120x120cm.</span></div>
+                    <div class="feature-card"><strong>Natuursteen</strong><span>Marmer, travertin, graniet.</span></div>
+                    <div class="feature-card"><strong>Mozaïek</strong><span>Accentwanden en nissen.</span></div>
+                </div>
+            </div>
+        </section>
+        <section id="projecten" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">03 — Projecten</div>
+                <h2>Van klein tot <span style="color:var(--accent)">groots</span>.</h2>
+                <p>Badkamers, keukens, terrassen, winkels en kantoren. Bekijk onze recente projecten en laat je inspireren.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">15m²</div><div class="stat-label">vanaf</div></div>
+                    <div class="stat"><div class="stat-num">3 dagen</div><div class="stat-label">gemiddeld</div></div>
+                    <div class="stat"><div class="stat-num">0</div><div class="stat-label">uitloop</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="section-inner">
+                <div class="eyebrow">04 — Offerte</div>
+                <h2>Jouw tegelplan, <span style="color:var(--accent)">gerekend</span>.</h2>
+                <p>Stuur je wensen en afmetingen. Wij maken binnen 24 uur een scherpe offerte.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt, TegelTrek neemt binnen 24 uur contact op.');">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Ruimte</option>
+                        <option>Badkamer</option>
+                        <option>Keuken</option>
+                        <option>Woonkamer</option>
+                        <option>Terras</option>
+                    </select>
+                    <textarea rows="3" placeholder="Afmetingen en wensen"></textarea>
+                    <button type="submit" class="btn">Offerte aanvragen</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div><strong>TegelTrek</strong><br>Tegelweg 88, 3521 AZ Utrecht<br>KVK 68654321</div>
+            <div><a href="tel:+31301234455">030 123 44 55</a><br><a href="mailto:info@tegeltrek.nl">info@tegeltrek.nl</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const canvas = document.getElementById('webgl');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf7f4f0);
+        scene.fog = new THREE.Fog(0xf7f4f0, 10, 40);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+        camera.position.set(0, 10, 12);
+        camera.lookAt(0,0,0);
+        const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        const ambient = new THREE.AmbientLight(0xffffff, 0.7); scene.add(ambient);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.6); dir.position.set(5,10,5); dir.castShadow=true; scene.add(dir);
+
+        // Floor
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(20,20), new THREE.MeshStandardMaterial({color:0xeae4dc, roughness:0.8}));
+        floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; scene.add(floor);
+
+        // Walls
+        const wallMat = new THREE.MeshStandardMaterial({color:0xf0ebe3});
+        const w1 = new THREE.Mesh(new THREE.PlaneGeometry(20,6), wallMat); w1.position.set(0,3,-10); w1.receiveShadow=true; scene.add(w1);
+        const w2 = new THREE.Mesh(new THREE.PlaneGeometry(20,6), wallMat); w2.rotation.y=Math.PI/2; w2.position.set(-10,3,0); w2.receiveShadow=true; scene.add(w2);
+
+        // Tiles grid
+        const tiles = [];
+        const tileSize = 0.9;
+        const gap = 0.05;
+        const cols = 10, rows = 10;
+        const tileGroup = new THREE.Group(); scene.add(tileGroup);
+        const colors = [0xfaf8f5, 0xe8ded6, 0xd6c8bc, 0xc45d3b, 0x2f5a52];
+        for (let i=0; i<cols; i++) {
+            for (let j=0; j<rows; j++) {
+                const geo = new THREE.BoxGeometry(tileSize, 0.08, tileSize);
+                const mat = new THREE.MeshStandardMaterial({ color: colors[(i+j)%colors.length], roughness:0.2, metalness:0.05 });
+                const t = new THREE.Mesh(geo, mat);
+                t.position.set((i-cols/2)*(tileSize+gap), -2, (j-rows/2)*(tileSize+gap));
+                t.castShadow=true; t.receiveShadow=true;
+                tileGroup.add(t);
+                tiles.push({ mesh:t, idx:tiles.length, baseX:t.position.x, baseZ:t.position.z });
+            }
+        }
+
+        // Grout lines as grid helper
+        const grid = new THREE.GridHelper(20, 40, 0x8a8a8a, 0x8a8a8a); grid.position.y=0.05; scene.add(grid);
+
+        let progress=0;
+        ScrollTrigger.create({ trigger:'#content', start:'top top', end:'bottom bottom', scrub:0.8, onUpdate:(self)=>{ progress=self.progress; } });
+        function resize(){ camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth,window.innerHeight); }
+        window.addEventListener('resize', resize);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const p1 = Math.min(1, progress/0.25);
+            const p2 = Math.min(1, Math.max(0,(progress-0.25)/0.25));
+            const p3 = Math.min(1, Math.max(0,(progress-0.5)/0.25));
+            const p4 = Math.min(1, Math.max(0,(progress-0.75)/0.25));
+
+            // Camera top-down to side
+            camera.position.x = THREE.MathUtils.lerp(0, 6, p2);
+            camera.position.y = THREE.MathUtils.lerp(10, 3, p2);
+            camera.position.z = THREE.MathUtils.lerp(12, 8, p2);
+            if (p3 > 0) { camera.position.y = THREE.MathUtils.lerp(3, 5, p3); camera.position.z = THREE.MathUtils.lerp(8, 14, p3); }
+            if (p4 > 0) { camera.position.x = THREE.MathUtils.lerp(6, 0, p4); camera.position.z = THREE.MathUtils.lerp(14, 10, p4); }
+            camera.lookAt(0,0,0);
+
+            // Tiles rise sequentially
+            tiles.forEach(t => {
+                const delay = t.idx * 0.0015;
+                const target = progress > delay ? 0 : -2;
+                const targetScale = progress > delay ? 1 : 0.5;
+                t.mesh.position.y += (target - t.mesh.position.y) * 0.08;
+                const s = t.mesh.scale.x + (targetScale - t.mesh.scale.x) * 0.08;
+                t.mesh.scale.set(s,1,s);
+            });
+
+            // Rotate pattern near end
+            tileGroup.rotation.y = p4 * 0.15;
+            grid.material.opacity = 0.1 + p3 * 0.4;
+
+            renderer.render(scene, camera);
+        }
+        window.addEventListener('load', ()=>{ setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},600); });
+        animate();
+    </script>
+</body>
+</html>
