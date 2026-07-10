@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPlan — Duurzaam Advies</title>
+    <meta name="description" content="EcoPlan — Energieadvies, energielabels en verduurzaming voor woning en bedrijf. KVK 69765432">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #f0f7f4; --panel: #ffffff; --accent: #2a9d8f; --accent-2: #264653; --fg: #1a2e2b; --muted: #4f6a66; --border: rgba(0,0,0,0.08); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: auto; }
+        body { font-family:'Inter', sans-serif; color:var(--fg); background:var(--bg); overflow-x:hidden; }
+        #loader { position:fixed; inset:0; z-index:999; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.6s, visibility 0.6s; }
+        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-ring { width:48px; height:48px; border-radius:50%; border:3px solid rgba(42,157,143,0.2); border-top-color:var(--accent); animation:spin 1s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .loader-text { margin-top:1rem; color:var(--muted); font-size:0.85rem; }
+        #webgl { position:fixed; inset:0; z-index:0; outline:none; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4vw; background:rgba(240,247,244,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+        .nav-brand { font-family:'Space Grotesk'; font-weight:700; font-size:1.3rem; color:var(--fg); }
+        .nav-brand span { color:var(--accent); }
+        .nav-links { display:flex; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+        .nav-links a:hover { color:var(--accent); }
+        .nav-cta { padding:0.6rem 1.2rem; background:var(--accent); color:#fff !important; border-radius:8px; }
+        #content { position:relative; z-index:2; pointer-events:none; }
+        section { min-height:100vh; display:flex; align-items:center; padding:6rem 6vw; position:relative; }
+        .section-inner { pointer-events:auto; max-width:520px; }
+        .right { margin-left:auto; text-align:right; }
+        .right .stats { justify-content:flex-end; }
+        .eyebrow { font-family:'Space Grotesk'; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:1rem; }
+        h1, h2 { font-family:'Space Grotesk'; font-weight:700; line-height:1.1; }
+        h1 { font-size:clamp(2.5rem,5vw,5rem); margin-bottom:1.5rem; }
+        h2 { font-size:clamp(2rem,4vw,3.5rem); margin-bottom:1.25rem; }
+        p { color:var(--muted); font-size:1.05rem; line-height:1.7; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2rem; border-radius:10px; font-weight:600; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:transform 0.2s; }
+        .btn:hover { transform:translateY(-3px); }
+        .btn-ghost { background:transparent; color:var(--accent); border:1.5px solid var(--accent); margin-left:0.75rem; }
+        .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+        .feature-card { background:rgba(255,255,255,0.85); border:1px solid var(--border); border-radius:16px; padding:1.2rem; }
+        .feature-card strong { display:block; font-family:'Space Grotesk'; font-size:1.1rem; margin-bottom:0.4rem; }
+        .feature-card span { font-size:0.85rem; color:var(--muted); }
+        .stats { display:flex; gap:2rem; margin-top:2rem; }
+        .stat { text-align:center; }
+        .stat-num { font-family:'Space Grotesk'; font-size:2.2rem; font-weight:700; color:var(--accent); }
+        .stat-label { font-size:0.8rem; color:var(--muted); }
+        .contact-form { max-width:460px; pointer-events:auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width:100%; padding:1rem; margin-bottom:0.75rem; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.9); color:var(--fg); font-family:inherit; font-size:0.95rem; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); }
+        .contact-form button { width:100%; }
+        .usp-list { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+        .usp-list li { display:flex; align-items:center; gap:0.75rem; color:var(--muted); }
+        .usp-list li::before { content:'✓'; color:var(--accent); font-weight:700; }
+        footer { position:relative; z-index:2; background:#1a2e2b; color:#b0c0bd; padding:3rem 6vw; font-size:0.85rem; }
+        footer a { color:#fff; text-decoration:none; }
+        .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+        @media (max-width:800px) { .nav-links { display:none; } .feature-grid { grid-template-columns:1fr; } .right { margin-left:0; text-align:left; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-ring"></div><div class="loader-text">EcoPlan laden...</div></div>
+    <canvas id="webgl"></canvas>
+    <nav>
+        <div class="nav-brand">Eco<span>Plan</span></div>
+        <div class="nav-links">
+            <a href="#advies">Advies</a>
+            <a href="#isolatie">Isolatie</a>
+            <a href="#zonne">Zonne</a>
+            <a href="#contact" class="nav-cta">Scan</a>
+        </div>
+    </nav>
+    <div id="content">
+        <section id="hero">
+            <div class="section-inner">
+                <div class="eyebrow">Duurzaam advies</div>
+                <h1>Verduurzaam met <span style="color:var(--accent)">inzicht</span>.</h1>
+                <p>Energielabel, isolatie, warmtepomp, zonnepanelen en subsidieadvies. Wij maken jouw woning of bedrijf energiezuinig.</p>
+                <div>
+                    <a href="#contact" class="btn">Gratis scan</a>
+                    <a href="#advies" class="btn btn-ghost">Diensten</a>
+                </div>
+                <div class="stats" style="margin-top:2.5rem;">
+                    <div class="stat"><div class="stat-num">1.500+</div><div class="stat-label">Adviesrapporten</div></div>
+                    <div class="stat"><div class="stat-num">30%</div><div class="stat-label">Besparing</div></div>
+                    <div class="stat"><div class="stat-num">EPC</div><div class="stat-label">0 mogelijk</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="advies" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">01 — Energielabel</div>
+                <h2>Weet waar je <span style="color:var(--accent)">staat</span>.</h2>
+                <p>Officieel energielabel, maatwerkadvies en een plan van aanpak. Zodat je precies weet welke maatregelen het meest opleveren.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>Label</strong><span>Officieel geregistreerd.</span></div>
+                    <div class="feature-card"><strong>Scan</strong><span>Quickscan ter plekke.</span></div>
+                    <div class="feature-card"><strong>Plan</strong><span>Roadmap naar EPC 0.</span></div>
+                </div>
+            </div>
+        </section>
+        <section id="isolatie">
+            <div class="section-inner">
+                <div class="eyebrow">02 — Isolatie</div>
+                <h2>De basis van <span style="color:var(--accent)">besparing</span>.</h2>
+                <p>Dakisolatie, spouwmuurisolatie, vloerisolatie en HR++ glas. Isoleren is de slimste eerste stap.</p>
+                <ul class="usp-list">
+                    <li>Meer wooncomfort</li>
+                    <li>Minder energieverbruik</li>
+                    <li>Subsidie beschikbaar</li>
+                    <li>Verlaagde CO2-uitstoot</li>
+                </ul>
+            </div>
+        </section>
+        <section id="zonne" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">03 — Zonne & warmte</div>
+                <h2>Eigen energie <span style="color:var(--accent)">opwekken</span>.</h2>
+                <p>Zonnepanelen, zonneboiler, warmtepomp en thuisbatterij. Wij adviseren en begeleiden de installatie.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">€ 0</div><div class="stat-label">energiekosten</div></div>
+                    <div class="stat"><div class="stat-num">ISDE</div><div class="stat-label">subsidie</div></div>
+                    <div class="stat"><div class="stat-num">15 jr</div><div class="stat-label">terugverdientijd</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="section-inner">
+                <div class="eyebrow">04 — Scan</div>
+                <h2>Plan een <span style="color:var(--accent)">gratis</span> quickscan.</h2>
+                <p>We kijken naar je woning, verbruik en wensen. Je ontvangt een persoonlijk adviesrapport.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt, EcoPlan neemt binnen 24 uur contact op.');">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Type pand</option>
+                        <option>Woning</option>
+                        <option>Appartement</option>
+                        <option>Bedrijfspand</option>
+                        <option>VvE</option>
+                    </select>
+                    <textarea rows="3" placeholder="Wensen / huidig energielabel"></textarea>
+                    <button type="submit" class="btn">Afspraak aanvragen</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div><strong>EcoPlan</strong><br>Duurzaamheidspark 1, 3511 DV Utrecht<br>KVK 69765432</div>
+            <div><a href="tel:+31301235566">030 123 55 66</a><br><a href="mailto:info@ecoplan.nl">info@ecoplan.nl</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const canvas = document.getElementById('webgl');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf0f7f4);
+        scene.fog = new THREE.Fog(0xf0f7f4, 15, 50);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+        camera.position.set(10, 6, 12);
+        camera.lookAt(0,0,0);
+        const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        const ambient = new THREE.AmbientLight(0xffffff, 0.6); scene.add(ambient);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.7); dir.position.set(5, 10, 5); dir.castShadow=true; scene.add(dir);
+
+        // Ground
+        const ground = new THREE.Mesh(new THREE.CircleGeometry(25, 64), new THREE.MeshStandardMaterial({color:0x8bc34a, roughness:0.9})); ground.rotation.x=-Math.PI/2; ground.position.y=-0.5; ground.receiveShadow=true; scene.add(ground);
+
+        // House
+        const house = new THREE.Group(); scene.add(house);
+        const houseBody = new THREE.Mesh(new THREE.BoxGeometry(4, 3, 3), new THREE.MeshStandardMaterial({color:0xffffff})); houseBody.position.y=1; houseBody.castShadow=true; house.add(houseBody);
+        const roof = new THREE.Mesh(new THREE.ConeGeometry(3.5, 2, 4), new THREE.MeshStandardMaterial({color:0x264653})); roof.position.y=3.5; roof.rotation.y=Math.PI/4; roof.castShadow=true; house.add(roof);
+        const door = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.5, 0.1), new THREE.MeshStandardMaterial({color:0x8b5e3c})); door.position.set(0, 0.25, 1.55); house.add(door);
+        const windowMat = new THREE.MeshStandardMaterial({color:0x87ceeb, roughness:0.1, transparent:true, opacity:0.6});
+        const w1 = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.8, 0.1), windowMat); w1.position.set(-1, 1.5, 1.55); house.add(w1);
+        const w2 = w1.clone(); w2.position.set(1, 1.5, 1.55); house.add(w2);
+
+        // Solar panels
+        const panels = new THREE.Group(); house.add(panels); panels.position.y=3.5;
+        for (let x=-1.2; x<=1.2; x+=1.2) { const p = new THREE.Mesh(new THREE.BoxGeometry(1, 0.05, 0.8), new THREE.MeshStandardMaterial({color:0x1a237e, metalness:0.5, roughness:0.2})); p.position.set(x, 0.1, 0); p.rotation.x = -0.2; panels.add(p); }
+
+        // Wind turbine
+        const turbine = new THREE.Group(); scene.add(turbine); turbine.position.set(6, -0.5, -2);
+        const tower = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.2, 5, 12), new THREE.MeshStandardMaterial({color:0xffffff})); tower.position.y=2.5; tower.castShadow=true; turbine.add(tower);
+        const rotor = new THREE.Group(); rotor.position.y=5; turbine.add(rotor);
+        for (let i=0; i<3; i++) { const blade = new THREE.Mesh(new THREE.BoxGeometry(0.3, 2.5, 0.05), new THREE.MeshStandardMaterial({color:0xffffff})); blade.position.y=1; blade.position.x=0.2; blade.rotation.z = -Math.PI/2; const b = new THREE.Group(); b.add(blade); b.rotation.z = i * Math.PI * 2 / 3; rotor.add(b); }
+
+        // Sun
+        const sun = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), new THREE.MeshBasicMaterial({color:0xffeb3b})); sun.position.set(-8, 2, -6); scene.add(sun);
+        const sunLight = new THREE.DirectionalLight(0xffeb3b, 0, 20); sunLight.position.copy(sun.position); scene.add(sunLight);
+
+        // Energy label
+        const labelCanvas = document.createElement('canvas'); labelCanvas.width = 256; labelCanvas.height = 128; const lctx = labelCanvas.getContext('2d');
+        function drawLabel(grade) { lctx.clearRect(0,0,256,128); lctx.fillStyle='rgba(255,255,255,0.9)'; lctx.fillRect(0,0,256,128); lctx.fillStyle='#1a2e2b'; lctx.font='bold 60px sans-serif'; lctx.fillText(grade, 20, 85); lctx.fillStyle='green'; lctx.fillRect(90, 20, 140, 80); }
+        drawLabel('A');
+        const labelTex = new THREE.CanvasTexture(labelCanvas);
+        const label = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 0.75), new THREE.MeshBasicMaterial({map:labelTex, transparent:true})); label.position.set(3, 2, 1); label.rotation.y = -0.3; scene.add(label);
+
+        // Energy particles from panels to house
+        const pCount = 100;
+        const pGeo = new THREE.BufferGeometry();
+        const pPos = new Float32Array(pCount*3);
+        for (let i=0; i<pCount; i++) { pPos[i*3]=0; pPos[i*3+1]=0; pPos[i*3+2]=0; }
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+        const pMat = new THREE.PointsMaterial({color:0xffeb3b, size:0.08, transparent:true, opacity:0, blending:THREE.AdditiveBlending});
+        const energy = new THREE.Points(pGeo, pMat); scene.add(energy);
+
+        let progress=0;
+        ScrollTrigger.create({ trigger:'#content', start:'top top', end:'bottom bottom', scrub:0.8, onUpdate:(self)=>{ progress=self.progress; } });
+        function resize(){ camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }
+        window.addEventListener('resize', resize);
+
+        let time=0;
+        function animate() {
+            requestAnimationFrame(animate); time+=0.02;
+            const p1 = Math.min(1, progress/0.25);
+            const p2 = Math.min(1, Math.max(0,(progress-0.25)/0.25));
+            const p3 = Math.min(1, Math.max(0,(progress-0.5)/0.25));
+            const p4 = Math.min(1, Math.max(0,(progress-0.75)/0.25));
+
+            // Sun rises
+            sun.position.y = THREE.MathUtils.lerp(2, 8, p1);
+            sun.position.x = THREE.MathUtils.lerp(-8, -5, p1);
+            sunLight.intensity = 0.2 + p1 * 1.5;
+
+            // Turbine spins
+            rotor.rotation.z -= 0.03 + p2 * 0.1;
+
+            // Camera
+            camera.position.z = THREE.MathUtils.lerp(12, 8, p1);
+            camera.position.y = THREE.MathUtils.lerp(6, 4, p2);
+            camera.position.x = THREE.MathUtils.lerp(10, 5, p2);
+            if (p3 > 0) { camera.position.x = THREE.MathUtils.lerp(5, -5, p3); camera.position.y = THREE.MathUtils.lerp(4, 5, p3); }
+            if (p4 > 0) { camera.position.x = THREE.MathUtils.lerp(-5, 0, p4); camera.position.z = THREE.MathUtils.lerp(8, 12, p4); camera.position.y = THREE.MathUtils.lerp(5, 6, p4); }
+            camera.lookAt(0, 2, 0);
+
+            // Energy particles
+            pMat.opacity = p2 * 0.7;
+            const pos = energy.geometry.attributes.position.array;
+            for (let i=0; i<pCount; i++) {
+                const t = (time * 2 + i / pCount) % 1;
+                pos[i*3] = THREE.MathUtils.lerp(0, 0, t);
+                pos[i*3+1] = THREE.MathUtils.lerp(3.5, 1, t);
+                pos[i*3+2] = THREE.MathUtils.lerp(0, 0, t);
+            }
+            energy.geometry.attributes.position.needsUpdate = true;
+
+            // Label grade changes
+            const grade = progress > 0.6 ? 'A' : (progress > 0.4 ? 'B' : (progress > 0.2 ? 'C' : 'G'));
+            drawLabel(grade);
+            labelTex.needsUpdate = true;
+
+            renderer.render(scene, camera);
+        }
+        window.addEventListener('load', ()=>{ setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},600); });
+        animate();
+    </script>
+</body>
+</html>
