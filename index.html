@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWE — 15 Awwward-Winning ZZP/MKB Websites</title>
+    <meta name="description" content="15 originele, award-waardige demo-websites voor lokale Nederlandse ZZP en MKB.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #06060a;
+            --panel: #0e0e14;
+            --card: #13131c;
+            --border: rgba(255,255,255,0.08);
+            --fg: #f4f4f7;
+            --muted: #7a7a88;
+            --accent: #a78bfa;
+            --accent-2: #22d3ee;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .wrap { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; }
+        header { margin-bottom: 3rem; position: relative; }
+        .eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.05;
+            max-width: 900px;
+        }
+        h1 span { color: var(--accent-2); }
+        .subtitle {
+            color: var(--muted);
+            margin-top: 1rem;
+            font-size: 1rem;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 1.5rem;
+            align-items: center;
+        }
+        .search {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            color: var(--fg);
+            font-size: 0.95rem;
+            min-width: 260px;
+            outline: none;
+        }
+        .search:focus { border-color: var(--accent); }
+        .count { color: var(--muted); font-size: 0.85rem; margin-left: auto; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+        }
+        .preview {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #0c0c14 0%, #1a1a2e 100%);
+        }
+        .preview::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(167,139,250,0.15), transparent 50%);
+        }
+        .num {
+            position: absolute;
+            top: 0.9rem;
+            left: 0.9rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.5rem;
+            border-radius: 99px;
+        }
+        .body { padding: 1.4rem; }
+        .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .desc {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.65rem;
+            padding: 0.25rem 0.55rem;
+            border-radius: 99px;
+            background: rgba(255,255,255,0.06);
+            color: var(--muted);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .hidden { display: none !important; }
+        @media (max-width: 600px) {
+            .wrap { padding: 2rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="eyebrow">SWE — Autonoom gebouwd portfolio</div>
+            <h1>15 award-waardige websites voor <span>lokale ondernemers</span></h1>
+            <p class="subtitle">Statische HTML/CSS/JS demo's met 3D-animatie, scroll-gedreven effecten en een volledig eigen identiteit. Gebouwd in <code>/swe</code> zonder bestaande mappen te wijzigen.</p>
+            <div class="controls">
+                <input type="text" class="search" id="search" placeholder="Zoek branche of effect...">
+                <span class="count" id="count">15 websites</span>
+            </div>
+        </header>
+
+        <main class="grid" id="grid"></main>
+
+        <footer class="footer">
+            <div>Opgebouwd in <code>/home/ubuntu/Documents/glm/swe</code></div>
+            <div>Serveer met <code>PORT=5173 node server.js</code></div>
+        </footer>
+    </div>
+
+    <script>
+        const sites = [
+            { id: '01-airco', title: 'Airco & Klimaat', desc: '3D split-unit opent, koelstroming en warmtepomp op scroll.', icon: '❄️', tags: ['Three.js', 'GSAP', 'ScrollTrigger'] },
+            { id: '02-elektricien', title: 'Elektricien', desc: '3D schakelkast met stroompulsen, circuits en interactie.', icon: '⚡', tags: ['Three.js', 'Canvas', 'SVG'] },
+            { id: '03-rijschool', title: 'Rijschool', desc: '3D auto-interieur, route door verkeer, parkeeroefening.', icon: '🚗', tags: ['Three.js', 'GSAP', 'ScrollTrigger'] },
+            { id: '04-tegelzetter', title: 'Tegelzetter', desc: 'Tegels leggen zich op scroll, grout en patroon selector.', icon: '🔲', tags: ['CSS 3D', 'Canvas', 'GSAP'] },
+            { id: '05-makelaar', title: 'Makelaar', desc: '3D huis bouwt zich op, verdiepingen en omgeving onthullen.', icon: '🏠', tags: ['Three.js', 'ScrollTrigger'] },
+            { id: '06-beveiliging', title: 'Beveiliging', desc: '3D camera met beveiligingsveld, nachtmodus en alarm.', icon: '🔒', tags: ['Three.js', 'Canvas', 'SVG'] },
+            { id: '07-grafisch', title: 'Grafisch Ontwerper', desc: 'Typografie-deeltjes, scroll-morph en kleurthema\'s.', icon: '🎨', tags: ['Canvas', 'SVG', 'GSAP'] },
+            { id: '08-fietsenmaker', title: 'Fietsenmaker', desc: '3D wiel draait, kleur/onderdeel configurator.', icon: '🚲', tags: ['Three.js', 'GSAP', 'ScrollTrigger'] },
+            { id: '09-catering', title: 'Catering', desc: '3D tafelopbouw, gerechten verschijnen, confetti.', icon: '🍽️', tags: ['Three.js', 'Canvas', 'GSAP'] },
+            { id: '10-aannemer', title: 'Aannemer', desc: '3D bouwplaats met hijskraan, beton en elementen.', icon: '🏗️', tags: ['Three.js', 'Canvas', 'ScrollTrigger'] },
+            { id: '11-notaris', title: 'Notaris', desc: '3D zegel / stempel, documenten openen, particles.', icon: '📜', tags: ['Three.js', 'Canvas', 'GSAP'] },
+            { id: '12-interieur', title: 'Interieurstyliste', desc: '3D kamer inrichten met stoffen, kleuren en meubels.', icon: '🛋️', tags: ['Three.js', 'GSAP', 'ScrollTrigger'] },
+            { id: '13-zorg', title: 'Thuiszorg', desc: 'Hartlijn, zorgnetwerk en warme particles op scroll.', icon: '❤️', tags: ['Canvas', 'SVG', 'GSAP'] },
+            { id: '14-hekwerk', title: 'Hekwerk & Poorten', desc: '3D hek vouwt uit, poorten openen, materialen.', icon: '⛩️', tags: ['Three.js', 'GSAP', 'ScrollTrigger'] },
+            { id: '15-duurzaam', title: 'Duurzaam Advies', desc: '3D huis met energielabel, zon, wind en isolatie.', icon: '☀️', tags: ['Three.js', 'Canvas', 'GSAP'] }
+        ];
+
+        const grid = document.getElementById('grid');
+        const search = document.getElementById('search');
+        const count = document.getElementById('count');
+
+        function render(list) {
+            grid.innerHTML = list.map(s => `
+                <a class="card" href="/${s.id}/" data-terms="${(s.title + ' ' + s.desc + ' ' + s.tags.join(' ')).toLowerCase()}">
+                    <div class="preview"><span class="num">${s.id.split('-')[0]}</span>${s.icon}</div>
+                    <div class="body">
+                        <div class="title">${s.title}</div>
+                        <div class="desc">${s.desc}</div>
+                        <div class="tags">${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+                    </div>
+                </a>
+            `).join('');
+            count.textContent = `${list.length} website${list.length === 1 ? '' : 's'}`;
+        }
+
+        search.addEventListener('input', e => {
+            const q = e.target.value.toLowerCase();
+            document.querySelectorAll('.card').forEach(card => {
+                const terms = card.dataset.terms;
+                card.classList.toggle('hidden', q && !terms.includes(q));
+            });
+            const visible = document.querySelectorAll('.card:not(.hidden)').length;
+            count.textContent = `${visible} website${visible === 1 ? '' : 's'}`;
+        });
+
+        render(sites);
+    </script>
+</body>
+</html>
