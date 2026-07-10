@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Van Dijk Elektro — Elektricien</title>
+    <meta name="description" content="Van Dijk Elektro — Installatie, onderhoud en storingen voor woning en bedrijf. KVK 68432109">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0b14;
+            --panel: #131522;
+            --accent: #f5c542;
+            --accent-2: #00d4ff;
+            --fg: #f4f4f7;
+            --muted: #8a90a5;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: auto; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--fg);
+            background: var(--bg);
+            overflow-x: hidden;
+        }
+        #loader {
+            position: fixed; inset: 0; z-index: 999;
+            background: var(--bg);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-ring { width: 48px; height: 48px; border-radius: 50%; border: 3px solid rgba(245,197,66,0.2); border-top-color: var(--accent); animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loader-text { margin-top: 1rem; color: var(--muted); font-size: 0.85rem; }
+
+        #webgl { position: fixed; inset: 0; z-index: 0; outline: none; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.2rem 4vw;
+            background: rgba(10,11,20,0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--fg); }
+        .nav-brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta { padding: 0.6rem 1.2rem; background: var(--accent); color: #0a0b14 !important; border-radius: 8px; font-weight: 600; }
+
+        #content { position: relative; z-index: 2; pointer-events: none; }
+        section { min-height: 100vh; display: flex; align-items: center; padding: 6rem 6vw; position: relative; }
+        .section-inner { pointer-events: auto; max-width: 520px; }
+        .right { margin-left: auto; text-align: right; }
+        .right .feature-grid, .right .stats, .right .usp-list { justify-content: flex-end; }
+        .eyebrow { font-family: 'Space Grotesk'; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 1rem; }
+        h1, h2 { font-family: 'Space Grotesk'; font-weight: 700; line-height: 1.1; }
+        h1 { font-size: clamp(2.5rem, 5vw, 5rem); margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.25rem; }
+        p { color: var(--muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; background: var(--accent); color: #0a0b14; border: none; cursor: pointer; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-3px); }
+        .btn-ghost { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); margin-left: 0.75rem; }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+        .feature-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; padding: 1.2rem; backdrop-filter: blur(4px); }
+        .feature-card strong { display: block; font-family: 'Space Grotesk'; font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .feature-card span { font-size: 0.85rem; color: var(--muted); }
+        .stats { display: flex; gap: 2rem; margin-top: 2rem; }
+        .stat { text-align: center; }
+        .stat-num { font-family: 'Space Grotesk'; font-size: 2.2rem; font-weight: 700; color: var(--accent); }
+        .stat-label { font-size: 0.8rem; color: var(--muted); }
+        .contact-form { max-width: 460px; pointer-events: auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 1rem; margin-bottom: 0.75rem; border-radius: 10px; border: 1px solid var(--border); background: rgba(255,255,255,0.05); color: var(--fg); font-family: inherit; font-size: 0.95rem; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+        .contact-form button { width: 100%; }
+        .usp-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .usp-list li { display: flex; align-items: center; gap: 0.75rem; color: var(--muted); }
+        .usp-list li::before { content: '✓'; color: var(--accent); font-weight: 700; }
+        footer { position: relative; z-index: 2; background: #05060d; color: var(--muted); padding: 3rem 6vw; font-size: 0.85rem; }
+        footer a { color: #fff; text-decoration: none; }
+        .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+        @media (max-width: 800px) { .nav-links { display: none; } .feature-grid { grid-template-columns: 1fr; } .right { margin-left: 0; text-align: left; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-ring"></div><div class="loader-text">Van Dijk Elektro laden...</div></div>
+
+    <canvas id="webgl"></canvas>
+
+    <nav>
+        <div class="nav-brand">Van Dijk <span>Elektro</span></div>
+        <div class="nav-links">
+            <a href="#diensten">Diensten</a>
+            <a href="#storing">Storing</a>
+            <a href="#installatie">Installatie</a>
+            <a href="#contact" class="nav-cta">Bel direct</a>
+        </div>
+    </nav>
+
+    <div id="content">
+        <section class="hero-section" id="hero">
+            <div class="section-inner">
+                <div class="eyebrow">Elektricien in Utrecht en omgeving</div>
+                <h1>Stroom die <span style="color:var(--accent)">altijd</span> meewerkt.</h1>
+                <p>Van extra groep in de meterkast tot complete nieuwbouwinstallatie. Snel, veilig en volgens NEN 1010.</p>
+                <div>
+                    <a href="#contact" class="btn">Storing melden</a>
+                    <a href="#installatie" class="btn btn-ghost">Installaties</a>
+                </div>
+                <div class="stats" style="margin-top: 2.5rem;">
+                    <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Jaar ervaring</div></div>
+                    <div class="stat"><div class="stat-num">2.500+</div><div class="stat-label">Klussen</div></div>
+                    <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Spoed</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diensten">
+            <div class="section-inner">
+                <div class="eyebrow">01 — Diensten</div>
+                <h2>Alles op het gebied van <span style="color:var(--accent)">elektra</span>.</h2>
+                <p>Wij installeren, keuren en repareren. Ook voor zakelijke projecten, laadpalen en domotica.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>Installatie</strong><span>Nieuwbouw, renovatie en uitbreiding.</span></div>
+                    <div class="feature-card"><strong>Storingen</strong><span>Stroomuitval, kortsluiting, verdeelkast.</span></div>
+                    <div class="feature-card"><strong>Laadpalen</strong><span>Thuis of op kantoor, 1- en 3-fase.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="installatie" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">02 — Installatie</div>
+                <h2>Veilig aangesloten, <span style="color:var(--accent)">jarenlang</span> zorgeloos.</h2>
+                <p>Onze installaties voldoen aan de strengste normen. We werken met gediplomeerde monteurs en gebruiken alleen A-merk materialen.</p>
+                <ul class="usp-list" style="align-items: flex-end;">
+                    <li>NEN 1010 conform</li>
+                    <li>Geaard en kortsluitvrij</li>
+                    <li>Keuring en inspectie</li>
+                    <li>5 jaar installatiegarantie</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="storing">
+            <div class="section-inner">
+                <div class="eyebrow">03 — Storing</div>
+                <h2>Stroom <span style="color:var(--accent)">uit</span>? Wij draaien bij.</h2>
+                <p>Bel ons bij stroomuitval, een doorgebrande groep of een piekende meterkast. Onze spoedlijn is 24/7 bereikbaar.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">30</div><div class="stat-label">Min responstijd</div></div>
+                    <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Eerste herstel</div></div>
+                    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Maanden garantie</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">04 — Contact</div>
+                <h2>Plan een <span style="color:var(--accent)">afspraak</span>.</h2>
+                <p>Vul het formulier in voor een vrijblijvende offerte. Of bel direct voor spoed.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt, Van Dijk Elektro neemt binnen 24 uur contact op.');">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Waar gaat het over?</option>
+                        <option>Storing</option>
+                        <option>Nieuwe installatie</option>
+                        <option>Laadpaal</option>
+                        <option>Anders</option>
+                    </select>
+                    <textarea rows="3" placeholder="Korte omschrijving"></textarea>
+                    <button type="submit" class="btn">Aanvraag versturen</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div><strong>Van Dijk Elektro B.V.</strong><br>Energieweg 8, 3541 AD Utrecht<br>KVK 68432109</div>
+            <div><a href="tel:+31304567890">030 456 78 90</a><br><a href="mailto:info@vandijkelektro.nl">info@vandijkelektro.nl</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const canvas = document.getElementById('webgl');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0b14);
+        scene.fog = new THREE.Fog(0x0a0b14, 6, 28);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 12);
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+
+        const ambient = new THREE.AmbientLight(0xffffff, 0.2);
+        scene.add(ambient);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.5);
+        dir.position.set(4, 8, 6); dir.castShadow = true;
+        scene.add(dir);
+        const blueLight = new THREE.PointLight(0x00d4ff, 0, 30);
+        blueLight.position.set(0, 1, 3);
+        scene.add(blueLight);
+        const yellowLight = new THREE.PointLight(0xf5c542, 0, 30);
+        yellowLight.position.set(0, 3, 3);
+        scene.add(yellowLight);
+
+        // ---- Fuse box ----
+        const boxGroup = new THREE.Group();
+        scene.add(boxGroup);
+        const boxCase = new THREE.Mesh(new THREE.BoxGeometry(3, 4, 0.8), new THREE.MeshStandardMaterial({ color: 0x2a2d3e, roughness: 0.4, metalness: 0.3 }));
+        boxCase.castShadow = true;
+        boxCase.position.z = -0.1;
+        boxGroup.add(boxCase);
+
+        const door = new THREE.Mesh(new THREE.BoxGeometry(2.8, 3.8, 0.1), new THREE.MeshStandardMaterial({ color: 0x3a3f54, roughness: 0.3, metalness: 0.2 }));
+        door.position.set(0, 0, 0.45);
+        const doorPivot = new THREE.Group();
+        doorPivot.position.set(-1.4, 0, 0.4);
+        door.position.set(1.4, 0, 0.05);
+        doorPivot.add(door);
+        boxGroup.add(doorPivot);
+
+        // Switches / fuses
+        const switches = [];
+        for (let i = 0; i < 8; i++) {
+            const s = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.35, 0.15), new THREE.MeshStandardMaterial({ color: 0x5a5f74 }));
+            s.position.set(-1 + (i % 4) * 0.6, 0.8 - Math.floor(i / 4) * 0.9, 0.05);
+            boxGroup.add(s);
+            switches.push(s);
+        }
+
+        // Wires
+        const wireMat = new THREE.LineBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.4 });
+        const wirePoints = [];
+        for (let i = 0; i < 8; i++) {
+            const start = new THREE.Vector3(-1 + (i % 4) * 0.6, 0.8 - Math.floor(i / 4) * 0.9, 0.1);
+            const end = new THREE.Vector3(2.5, -1, 0.5);
+            const curve = new THREE.CatmullRomCurve3([start, start.clone().add(new THREE.Vector3(0.2, 0.5, 0.5)), end.clone().add(new THREE.Vector3(-1, 0.5, 0)), end]);
+            const points = curve.getPoints(20);
+            const geo = new THREE.BufferGeometry().setFromPoints(points);
+            const line = new THREE.Line(geo, wireMat.clone());
+            line.userData = { originalColor: 0x00d4ff };
+            boxGroup.add(line);
+            wirePoints.push(line);
+        }
+
+        // Light bulb
+        const bulbGroup = new THREE.Group();
+        bulbGroup.position.set(3, -1.5, 0);
+        scene.add(bulbGroup);
+        const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.6, 32, 32), new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x222222, roughness: 0.1, transparent: true, opacity: 0.9 }));
+        bulbGroup.add(bulb);
+        const socket = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.4, 16), new THREE.MeshStandardMaterial({ color: 0x555555 }));
+        socket.position.y = 0.7; bulbGroup.add(socket);
+        const bulbLight = new THREE.PointLight(0xf5c542, 0, 20);
+        bulbGroup.add(bulbLight);
+
+        // Electric sparks / particles
+        const sparkCount = 200;
+        const sparkGeo = new THREE.BufferGeometry();
+        const sparkPos = new Float32Array(sparkCount * 3);
+        const sparkVel = new Float32Array(sparkCount * 3);
+        for (let i = 0; i < sparkCount; i++) {
+            sparkPos[i*3] = (Math.random() - 0.5) * 6;
+            sparkPos[i*3+1] = (Math.random() - 0.5) * 6;
+            sparkPos[i*3+2] = (Math.random() - 0.5) * 4;
+            sparkVel[i*3] = (Math.random() - 0.5) * 0.05;
+            sparkVel[i*3+1] = (Math.random() - 0.5) * 0.05;
+            sparkVel[i*3+2] = (Math.random() - 0.5) * 0.05;
+        }
+        sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+        const sparkMat = new THREE.PointsMaterial({ color: 0x00d4ff, size: 0.06, transparent: true, opacity: 0, blending: THREE.AdditiveBlending });
+        const sparks = new THREE.Points(sparkGeo, sparkMat);
+        scene.add(sparks);
+
+        let progress = 0;
+        ScrollTrigger.create({ trigger: '#content', start: 'top top', end: 'bottom bottom', scrub: 0.8, onUpdate: (self) => { progress = self.progress; } });
+
+        function resize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        window.addEventListener('resize', resize);
+
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.02;
+
+            const p1 = Math.min(1, progress / 0.25);
+            const p2 = Math.min(1, Math.max(0, (progress - 0.25) / 0.25));
+            const p3 = Math.min(1, Math.max(0, (progress - 0.5) / 0.25));
+            const p4 = Math.min(1, Math.max(0, (progress - 0.75) / 0.25));
+
+            // Door opens
+            doorPivot.rotation.y = -p1 * 1.8;
+            boxGroup.rotation.y = p1 * 0.3;
+
+            // Switches flip up
+            switches.forEach((s, i) => {
+                const delay = i * 0.05;
+                const local = Math.min(1, Math.max(0, p2 - delay) / 0.3);
+                s.position.z = 0.05 + local * 0.2;
+                s.material.color.setHex(local > 0.5 ? 0xf5c542 : 0x5a5f74);
+            });
+
+            // Wires light up
+            wirePoints.forEach((w, i) => {
+                const delay = i * 0.04;
+                const lit = p2 > 0.3 + delay;
+                w.material.opacity = 0.3 + (p2 * 0.6);
+                w.material.color.setHex(lit ? 0x00d4ff : 0x334455);
+                if (lit) {
+                    const dash = (time * 5 + i) % 1;
+                    w.material.opacity = 0.5 + Math.sin(dash * Math.PI * 4) * 0.4;
+                }
+            });
+
+            // Bulb glow
+            const glow = p3;
+            bulb.material.emissive.setHex(0x222222 + Math.floor(glow * 0xdd9c00));
+            bulbLight.intensity = glow * 3;
+            yellowLight.intensity = glow * 1.5;
+            bulbGroup.position.y = THREE.MathUtils.lerp(-1.5, 1.5, p3);
+            bulbGroup.scale.setScalar(1 + glow * 0.2);
+
+            // Camera move
+            camera.position.x = THREE.MathUtils.lerp(0, -2, p2);
+            camera.position.y = THREE.MathUtils.lerp(0, 1, p3);
+            camera.position.z = THREE.MathUtils.lerp(12, p3 > 0.5 ? 5 : 8, p3);
+            if (p4 > 0) {
+                camera.position.x = THREE.MathUtils.lerp(-2, 2, p4);
+                camera.position.y = THREE.MathUtils.lerp(1, 0, p4);
+                camera.position.z = THREE.MathUtils.lerp(5, 12, p4);
+            }
+            camera.lookAt(0, 0, 0);
+
+            // Sparks
+            sparkMat.opacity = p2 * 0.8;
+            const positions = sparks.geometry.attributes.position.array;
+            for (let i = 0; i < sparkCount; i++) {
+                if (p2 > 0.2) {
+                    positions[i*3] += sparkVel[i*3] + (Math.random() - 0.5) * 0.03;
+                    positions[i*3+1] += sparkVel[i*3+1] + (Math.random() - 0.5) * 0.03;
+                    positions[i*3+2] += sparkVel[i*3+2] + (Math.random() - 0.5) * 0.03;
+                    if (Math.random() < 0.02) {
+                        positions[i*3] = (Math.random() - 0.5) * 4;
+                        positions[i*3+1] = (Math.random() - 0.5) * 4;
+                        positions[i*3+2] = (Math.random() - 0.5) * 2;
+                    }
+                }
+            }
+            sparks.geometry.attributes.position.needsUpdate = true;
+            sparks.rotation.y = time * 0.2;
+
+            blueLight.intensity = 0.2 + p2 * 1.5;
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 600); });
+        animate();
+    </script>
+</body>
+</html>
