@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RijSlim — Rijschool</title>
+    <meta name="description" content="RijSlim — Snel en zelfverzekerd je rijbewijs. KVK 68543210">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0d0f17; --panel: #151827; --accent: #00e676; --accent-2: #ff3d00; --fg: #f5f7ff; --muted: #8a93a8; --border: rgba(255,255,255,0.08); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: auto; }
+        body { font-family: 'Inter', sans-serif; color: var(--fg); background: var(--bg); overflow-x: hidden; }
+        #loader { position: fixed; inset:0; z-index:999; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.6s, visibility 0.6s; }
+        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-ring { width:48px; height:48px; border-radius:50%; border:3px solid rgba(0,230,118,0.2); border-top-color:var(--accent); animation:spin 1s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .loader-text { margin-top:1rem; color:var(--muted); font-size:0.85rem; }
+        #webgl { position: fixed; inset:0; z-index:0; outline:none; }
+        nav { position: fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4vw; background:rgba(13,15,23,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+        .nav-brand { font-family:'Space Grotesk'; font-weight:700; font-size:1.3rem; color:var(--fg); }
+        .nav-brand span { color:var(--accent); }
+        .nav-links { display:flex; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+        .nav-links a:hover { color:var(--accent); }
+        .nav-cta { padding:0.6rem 1.2rem; background:var(--accent); color:#0d0f17 !important; border-radius:8px; font-weight:600; }
+        #content { position: relative; z-index:2; pointer-events:none; }
+        section { min-height:100vh; display:flex; align-items:center; padding:6rem 6vw; position:relative; }
+        .section-inner { pointer-events:auto; max-width:520px; }
+        .right { margin-left:auto; text-align:right; }
+        .right .stats { justify-content:flex-end; }
+        .eyebrow { font-family:'Space Grotesk'; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:1rem; }
+        h1, h2 { font-family:'Space Grotesk'; font-weight:700; line-height:1.1; }
+        h1 { font-size:clamp(2.5rem,5vw,5rem); margin-bottom:1.5rem; }
+        h2 { font-size:clamp(2rem,4vw,3.5rem); margin-bottom:1.25rem; }
+        p { color:var(--muted); font-size:1.05rem; line-height:1.7; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2rem; border-radius:10px; font-weight:600; text-decoration:none; background:var(--accent); color:#0d0f17; border:none; cursor:pointer; transition:transform 0.2s; }
+        .btn:hover { transform:translateY(-3px); }
+        .btn-ghost { background:transparent; color:var(--accent); border:1.5px solid var(--accent); margin-left:0.75rem; }
+        .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+        .feature-card { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:1.2rem; }
+        .feature-card strong { display:block; font-family:'Space Grotesk'; font-size:1.1rem; margin-bottom:0.4rem; }
+        .feature-card span { font-size:0.85rem; color:var(--muted); }
+        .stats { display:flex; gap:2rem; margin-top:2rem; }
+        .stat { text-align:center; }
+        .stat-num { font-family:'Space Grotesk'; font-size:2.2rem; font-weight:700; color:var(--accent); }
+        .stat-label { font-size:0.8rem; color:var(--muted); }
+        .contact-form { max-width:460px; pointer-events:auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width:100%; padding:1rem; margin-bottom:0.75rem; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.05); color:var(--fg); font-family:inherit; font-size:0.95rem; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); }
+        .contact-form button { width:100%; }
+        .usp-list { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+        .usp-list li { display:flex; align-items:center; gap:0.75rem; color:var(--muted); }
+        .usp-list li::before { content:'✓'; color:var(--accent); font-weight:700; }
+        footer { position:relative; z-index:2; background:#07080d; color:var(--muted); padding:3rem 6vw; font-size:0.85rem; }
+        footer a { color:#fff; text-decoration:none; }
+        .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+        @media (max-width:800px) { .nav-links { display:none; } .feature-grid { grid-template-columns:1fr; } .right { margin-left:0; text-align:left; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-ring"></div><div class="loader-text">RijSlim laden...</div></div>
+    <canvas id="webgl"></canvas>
+    <nav>
+        <div class="nav-brand">Rij<span>Slim</span></div>
+        <div class="nav-links">
+            <a href="#lessen">Lessen</a>
+            <a href="#examen">Examen</a>
+            <a href="#pakketten">Pakketten</a>
+            <a href="#contact" class="nav-cta">Proefles</a>
+        </div>
+    </nav>
+    <div id="content">
+        <section id="hero">
+            <div class="section-inner">
+                <div class="eyebrow">Rijschool in Utrecht & omgeving</div>
+                <h1>Slagen in <span style="color:var(--accent)">één keer</span>.</h1>
+                <p>Persoonlijke rijlessen, moderne lesauto en slim lesmateriaal. Wij leren je niet alleen de weg, maar ook het verkeer lezen.</p>
+                <div>
+                    <a href="#contact" class="btn">Gratis proefles</a>
+                    <a href="#lessen" class="btn btn-ghost">Bekijk pakketten</a>
+                </div>
+                <div class="stats" style="margin-top:2.5rem;">
+                    <div class="stat"><div class="stat-num">94%</div><div class="stat-label">Slagingspercentage</div></div>
+                    <div class="stat"><div class="stat-num">1.800+</div><div class="stat-label">Geslaagden</div></div>
+                    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Beoordeling</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="lessen" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">01 — Lessen</div>
+                <h2>Lessen die <span style="color:var(--accent)">bij je passen</span>.</h2>
+                <p>Of je nu snel wilt slagen of liever rustig opbouwt: onze instructeurs passen het tempo aan op jou.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>Automaat</strong><span>Spoedcursus in 2 weken.</span></div>
+                    <div class="feature-card"><strong>Schakel</strong><span>Technisch inzicht in 20 lessen.</span></div>
+                    <div class="feature-card"><strong>Spoed</strong><span>Intensief traject, 7 dagen.</span></div>
+                </div>
+            </div>
+        </section>
+        <section id="examen">
+            <div class="section-inner">
+                <div class="eyebrow">02 — Examen</div>
+                <h2>Volledig <span style="color:var(--accent)">geregeld</span>.</h2>
+                <p>Wij reserveren je praktijkexamen, verzorgen de auto en geven een voorrijles op dezelfde dag. Jij hoeft alleen te rijden.</p>
+                <ul class="usp-list">
+                    <li>CBR examen inbegrepen</li>
+                    <li>Geen wachttijden</li>
+                    <li>Herexamen begeleiding</li>
+                    <li>Tussentijdse evaluatie</li>
+                </ul>
+            </div>
+        </section>
+        <section id="pakketten" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">03 — Pakketten</div>
+                <h2>Transparante <span style="color:var(--accent)">prijzen</span>.</h2>
+                <p>Geen verborgen kosten. Kies een pakket of betaal per les.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">€59</div><div class="stat-label">per les</div></div>
+                    <div class="stat"><div class="stat-num">€1.199</div><div class="stat-label">20-lessen pakket</div></div>
+                    <div class="stat"><div class="stat-num">€1.749</div><div class="stat-label">all-in pakket</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="section-inner">
+                <div class="eyebrow">04 — Contact</div>
+                <h2>Start je <span style="color:var(--accent)">gratis</span> proefles.</h2>
+                <p>Vul het formulier in en wij nemen binnen 4 uur contact met je op.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt, RijSlim neemt binnenkort contact met je op.');">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Rijbewijs</option>
+                        <option>B</option>
+                        <option>Automatisch</option>
+                        <option>T</option>
+                        <option>Aanhanger</option>
+                    </select>
+                    <textarea rows="3" placeholder="Voorkeur dagdeel"></textarea>
+                    <button type="submit" class="btn">Proefles aanvragen</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div><strong>RijSlim</strong><br>Rijschoolweg 12, 3521 AR Utrecht<br>KVK 68543210</div>
+            <div><a href="tel:+31301239876">030 123 98 76</a><br><a href="mailto:info@rijslim.nl">info@rijslim.nl</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const canvas = document.getElementById('webgl');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0d0f17);
+        scene.fog = new THREE.Fog(0x0d0f17, 15, 60);
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 100);
+        camera.position.set(3, 3, 8);
+        const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        const ambient = new THREE.AmbientLight(0xffffff, 0.3); scene.add(ambient);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.6); dir.position.set(5,10,5); dir.castShadow=true; scene.add(dir);
+        const neon = new THREE.PointLight(0x00e676, 0, 30); neon.position.set(0,2,0); scene.add(neon);
+
+        // Road
+        const roadGeo = new THREE.PlaneGeometry(12, 200, 1, 40);
+        const roadMat = new THREE.MeshStandardMaterial({ color: 0x1a1c26, roughness: 0.9 });
+        const road = new THREE.Mesh(roadGeo, roadMat); road.rotation.x=-Math.PI/2; road.position.z=-50; road.receiveShadow=true; scene.add(road);
+        // Lines
+        const lineGroup = new THREE.Group(); scene.add(lineGroup);
+        for (let i=0;i<20;i++) {
+            const line = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 4), new THREE.MeshBasicMaterial({ color: 0xf5f7ff }));
+            line.rotation.x=-Math.PI/2; line.position.set(0, 0.02, -i*10); lineGroup.add(line);
+            const side = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 4), new THREE.MeshBasicMaterial({ color: 0x555a70 }));
+            side.rotation.x=-Math.PI/2; side.position.set(5.5, 0.02, -i*10); lineGroup.add(side);
+            const side2 = side.clone(); side2.position.x=-5.5; lineGroup.add(side2);
+        }
+
+        // Car
+        const car = new THREE.Group(); scene.add(car);
+        const chassis = new THREE.Mesh(new THREE.BoxGeometry(2, 0.6, 4), new THREE.MeshStandardMaterial({ color: 0x00e676, roughness:0.3, metalness:0.2 }));
+        chassis.position.y=0.6; chassis.castShadow=true; car.add(chassis);
+        const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.5, 2), new THREE.MeshStandardMaterial({ color: 0x11131a, roughness:0.1, transparent:true, opacity:0.8 }));
+        cabin.position.set(0, 1.15, -0.3); car.add(cabin);
+        const head = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.15, 0.1), new THREE.MeshBasicMaterial({ color: 0xf5f7ff }));
+        head.position.set(0, 0.6, 2.05); car.add(head);
+        const taill = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.15, 0.1), new THREE.MeshBasicMaterial({ color: 0xff3d00 }));
+        taill.position.set(0, 0.6, -2.05); car.add(taill);
+        const wheels = [];
+        const wheelGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.25, 24);
+        const wheelMat = new THREE.MeshStandardMaterial({ color: 0x222222 });
+        [[-1,0.35,1.4],[1,0.35,1.4],[-1,0.35,-1.4],[1,0.35,-1.4]].forEach(p => {
+            const w = new THREE.Mesh(wheelGeo, wheelMat); w.rotation.z=Math.PI/2; w.position.set(...p); w.castShadow=true; car.add(w); wheels.push(w);
+        });
+
+        // Traffic lights
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,6), new THREE.MeshStandardMaterial({color:0x555555})); pole.position.set(6,3,-30); scene.add(pole);
+        const tlBox = new THREE.Mesh(new THREE.BoxGeometry(0.8,2,0.5), new THREE.MeshStandardMaterial({color:0x222222})); tlBox.position.set(6,6,-30); scene.add(tlBox);
+        const red = new THREE.Mesh(new THREE.CircleGeometry(0.2,32), new THREE.MeshBasicMaterial({color:0x330000})); red.position.set(6,6.6,-29.7); scene.add(red);
+        const green = new THREE.Mesh(new THREE.CircleGeometry(0.2,32), new THREE.MeshBasicMaterial({color:0x00ff00})); green.position.set(6,5.4,-29.7); scene.add(green);
+
+        // Particles (wind)
+        const windCount = 300;
+        const windGeo = new THREE.BufferGeometry();
+        const windPos = new Float32Array(windCount*3);
+        for (let i=0;i<windCount;i++) { windPos[i*3]=(Math.random()-0.5)*20; windPos[i*3+1]=Math.random()*5; windPos[i*3+2]=-Math.random()*60; }
+        windGeo.setAttribute('position', new THREE.BufferAttribute(windPos,3));
+        const windMat = new THREE.PointsMaterial({color:0x00e676, size:0.05, transparent:true, opacity:0.3, blending:THREE.AdditiveBlending});
+        const wind = new THREE.Points(windGeo, windMat); scene.add(wind);
+
+        let progress=0;
+        ScrollTrigger.create({ trigger:'#content', start:'top top', end:'bottom bottom', scrub:0.8, onUpdate:(self)=>{ progress=self.progress; } });
+        function resize(){ camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }
+        window.addEventListener('resize', resize);
+
+        let time=0;
+        function animate() {
+            requestAnimationFrame(animate); time+=0.02;
+            const p1 = Math.min(1, progress/0.25);
+            const p2 = Math.min(1, Math.max(0,(progress-0.25)/0.25));
+            const p3 = Math.min(1, Math.max(0,(progress-0.5)/0.25));
+            const p4 = Math.min(1, Math.max(0,(progress-0.75)/0.25));
+
+            const drive = p2 * 60;
+            const speed = p2 * 0.8 + p3 * 1.2;
+
+            // Move road lines
+            lineGroup.position.z = drive % 10;
+            // Move car with slight curve
+            car.position.z = -drive * 0.5;
+            car.position.x = Math.sin(drive * 0.05) * 1.5;
+            car.rotation.y = -Math.cos(drive * 0.05) * 0.1;
+            wheels.forEach(w => { w.rotation.x -= speed * 0.3; });
+
+            // Camera follow
+            camera.position.x = THREE.MathUtils.lerp(3, 0, p1);
+            camera.position.z = THREE.MathUtils.lerp(8, 6 + drive * 0.4, p2);
+            camera.position.y = THREE.MathUtils.lerp(3, 2.5, p2);
+            camera.lookAt(car.position.x, 0.5, car.position.z - 5);
+
+            // Traffic light
+            if (progress > 0.35 && progress < 0.55) { red.material.color.setHex(0xff0000); green.material.color.setHex(0x003300); }
+            else { red.material.color.setHex(0x330000); green.material.color.setHex(0x00ff00); }
+
+            // Wind particles
+            const wpos = wind.geometry.attributes.position.array;
+            for (let i=0;i<windCount;i++) {
+                wpos[i*3+2] += speed * 2;
+                if (wpos[i*3+2] > 10) { wpos[i*3+2] = -60; wpos[i*3]=(Math.random()-0.5)*20; }
+            }
+            wind.geometry.attributes.position.needsUpdate = true;
+            wind.material.opacity = 0.1 + p2 * 0.3;
+
+            // Neon glow
+            neon.position.copy(car.position).add(new THREE.Vector3(0,2,0));
+            neon.intensity = 0.2 + p2 * 1.5;
+
+            // End rotation
+            if (p4 > 0) { car.rotation.y += p4 * 0.02; }
+
+            renderer.render(scene, camera);
+        }
+        window.addEventListener('load', ()=>{ setTimeout(()=>{document.getElementById('loader').classList.add('hidden');},600); });
+        animate();
+    </script>
+</body>
+</html>
