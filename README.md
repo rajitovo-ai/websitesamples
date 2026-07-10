@@ -6,10 +6,10 @@
 
 ```bash
 cd /home/ubuntu/Documents/glm/swe
-PORT=5173 node server.js
+PORT=5175 node server.js
 ```
 
-Open dan `http://localhost:5173` voor het portaal. Klik op een kaart om de website te bekijken.
+Open dan `http://localhost:5175` voor het portaal. Klik op een kaart om de website te bekijken.
 
 ## Websites
 
