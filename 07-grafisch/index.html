@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VormStudio — Grafisch Ontwerper</title>
+    <meta name="description" content="VormStudio — Logo, huisstijl, print en digitaal ontwerp. KVK 68987654">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0a0a0f; --panel: #15151c; --accent: #ff3366; --accent-2: #00e5ff; --fg: #f5f5f7; --muted: #8a8a9a; --border: rgba(255,255,255,0.08); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: auto; }
+        body { font-family:'Inter', sans-serif; color:var(--fg); background:var(--bg); overflow-x:hidden; }
+        #loader { position:fixed; inset:0; z-index:999; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.6s, visibility 0.6s; }
+        #loader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+        .loader-ring { width:48px; height:48px; border-radius:50%; border:3px solid rgba(255,51,102,0.2); border-top-color:var(--accent); animation:spin 1s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .loader-text { margin-top:1rem; color:var(--muted); font-size:0.85rem; }
+        #canvas { position:fixed; inset:0; z-index:0; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4vw; background:rgba(10,10,15,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+        .nav-brand { font-family:'Space Grotesk'; font-weight:700; font-size:1.3rem; color:var(--fg); }
+        .nav-brand span { color:var(--accent); }
+        .nav-links { display:flex; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
+        .nav-links a:hover { color:var(--accent); }
+        .nav-cta { padding:0.6rem 1.2rem; background:var(--accent); color:#fff !important; border-radius:8px; }
+        #content { position:relative; z-index:2; pointer-events:none; }
+        section { min-height:100vh; display:flex; align-items:center; padding:6rem 6vw; position:relative; }
+        .section-inner { pointer-events:auto; max-width:520px; }
+        .right { margin-left:auto; text-align:right; }
+        .right .stats { justify-content:flex-end; }
+        .eyebrow { font-family:'Space Grotesk'; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:1rem; }
+        h1, h2 { font-family:'Space Grotesk'; font-weight:700; line-height:1.1; }
+        h1 { font-size:clamp(2.5rem,5vw,5rem); margin-bottom:1.5rem; }
+        h2 { font-size:clamp(2rem,4vw,3.5rem); margin-bottom:1.25rem; }
+        p { color:var(--muted); font-size:1.05rem; line-height:1.7; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2rem; border-radius:10px; font-weight:600; text-decoration:none; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:transform 0.2s; }
+        .btn:hover { transform:translateY(-3px); }
+        .btn-ghost { background:transparent; color:var(--accent); border:1.5px solid var(--accent); margin-left:0.75rem; }
+        .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+        .feature-card { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; padding:1.2rem; }
+        .feature-card strong { display:block; font-family:'Space Grotesk'; font-size:1.1rem; margin-bottom:0.4rem; }
+        .feature-card span { font-size:0.85rem; color:var(--muted); }
+        .stats { display:flex; gap:2rem; margin-top:2rem; }
+        .stat { text-align:center; }
+        .stat-num { font-family:'Space Grotesk'; font-size:2.2rem; font-weight:700; color:var(--accent); }
+        .stat-label { font-size:0.8rem; color:var(--muted); }
+        .contact-form { max-width:460px; pointer-events:auto; }
+        .contact-form input, .contact-form select, .contact-form textarea { width:100%; padding:1rem; margin-bottom:0.75rem; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,0.05); color:var(--fg); font-family:inherit; font-size:0.95rem; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline:none; border-color:var(--accent); }
+        .contact-form button { width:100%; }
+        .usp-list { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+        .usp-list li { display:flex; align-items:center; gap:0.75rem; color:var(--muted); }
+        .usp-list li::before { content:'✓'; color:var(--accent); font-weight:700; }
+        footer { position:relative; z-index:2; background:#050508; color:var(--muted); padding:3rem 6vw; font-size:0.85rem; }
+        footer a { color:#fff; text-decoration:none; }
+        .footer-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+        @media (max-width:800px) { .nav-links { display:none; } .feature-grid { grid-template-columns:1fr; } .right { margin-left:0; text-align:left; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-ring"></div><div class="loader-text">VormStudio laden...</div></div>
+    <canvas id="canvas"></canvas>
+    <nav>
+        <div class="nav-brand">Vorm<span>Studio</span></div>
+        <div class="nav-links">
+            <a href="#logo">Logo</a>
+            <a href="#huisstijl">Huisstijl</a>
+            <a href="#print">Print</a>
+            <a href="#contact" class="nav-cta">Offerte</a>
+        </div>
+    </nav>
+    <div id="content">
+        <section id="hero">
+            <div class="section-inner">
+                <div class="eyebrow">Grafisch ontwerpstudio</div>
+                <h1>Beeld dat <span style="color:var(--accent)">blijft</span> hangen.</h1>
+                <p>Logo, huisstijl, websites, print en campagnes. Wij geven merken een eigen gezicht dat herkend wordt.</p>
+                <div>
+                    <a href="#contact" class="btn">Start project</a>
+                    <a href="#logo" class="btn btn-ghost">Portfolio</a>
+                </div>
+                <div class="stats" style="margin-top:2.5rem;">
+                    <div class="stat"><div class="stat-num">180+</div><div class="stat-label">Merken</div></div>
+                    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Awards</div></div>
+                    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Beoordeling</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="logo" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">01 — Logo</div>
+                <h2>Een merk begint met <span style="color:var(--accent)">vorm</span>.</h2>
+                <p>We ontwerpen logo's die scherp, schaalbaar en tijdloos zijn. Van schets tot vector.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>Wordmark</strong><span>Typografische identiteit.</span></div>
+                    <div class="feature-card"><strong>Pictogram</strong><span>Eigen icoon en symbool.</span></div>
+                    <div class="feature-card"><strong>Styleguide</strong><span>Regels voor consistentie.</span></div>
+                </div>
+            </div>
+        </section>
+        <section id="huisstijl">
+            <div class="section-inner">
+                <div class="eyebrow">02 — Huisstijl</div>
+                <h2>Kleur, lettertype en <span style="color:var(--accent)">toon</span>.</h2>
+                <p>Een complete huisstijl met kleurenpalet, typografie, foto- en illustratiestijl. Klaar voor print en web.</p>
+                <ul class="usp-list">
+                    <li>Visitekaartjes en briefpapier</li>
+                    <li>Social media templates</li>
+                    <li>Merkmanagement</li>
+                    <li>Re-branding</li>
+                </ul>
+            </div>
+        </section>
+        <section id="print" class="right">
+            <div class="section-inner">
+                <div class="eyebrow">03 — Print & digitaal</div>
+                <h2>Van flyer tot <span style="color:var(--accent)">website</span>.</h2>
+                <p>Flyers, brochures, posters, banners, nieuwsbrieven en webdesign. Eén stijl, overal consistent.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">€ 799</div><div class="stat-label">logo pakket</div></div>
+                    <div class="stat"><div class="stat-num">€ 1.499</div><div class="stat-label">huisstijl</div></div>
+                    <div class="stat"><div class="stat-num">Op maat</div><div class="stat-label">campagnes</div></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="section-inner">
+                <div class="eyebrow">04 — Contact</div>
+                <h2>Vertel ons je <span style="color:var(--accent)">verhaal</span>.</h2>
+                <p>We bespreken je wensen, doelgroep en budget. Vervolgens maken we een voorstel op maat.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt, VormStudio neemt binnen 24 uur contact op.');">
+                    <input type="text" placeholder="Naam" required>
+                    <input type="tel" placeholder="Telefoon" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Wat zoek je?</option>
+                        <option>Logo</option>
+                        <option>Huisstijl</option>
+                        <option>Webdesign</option>
+                        <option>Print</option>
+                        <option>Campagne</option>
+                    </select>
+                    <textarea rows="3" placeholder="Beschrijf je project"></textarea>
+                    <button type="submit" class="btn">Offerte aanvragen</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <div><strong>VormStudio</strong><br>Creatief Kwartier 3, 3521 AN Utrecht<br>KVK 68987654</div>
+            <div><a href="tel:+31301237788">030 123 77 88</a><br><a href="mailto:info@vormstudio.nl">info@vormstudio.nl</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+        resize(); window.addEventListener('resize', resize);
+
+        const words = ['VORM', 'KLEUR', 'IDEE', 'MERK', 'DESIGN'];
+        const colors = ['#ff3366', '#00e5ff', '#f5c542', '#ff3366', '#00e5ff'];
+        let progress = 0;
+        ScrollTrigger.create({ trigger: '#content', start: 'top top', end: 'bottom bottom', scrub: 0.8, onUpdate: (self) => { progress = self.progress; } });
+
+        // Get points for a word
+        function getWordPoints(text, size) {
+            const off = document.createElement('canvas');
+            const octx = off.getContext('2d');
+            off.width = Math.max(1, w); off.height = Math.max(1, h);
+            octx.font = `900 ${size}px 'Space Grotesk', sans-serif`;
+            octx.textAlign = 'center'; octx.textBaseline = 'middle';
+            octx.fillStyle = '#fff';
+            octx.fillText(text, off.width/2, off.height/2);
+            const data = octx.getImageData(0, 0, off.width, off.height).data;
+            const points = [];
+            const step = 5;
+            for (let y = 0; y < off.height; y += step) {
+                for (let x = 0; x < off.width; x += step) {
+                    if (data[(y * off.width + x) * 4 + 3] > 128) {
+                        points.push({ x, y, originX: x, originY: y });
+                    }
+                }
+            }
+            return points;
+        }
+
+        const particleCount = 1200;
+        const particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({ x: Math.random() * w, y: Math.random() * h, tx: Math.random() * w, ty: Math.random() * h, vx: 0, vy: 0, size: 1 + Math.random() * 2, color: '#ff3366' });
+        }
+
+        let wordIndex = 0;
+        let nextWordPoints = [];
+        let currentWordPoints = [];
+        let bg = { r: 10, g: 10, b: 15 };
+
+        function updateTargets() {
+            const wordProgress = progress * words.length;
+            const idx = Math.min(words.length - 1, Math.floor(wordProgress));
+            const local = wordProgress - idx;
+            const word = words[idx];
+            const size = Math.min(w, h) * 0.35;
+            const points = getWordPoints(word, size);
+            if (points.length === 0) return;
+            for (let i = 0; i < particleCount; i++) {
+                const p = particles[i];
+                const target = points[i % points.length];
+                p.tx = target.x; p.ty = target.y;
+                p.color = colors[idx];
+            }
+            // Background interpolation
+            const targetBg = hexToRgb(colors[idx]);
+            bg.r += (targetBg.r * 0.15 - bg.r) * 0.05;
+            bg.g += (targetBg.g * 0.15 - bg.g) * 0.05;
+            bg.b += (targetBg.b * 0.15 - bg.b) * 0.05;
+        }
+
+        function hexToRgb(hex) {
+            const n = parseInt(hex.slice(1), 16);
+            return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+        }
+
+        // Mouse interaction
+        let mouse = { x: -1000, y: -1000 };
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+            updateTargets();
+
+            ctx.fillStyle = `rgba(${Math.round(bg.r)},${Math.round(bg.g)},${Math.round(bg.b)},0.25)`;
+            ctx.fillRect(0, 0, w, h);
+
+            for (let i = 0; i < particleCount; i++) {
+                const p = particles[i];
+                // Move toward target
+                const dx = p.tx - p.x; const dy = p.ty - p.y;
+                p.vx += dx * 0.005; p.vy += dy * 0.005;
+                p.vx *= 0.92; p.vy *= 0.92;
+
+                // Mouse repulsion
+                const mx = p.x - mouse.x; const my = p.y - mouse.y;
+                const dist = Math.sqrt(mx*mx + my*my);
+                if (dist < 150) { p.vx += mx/dist * 2; p.vy += my/dist * 2; }
+
+                p.x += p.vx; p.y += p.vy;
+
+                ctx.beginPath();
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = 0.7;
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+
+            // Draw connecting lines near
+            ctx.strokeStyle = '#ffffff';
+            ctx.globalAlpha = 0.05;
+            ctx.beginPath();
+            for (let i = 0; i < particleCount; i += 5) {
+                const p = particles[i];
+                for (let j = i + 1; j < i + 6 && j < particleCount; j++) {
+                    const p2 = particles[j];
+                    const d = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (d < 25) { ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); }
+                }
+            }
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        }
+
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 600); });
+        animate();
+    </script>
+</body>
+</html>
